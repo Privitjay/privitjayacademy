@@ -41,9 +41,19 @@
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            background: linear-gradient(45deg, #00d4ff, #7c3aed);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-family: 'Courier New', monospace;
+            background: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+
+        .logo-prompt {
+            color: #00d4ff;
+        }
+
+        .logo-text {
+            color: #00ff00;
         }
 
         .nav-links {
@@ -103,37 +113,16 @@
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 3px;
-            background: linear-gradient(
-                45deg,
-                #1a1a1a,
-                #333333,
-                #0d1421,
-                #1e1e2e,
-                #2d2d2d
-            );
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: darkCyberGlow 3s ease-in-out infinite alternate;
-            text-shadow: 
-                0 0 10px rgba(255, 255, 255, 0.1),
-                0 0 20px rgba(0, 212, 255, 0.1),
-                0 0 30px rgba(124, 58, 237, 0.1);
         }
 
-        @keyframes darkCyberGlow {
-            0% {
-                background-position: 0% 50%;
-                filter: brightness(0.8) saturate(0.9);
-            }
-            50% {
-                background-position: 50% 100%;
-                filter: brightness(1) saturate(1);
-            }
-            100% {
-                background-position: 100% 50%;
-                filter: brightness(0.8) saturate(0.9);
-            }
+        .hero-title .privit {
+            color: #00d4ff;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .hero-title .academy {
+            color: #7c3aed;
+            text-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
         }
 
         .cyber-subtitle {
@@ -277,7 +266,7 @@
 
         .hero-actions {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             justify-content: center;
             margin-top: 2rem;
             position: relative;
@@ -287,11 +276,11 @@
         .terminal-container {
             background: #000;
             border-radius: 10px;
-            padding: 1.5rem;
+            padding: 1rem;
             font-family: 'Courier New', monospace;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
             border: 1px solid #333;
-            min-width: 250px;
+            min-width: 200px;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
@@ -322,21 +311,21 @@
         .terminal-header {
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.4rem;
             border-bottom: 1px solid #333;
         }
 
         .terminal-dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            margin-right: 6px;
+            margin-right: 5px;
         }
 
         .terminal-content {
             color: #00ff00;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             line-height: 1.4;
         }
 
@@ -346,14 +335,15 @@
 
         .terminal-action {
             color: #fff;
-            margin-top: 0.5rem;
+            margin-top: 0.4rem;
             font-weight: bold;
+            font-size: 0.9rem;
         }
 
         .terminal-description {
             color: #888;
-            font-size: 0.8rem;
-            margin-top: 0.3rem;
+            font-size: 0.7rem;
+            margin-top: 0.2rem;
         }
 
         .course-grid {
@@ -705,7 +695,7 @@
             }
 
             .terminal-container {
-                min-width: 280px;
+                min-width: 200px;
             }
 
             .footer-title {
@@ -717,7 +707,10 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">Privitjay Academy</div>
+            <div class="logo">
+                <span class="logo-prompt">PrivitJay@academy:~#</span>
+                <span class="logo-text"> ./</span>
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#courses">Courses</a></li>
@@ -731,8 +724,8 @@
         <div id="home-page">
             <section class="hero-section">
                 <div class="cyber-subtitle">◤◥ CYBER LEARNING PROTOCOL INITIATED ◤◥</div>
-                <h1 class="hero-title glitch-text" data-text="WELCOME TO PRIVITJAY ACADEMY">
-                    WELCOME TO PRIVITJAY ACADEMY
+                <h1 class="hero-title glitch-text" data-text="PRIVITACADEMY">
+                    <span class="privit">PRIVIT</span><span class="academy">ACADEMY</span>
                 </h1>
                 <div class="typing-terminal">
                     <div class="typing-terminal-header">
@@ -819,20 +812,6 @@
                     <p>Understand networking concepts and security through simulated network environments.</p>
                     <button class="btn">Start Learning</button>
                 </div>
-
-                <div class="course-card" onclick="startCourse('docker')">
-                    <div class="course-header">
-                        <div class="course-title">
-                            <h3>🐳 Docker & Containers</h3>
-                        </div>
-                        <div class="level-indicator level-advanced">
-                            <span class="level-icon">💀</span>
-                            <span>Advanced</span>
-                        </div>
-                    </div>
-                    <p>Learn containerization with hands-on Docker exercises and real container management.</p>
-                    <button class="btn">Start Learning</button>
-                </div>
             </div>
         </div>
 
@@ -853,21 +832,9 @@
                     </div>
 
                     <div class="feature-card">
-                        <div class="feature-icon">🚀</div>
-                        <h3>Industry-Ready Skills</h3>
-                        <p>Master the tools and technologies used by professionals. From Linux command line to containerization, we teach what the industry actually uses.</p>
-                    </div>
-
-                    <div class="feature-card">
                         <div class="feature-icon">🔧</div>
                         <h3>Interactive Learning</h3>
                         <p>Our built-in terminals and simulators let you practice immediately. No need to set up environments - start coding and experimenting right away.</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3>Progressive Difficulty</h3>
-                        <p>Start with fundamentals and gradually advance to expert level. Our structured learning path ensures you build solid foundations before tackling complex topics.</p>
                     </div>
 
                     <div class="feature-card">
@@ -950,189 +917,3 @@
     });
   </script>
     <script>
-        // Course content data
-        const courses = {
-            linux: {
-                title: "Linux Fundamentals - Lesson 1: Basic Commands",
-                content: `
-                    <h2>Welcome to Linux Fundamentals!</h2>
-                    <p>In this lesson, you'll learn the most essential Linux commands that every user should know.</p>
-                    
-                    <h3>Basic Navigation Commands</h3>
-                    <ul>
-                        <li><code>pwd</code> - Print working directory (shows where you are)</li>
-                        <li><code>ls</code> - List files and directories</li>
-                        <li><code>cd</code> - Change directory</li>
-                        <li><code>mkdir</code> - Create a new directory</li>
-                        <li><code>touch</code> - Create a new file</li>
-                    </ul>
-
-                    <div class="exercise-box">
-                        <h3>🎯 Exercise 1</h3>
-                        <p>Try these commands in the terminal:</p>
-                        <ol>
-                            <li>Type <code>pwd</code> to see your current location</li>
-                            <li>Type <code>ls</code> to see what's in your directory</li>
-                            <li>Create a new directory: <code>mkdir my_project</code></li>
-                            <li>Navigate into it: <code>cd my_project</code></li>
-                            <li>Create a file: <code>touch hello.txt</code></li>
-                        </ol>
-                    </div>
-
-                    <h3>File Operations</h3>
-                    <ul>
-                        <li><code>cat</code> - Display file contents</li>
-                        <li><code>cp</code> - Copy files</li>
-                        <li><code>mv</code> - Move/rename files</li>
-                        <li><code>rm</code> - Remove files</li>
-                    </ul>
-
-                    <div class="exercise-box">
-                        <h3>🎯 Exercise 2</h3>
-                        <p>Practice file operations:</p>
-                        <ol>
-                            <li>Add content to your file: <code>echo "Hello World" > hello.txt</code></li>
-                            <li>View the content: <code>cat hello.txt</code></li>
-                            <li>Copy the file: <code>cp hello.txt backup.txt</code></li>
-                            <li>List files to see both: <code>ls</code></li>
-                        </ol>
-                    </div>
-                `
-            },
-            python: {
-                title: "Python Programming - Lesson 1: Getting Started",
-                content: `
-                    <h2>Welcome to Python Programming!</h2>
-                    <p>Python is a powerful, easy-to-learn programming language. Let's start with the basics.</p>
-                    
-                    <h3>Your First Python Program</h3>
-                    <p>The traditional first program is "Hello, World!"</p>
-                    
-                    <div class="exercise-box">
-                        <h3>🎯 Exercise 1</h3>
-                        <p>Try these Python commands:</p>
-                        <ol>
-                            <li>Start Python: <code>python3</code></li>
-                            <li>Print a message: <code>print("Hello, World!")</code></li>
-                            <li>Try basic math: <code>2 + 3</code></li>
-                            <li>Create a variable: <code>name = "Your Name"</code></li>
-                            <li>Print the variable: <code>print(name)</code></li>
-                        </ol>
-                    </div>
-
-                    <h3>Variables and Data Types</h3>
-                    <ul>
-                        <li>Strings: <code>"Hello"</code> or <code>'Hello'</code></li>
-                        <li>Numbers: <code>42</code> (integer) or <code>3.14</code> (float)</li>
-                        <li>Booleans: <code>True</code> or <code>False</code></li>
-                    </ul>
-                `
-            }
-        };
-
-        // Simulated file system for Linux course
-        let fileSystem = {
-            '/home/student': {
-                type: 'directory',
-                contents: {}
-            }
-        };
-        let currentPath = '/home/student';
-        let commandHistory = [];
-
-        function startCourse(courseType) {
-            document.getElementById('home-page').style.display = 'none';
-            document.getElementById('learning-interface').style.display = 'grid';
-            
-            // Load course content
-            if (courses[courseType]) {
-                document.getElementById('lesson-content').innerHTML = courses[courseType].content;
-            }
-            
-            // Set up terminal for the specific course
-            setupTerminal(courseType);
-        }
-
-        function goHome() {
-            document.getElementById('home-page').style.display = 'block';
-            document.getElementById('learning-interface').style.display = 'none';
-            resetTerminal();
-        }
-
-        function scrollToCourses() {
-            document.querySelector('.course-grid').scrollIntoView({ 
-                behavior: 'smooth' 
-            });
-        }
-
-        function scrollToAbout() {
-            document.querySelector('#about').scrollIntoView({ 
-                behavior: 'smooth' 
-            });
-        }
-
-        function setupTerminal(courseType) {
-            const terminal = document.getElementById('terminal');
-            const input = document.getElementById('terminal-input');
-            
-            // Clear terminal
-            terminal.innerHTML = '<div class="terminal-line"><span class="prompt">student@academy:~$</span><input type="text" class="terminal-input" id="terminal-input" placeholder="Type your command..."></div>';
-            
-            // Refocus input
-            const newInput = document.getElementById('terminal-input');
-            newInput.focus();
-            
-            // Add command processing
-            newInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    processCommand(this.value, courseType);
-                    this.value = '';
-                }
-            });
-        }
-
-        function processCommand(command, courseType) {
-            const terminal = document.getElementById('terminal');
-            
-            // Add command to terminal
-            const commandLine = document.createElement('div');
-            commandLine.className = 'terminal-line';
-            commandLine.innerHTML = `<span class="prompt">student@academy:~$</span> ${command}`;
-            terminal.appendChild(commandLine);
-            
-            // Process the command based on course type
-            let output = '';
-            let outputClass = '';
-            
-            if (courseType === 'linux') {
-                ({ output, outputClass } = processLinuxCommand(command));
-            } else if (courseType === 'python') {
-                ({ output, outputClass } = processPythonCommand(command));
-            }
-            
-            // Add output if any
-            if (output) {
-                const outputLine = document.createElement('div');
-                outputLine.className = `output ${outputClass}`;
-                outputLine.textContent = output;
-                terminal.appendChild(outputLine);
-            }
-            
-            // Add new input line
-            const newInputLine = document.createElement('div');
-            newInputLine.className = 'terminal-line';
-            newInputLine.innerHTML = '<span class="prompt">student@academy:~$</span><input type="text" class="terminal-input" id="terminal-input" placeholder="Type your command...">';
-            terminal.appendChild(newInputLine);
-            
-            // Focus new input and setup event listener
-            const newInput = document.getElementById('terminal-input');
-            newInput.focus();
-            newInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    processCommand(this.value, courseType);
-                    this.value = '';
-                }
-            });
-            
-            // Scroll to bottom
-            terminal.scrollTop = terminal.scroll
