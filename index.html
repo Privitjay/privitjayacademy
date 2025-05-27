@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,14 +71,130 @@
             text-align: center;
             padding: 4rem 2rem;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero-section h1 {
-            font-size: 3rem;
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 49%, rgba(0, 255, 136, 0.03) 50%, transparent 51%);
+            animation: cyberGrid 20s linear infinite;
+        }
+
+        @keyframes cyberGrid {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-20px) translateY(-20px); }
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
             margin-bottom: 2rem;
-            background: linear-gradient(45deg, #fff, #00d4ff);
+            position: relative;
+            z-index: 2;
+            font-family: 'Courier New', monospace;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(
+                45deg,
+                #1a1a1a,
+                #333333,
+                #0d1421,
+                #1e1e2e,
+                #2d2d2d
+            );
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: darkCyberGlow 3s ease-in-out infinite alternate;
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.1),
+                0 0 20px rgba(0, 212, 255, 0.1),
+                0 0 30px rgba(124, 58, 237, 0.1);
+        }
+
+        @keyframes darkCyberGlow {
+            0% {
+                background-position: 0% 50%;
+                filter: brightness(0.8) saturate(0.9);
+            }
+            50% {
+                background-position: 50% 100%;
+                filter: brightness(1) saturate(1);
+            }
+            100% {
+                background-position: 100% 50%;
+                filter: brightness(0.8) saturate(0.9);
+            }
+        }
+
+        .cyber-subtitle {
+            font-size: 1.2rem;
+            color: #00ff88;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+            animation: flicker 2s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        .glitch-text {
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch-text::before {
+            animation: glitch-1 0.5s infinite;
+            color: #ff0080;
+            z-index: -1;
+        }
+
+        .glitch-text::after {
+            animation: glitch-2 0.5s infinite;
+            color: #00d4ff;
+            z-index: -2;
+        }
+
+        @keyframes glitch-1 {
+            0%, 14%, 15%, 49%, 50%, 99%, 100% {
+                transform: translate(0);
+            }
+            15%, 49% {
+                transform: translate(-2px, 2px);
+            }
+        }
+
+        @keyframes glitch-2 {
+            0%, 20%, 21%, 62%, 63%, 99%, 100% {
+                transform: translate(0);
+            }
+            21%, 62% {
+                transform: translate(2px, -2px);
+            }
         }
 
         .typing-terminal {
@@ -91,6 +206,8 @@
             font-family: 'Courier New', monospace;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 1px solid #333;
+            position: relative;
+            z-index: 2;
         }
 
         .typing-terminal-header {
@@ -152,8 +269,91 @@
 
         .hero-section p {
             font-size: 1.3rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .terminal-container {
+            background: #000;
+            border-radius: 10px;
+            padding: 1.5rem;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            border: 1px solid #333;
+            min-width: 250px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .terminal-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .terminal-container:hover::before {
+            left: 100%;
+        }
+
+        .terminal-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.2);
+            border-color: #00ff88;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #333;
+        }
+
+        .terminal-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+
+        .terminal-content {
+            color: #00ff00;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .terminal-prompt {
+            color: #00d4ff;
+        }
+
+        .terminal-action {
+            color: #fff;
+            margin-top: 0.5rem;
+            font-weight: bold;
+        }
+
+        .terminal-description {
+            color: #888;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
         }
 
         .course-grid {
@@ -172,6 +372,23 @@
             padding: 2rem;
             transition: all 0.3s ease;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .course-card:hover::before {
+            left: 100%;
         }
 
         .course-card:hover {
@@ -180,15 +397,70 @@
             border-color: #00d4ff;
         }
 
+        .course-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .course-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
         .course-card h3 {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
+            margin: 0;
             color: #00d4ff;
+        }
+
+        .level-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .level-beginner {
+            background: linear-gradient(45deg, #51cf66, #40c057);
+            color: #fff;
+            box-shadow: 0 2px 10px rgba(81, 207, 102, 0.3);
+        }
+
+        .level-intermediate {
+            background: linear-gradient(45deg, #ffd43b, #fab005);
+            color: #000;
+            box-shadow: 0 2px 10px rgba(255, 212, 59, 0.3);
+        }
+
+        .level-advanced {
+            background: linear-gradient(45deg, #ff6b6b, #e03131);
+            color: #fff;
+            box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
+        }
+
+        .level-expert {
+            background: linear-gradient(45deg, #7c3aed, #5b21b6);
+            color: #fff;
+            box-shadow: 0 2px 10px rgba(124, 58, 237, 0.3);
+        }
+
+        .level-icon {
+            font-size: 1rem;
         }
 
         .course-card p {
             opacity: 0.8;
             line-height: 1.6;
+            position: relative;
+            z-index: 1;
         }
 
         .btn {
@@ -201,6 +473,8 @@
             transition: all 0.3s ease;
             font-weight: bold;
             margin-top: 1rem;
+            position: relative;
+            z-index: 1;
         }
 
         .btn:hover {
@@ -332,13 +606,110 @@
             z-index: 999;
         }
 
+        .footer {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a1a 100%);
+            padding: 4rem 0 2rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 49%, rgba(0, 212, 255, 0.02) 50%, transparent 51%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        .feature-card h3 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: #ccc;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+        }
+
         @media (max-width: 768px) {
-            .learning-interface {
-                grid-template-columns: 1fr;
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
             }
-            
-            .nav-links {
-                display: none;
+
+            .terminal-container {
+                min-width: 280px;
+            }
+
+            .footer-title {
+                font-size: 2rem;
             }
         }
     </style>
@@ -359,7 +730,10 @@
     <div class="main-content">
         <div id="home-page">
             <section class="hero-section">
-                <h1>Welcome to Privitjay Academy</h1>
+                <div class="cyber-subtitle">◤◥ CYBER LEARNING PROTOCOL INITIATED ◤◥</div>
+                <h1 class="hero-title glitch-text" data-text="WELCOME TO PRIVITJAY ACADEMY">
+                    WELCOME TO PRIVITJAY ACADEMY
+                </h1>
                 <div class="typing-terminal">
                     <div class="typing-terminal-header">
                         <div class="typing-dot red"></div>
@@ -373,34 +747,141 @@
                     </div>
                 </div>
                 <p>Learn programming, Linux, networking, and more with hands-on interactive terminals</p>
+                
+                <div class="hero-actions">
+                    <div class="terminal-container" onclick="scrollToCourses()">
+                        <div class="terminal-header">
+                            <div class="terminal-dot red"></div>
+                            <div class="terminal-dot yellow"></div>
+                            <div class="terminal-dot green"></div>
+                        </div>
+                        <div class="terminal-content">
+                            <div><span class="terminal-prompt">root@academy:~#</span> init_learning</div>
+                            <div class="terminal-action">► START LEARNING</div>
+                            <div class="terminal-description">Begin your journey</div>
+                        </div>
+                    </div>
+
+                    <div class="terminal-container" onclick="scrollToAbout()">
+                        <div class="terminal-header">
+                            <div class="terminal-dot red"></div>
+                            <div class="terminal-dot yellow"></div>
+                            <div class="terminal-dot green"></div>
+                        </div>
+                        <div class="terminal-content">
+                            <div><span class="terminal-prompt">user@academy:~$</span> cat about.txt</div>
+                            <div class="terminal-action">► ABOUT US</div>
+                            <div class="terminal-description">Learn our mission</div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <div class="course-grid">
                 <div class="course-card" onclick="startCourse('linux')">
-                    <h3>🐧 Linux Fundamentals</h3>
+                    <div class="course-header">
+                        <div class="course-title">
+                            <h3>🐧 Linux Fundamentals</h3>
+                        </div>
+                        <div class="level-indicator level-beginner">
+                            <span class="level-icon">⚡</span>
+                            <span>Beginner</span>
+                        </div>
+                    </div>
                     <p>Master the command line, file system navigation, and essential Linux commands through interactive exercises.</p>
                     <button class="btn">Start Learning</button>
                 </div>
 
                 <div class="course-card" onclick="startCourse('python')">
-                    <h3>🐍 Python Programming</h3>
+                    <div class="course-header">
+                        <div class="course-title">
+                            <h3>🐍 Python Programming</h3>
+                        </div>
+                        <div class="level-indicator level-beginner">
+                            <span class="level-icon">⚡</span>
+                            <span>Beginner</span>
+                        </div>
+                    </div>
                     <p>Learn Python from basics to advanced concepts with a built-in Python interpreter.</p>
                     <button class="btn">Start Learning</button>
                 </div>
 
                 <div class="course-card" onclick="startCourse('networking')">
-                    <h3>🌐 Network Security</h3>
+                    <div class="course-header">
+                        <div class="course-title">
+                            <h3>🌐 Network Security</h3>
+                        </div>
+                        <div class="level-indicator level-intermediate">
+                            <span class="level-icon">🔥</span>
+                            <span>Intermediate</span>
+                        </div>
+                    </div>
                     <p>Understand networking concepts and security through simulated network environments.</p>
                     <button class="btn">Start Learning</button>
                 </div>
 
                 <div class="course-card" onclick="startCourse('docker')">
-                    <h3>🐳 Docker & Containers</h3>
+                    <div class="course-header">
+                        <div class="course-title">
+                            <h3>🐳 Docker & Containers</h3>
+                        </div>
+                        <div class="level-indicator level-advanced">
+                            <span class="level-icon">💀</span>
+                            <span>Advanced</span>
+                        </div>
+                    </div>
                     <p>Learn containerization with hands-on Docker exercises and real container management.</p>
                     <button class="btn">Start Learning</button>
                 </div>
             </div>
         </div>
+
+        <footer class="footer" id="about">
+            <div class="footer-container">
+                <h2 class="footer-title">Why Learn With Us?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">💻</div>
+                        <h3>Hands-On Experience</h3>
+                        <p>Learn by doing with real interactive terminals and simulators. No theoretical fluff - just practical, hands-on coding and system administration experience.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Real-World Projects</h3>
+                        <p>Work on actual projects that mirror industry challenges. Build your portfolio while learning essential skills that employers are looking for.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>Industry-Ready Skills</h3>
+                        <p>Master the tools and technologies used by professionals. From Linux command line to containerization, we teach what the industry actually uses.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🔧</div>
+                        <h3>Interactive Learning</h3>
+                        <p>Our built-in terminals and simulators let you practice immediately. No need to set up environments - start coding and experimenting right away.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Progressive Difficulty</h3>
+                        <p>Start with fundamentals and gradually advance to expert level. Our structured learning path ensures you build solid foundations before tackling complex topics.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🌟</div>
+                        <h3>24/7 Access</h3>
+                        <p>Learn at your own pace, anytime, anywhere. Our platform is always available with instant feedback and guidance when you need it most.</p>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Privitjay Academy. Empowering the next generation of tech professionals.</p>
+                </div>
+            </div>
+        </footer>
 
         <div id="learning-interface" class="learning-interface">
             <button class="btn back-btn" onclick="goHome()">← Back to Courses</button>
@@ -578,6 +1059,18 @@
             resetTerminal();
         }
 
+        function scrollToCourses() {
+            document.querySelector('.course-grid').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        function scrollToAbout() {
+            document.querySelector('#about').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
         function setupTerminal(courseType) {
             const terminal = document.getElementById('terminal');
             const input = document.getElementById('terminal-input');
@@ -642,278 +1135,4 @@
             });
             
             // Scroll to bottom
-            terminal.scrollTop = terminal.scrollHeight;
-        }
-
-        function processLinuxCommand(command) {
-            const parts = command.trim().split(' ');
-            const cmd = parts[0];
-            const args = parts.slice(1);
-            
-            switch (cmd) {
-                case 'pwd':
-                    return { output: currentPath, outputClass: '' };
-                    
-                case 'ls':
-                    const currentDir = getDirectory(currentPath);
-                    if (currentDir && currentDir.contents) {
-                        const items = Object.keys(currentDir.contents);
-                        return { output: items.length > 0 ? items.join('  ') : '', outputClass: '' };
-                    }
-                    return { output: '', outputClass: '' };
-                    
-                case 'mkdir':
-                    if (args.length === 0) {
-                        return { output: 'mkdir: missing operand', outputClass: 'error' };
-                    }
-                    const dirName = args[0];
-                    const currentDirObj = getDirectory(currentPath);
-                    if (currentDirObj) {
-                        currentDirObj.contents[dirName] = { type: 'directory', contents: {} };
-                        return { output: '', outputClass: 'success' };
-                    }
-                    break;
-                    
-                case 'cd':
-                    if (args.length === 0) {
-                        currentPath = '/home/student';
-                        return { output: '', outputClass: '' };
-                    }
-                    const targetDir = args[0];
-                    if (targetDir === '..') {
-                        const pathParts = currentPath.split('/').filter(p => p);
-                        if (pathParts.length > 2) {
-                            pathParts.pop();
-                            currentPath = '/' + pathParts.join('/');
-                        }
-                    } else {
-                        const currentDirObj2 = getDirectory(currentPath);
-                        if (currentDirObj2 && currentDirObj2.contents[targetDir] && currentDirObj2.contents[targetDir].type === 'directory') {
-                            currentPath = currentPath === '/' ? `/${targetDir}` : `${currentPath}/${targetDir}`;
-                        } else {
-                            return { output: `cd: ${targetDir}: No such file or directory`, outputClass: 'error' };
-                        }
-                    }
-                    return { output: '', outputClass: '' };
-                    
-                case 'touch':
-                    if (args.length === 0) {
-                        return { output: 'touch: missing file operand', outputClass: 'error' };
-                    }
-                    const fileName = args[0];
-                    const currentDirObj3 = getDirectory(currentPath);
-                    if (currentDirObj3) {
-                        currentDirObj3.contents[fileName] = { type: 'file', content: '' };
-                        return { output: '', outputClass: 'success' };
-                    }
-                    break;
-                    
-                case 'echo':
-                    if (command.includes(' > ')) {
-                        const parts = command.split(' > ');
-                        const content = parts[0].replace('echo ', '').replace(/"/g, '');
-                        const file = parts[1].trim();
-                        const currentDirObj4 = getDirectory(currentPath);
-                        if (currentDirObj4) {
-                            currentDirObj4.contents[file] = { type: 'file', content: content };
-                            return { output: '', outputClass: 'success' };
-                        }
-                    } else {
-                        const content = args.join(' ').replace(/"/g, '');
-                        return { output: content, outputClass: '' };
-                    }
-                    break;
-                    
-                case 'cat':
-                    if (args.length === 0) {
-                        return { output: 'cat: missing file operand', outputClass: 'error' };
-                    }
-                    const fileToRead = args[0];
-                    const currentDirObj5 = getDirectory(currentPath);
-                    if (currentDirObj5 && currentDirObj5.contents[fileToRead] && currentDirObj5.contents[fileToRead].type === 'file') {
-                        return { output: currentDirObj5.contents[fileToRead].content, outputClass: '' };
-                    } else {
-                        return { output: `cat: ${fileToRead}: No such file or directory`, outputClass: 'error' };
-                    }
-                    
-                case 'cp':
-                    if (args.length < 2) {
-                        return { output: 'cp: missing file operand', outputClass: 'error' };
-                    }
-                    const source = args[0];
-                    const dest = args[1];
-                    const currentDirObj6 = getDirectory(currentPath);
-                    if (currentDirObj6 && currentDirObj6.contents[source]) {
-                        currentDirObj6.contents[dest] = { ...currentDirObj6.contents[source] };
-                        return { output: '', outputClass: 'success' };
-                    } else {
-                        return { output: `cp: ${source}: No such file or directory`, outputClass: 'error' };
-                    }
-                    
-                case 'clear':
-                    document.getElementById('terminal').innerHTML = '';
-                    return { output: '', outputClass: '' };
-                    
-                default:
-                    return { output: `${cmd}: command not found`, outputClass: 'error' };
-            }
-            
-            return { output: '', outputClass: '' };
-        }
-
-        function processPythonCommand(command) {
-            // Simple Python interpreter simulation
-            try {
-                if (command === 'python3' || command === 'python') {
-                    return { output: 'Python 3.9.2 (default, Mar 12 2021, 04:06:34)\nType "help", "copyright", "credits" or "license" for more information.\n>>>', outputClass: '' };
-                }
-                
-                if (command.startsWith('print(')) {
-                    const content = command.match(/print\(['"](.*)['"\])/);
-                    if (content) {
-                        return { output: content[1], outputClass: 'success' };
-                    }
-                }
-                
-                if (command.includes('=') && !command.includes('==')) {
-                    return { output: '', outputClass: 'success' };
-                }
-                
-                if (/^\d+\s*[\+\-\*\/]\s*\d+$/.test(command)) {
-                    try {
-                        const result = eval(command);
-                        return { output: result.toString(), outputClass: 'success' };
-                    } catch (e) {
-                        return { output: 'Error in calculation', outputClass: 'error' };
-                    }
-                }
-                
-                return { output: `${command}`, outputClass: '' };
-            } catch (error) {
-                return { output: `Error: ${error.message}`, outputClass: 'error' };
-            }
-        }
-
-        function getDirectory(path) {
-            let current = fileSystem;
-            const parts = path.split('/').filter(p => p);
-            
-            for (const part of parts) {
-                if (current[part]) {
-                    current = current[part].contents || current[part];
-                } else {
-                    return null;
-                }
-            }
-            
-            return current[parts[parts.length - 1]] || fileSystem[path];
-        }
-
-        function resetTerminal() {
-            fileSystem = {
-                '/home/student': {
-                    type: 'directory',
-                    contents: {}
-                }
-            };
-            currentPath = '/home/student';
-        }
-
-        // Create typing sound effect
-        function createTypingSound() {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const oscillator = audioContext.createOscillator();
-            const gainNode = audioContext.createGain();
-            
-            oscillator.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            
-            oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
-            oscillator.type = 'square';
-            
-            gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-            gainNode.gain.linearRampToValueAtTime(0.1, audioContext.currentTime + 0.01);
-            gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.1);
-            
-            oscillator.start(audioContext.currentTime);
-            oscillator.stop(audioContext.currentTime + 0.1);
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            // Typing animation
-            const textToType = "echo 'Master Technology Through Practice'";
-            const typingElement = document.getElementById('typing-text');
-            let i = 0;
-            
-            function typeWriter() {
-                if (i < textToType.length) {
-                    // Add character
-                    typingElement.textContent += textToType.charAt(i);
-                    
-                    // Play typing sound
-                    try {
-                        createTypingSound();
-                    } catch (e) {
-                        // Audio context might not be available
-                        console.log('Audio not available');
-                    }
-                    
-                    i++;
-                    setTimeout(typeWriter, 150 + Math.random() * 100); // Variable typing speed
-                } else {
-                    // After typing is complete, show the output
-                    setTimeout(() => {
-                        // Hide the cursor from the typing line
-                        const cursor = typingElement.nextElementSibling;
-                        if (cursor && cursor.classList.contains('cursor')) {
-                            cursor.style.display = 'none';
-                        }
-                        
-                        // Add output
-                        const output = document.createElement('div');
-                        output.style.color = '#fff';
-                        output.style.marginTop = '0.5rem';
-                        output.textContent = 'Master Technology Through Practice';
-                        output.style.animation = 'fadeIn 0.5s ease';
-                        typingElement.parentElement.appendChild(output);
-                        
-                        // Add new prompt line
-                        setTimeout(() => {
-                            const newPrompt = document.createElement('div');
-                            newPrompt.style.marginTop = '0.5rem';
-                            newPrompt.innerHTML = '<span class="typing-prompt">student@privitjay:~$</span><span class="cursor"></span>';
-                            newPrompt.style.animation = 'fadeIn 0.3s ease';
-                            typingElement.parentElement.appendChild(newPrompt);
-                        }, 800);
-                    }, 1000);
-                }
-            }
-            
-            // Start typing animation after a short delay
-            setTimeout(() => {
-                // Enable audio context on first user interaction
-                document.addEventListener('click', function enableAudio() {
-                    if (window.AudioContext || window.webkitAudioContext) {
-                        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                        if (audioContext.state === 'suspended') {
-                            audioContext.resume();
-                        }
-                    }
-                    document.removeEventListener('click', enableAudio);
-                }, { once: true });
-                
-                typeWriter();
-            }, 1000);
-            
-            // Focus terminal input when clicking on terminal
-            document.addEventListener('click', function(e) {
-                if (e.target.closest('.terminal-body')) {
-                    const input = document.getElementById('terminal-input');
-                    if (input) input.focus();
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+            terminal.scrollTop = terminal.scroll
