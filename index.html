@@ -1,225 +1,879 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Privitjay Academy - Interactive Learning</title>
-  <style>
-    /* [Full original styles preserved from uploaded file] */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #0a0e27;
-      color: #fff;
-      overflow-x: hidden;
-    }
-    .navbar {
-      background: rgba(10, 14, 39, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 1rem 0;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-    }
-    .logo::before {
-      content: "student@academy:~$ ";
-      color: #00d4ff;
-      font-family: 'Courier New', monospace;
-      margin-right: 0.5rem;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-    .nav-links a {
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    .nav-links a:hover {
-      color: #00d4ff;
-    }
-    .main-content {
-      margin-top: 100px;
-    }
-    .typing-terminal {
-      background: #000;
-      border-radius: 10px;
-      padding: 1.5rem;
-      margin: 2rem auto;
-      max-width: 600px;
-      font-family: 'Courier New', monospace;
-      border: 1px solid #333;
-    }
-    .typing-terminal-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-    .typing-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      margin-right: 8px;
-    }
-    .typing-dot.red { background: #ff5f56; }
-    .typing-dot.yellow { background: #ffbd2e; }
-    .typing-dot.green { background: #27ca3f; }
-    .typing-content { color: #00ff00; font-size: 1.1rem; }
-    .typing-prompt { color: #00d4ff; }
-    .cursor {
-      display: inline-block;
-      background: #00ff00;
-      animation: blink 1s infinite;
-      width: 2px;
-      height: 1.2em;
-      margin-left: 2px;
-    }
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0; }
-    }
-    .course-editor {
-      max-width: 800px;
-      margin: 4rem auto;
-      padding: 2rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .course-editor h2 {
-      margin-bottom: 1rem;
-      color: #00d4ff;
-    }
-    .course-editor label {
-      display: block;
-      margin-top: 1rem;
-      margin-bottom: 0.5rem;
-    }
-    .course-editor input,
-    .course-editor textarea {
-      width: 100%;
-      padding: 0.5rem;
-      background: #1a1a1a;
-      border: 1px solid #333;
-      color: #fff;
-      border-radius: 5px;
-    }
-    .course-editor button {
-      margin-top: 1rem;
-      padding: 0.75rem 1.5rem;
-      background: linear-gradient(45deg, #00d4ff, #7c3aed);
-      color: white;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Learning Academy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0e27;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        .main-content {
+            margin-top: 80px;
+            min-height: 100vh;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #fff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .typing-terminal {
+            background: #000;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+        }
+
+        .typing-terminal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #333;
+        }
+
+        .typing-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .typing-dot.red { background: #ff5f56; }
+        .typing-dot.yellow { background: #ffbd2e; }
+        .typing-dot.green { background: #27ca3f; }
+
+        .typing-content {
+            color: #00ff00;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .typing-prompt {
+            color: #00d4ff;
+        }
+
+        .typing-text {
+            display: inline-block;
+        }
+
+        .cursor {
+            display: inline-block;
+            background: #00ff00;
+            animation: blink 1s infinite;
+            width: 2px;
+            height: 1.2em;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .course-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+            border-color: #00d4ff;
+        }
+
+        .course-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .course-card p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #00d4ff, #7c3aed);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .learning-interface {
+            display: none;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            min-height: calc(100vh - 80px);
+        }
+
+        .lesson-panel {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .terminal-panel {
+            background: #1a1a1a;
+            border-radius: 15px;
+            border: 1px solid #333;
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background: #2d2d2d;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27ca3f; }
+
+        .terminal-title {
+            margin-left: 1rem;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .terminal-body {
+            padding: 1rem;
+            height: 500px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            background: #000;
+        }
+
+        .terminal-line {
+            color: #00ff00;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .prompt {
+            color: #00d4ff;
+            margin-right: 0.5rem;
+        }
+
+        .terminal-input {
+            background: transparent;
+            border: none;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            outline: none;
+            flex: 1;
+        }
+
+        .output {
+            color: #fff;
+            margin: 0.5rem 0;
+            white-space: pre-wrap;
+        }
+
+        .error {
+            color: #ff6b6b;
+        }
+
+        .success {
+            color: #51cf66;
+        }
+
+        .lesson-content h2 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-content h3 {
+            color: #7c3aed;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        .lesson-content code {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #00d4ff;
+        }
+
+        .exercise-box {
+            background: rgba(124, 58, 237, 0.1);
+            border-left: 4px solid #7c3aed;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 100px;
+            left: 2rem;
+            z-index: 999;
+        }
+
+        @media (max-width: 768px) {
+            .learning-interface {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="logo">Privitjay Academy</div>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#editor">Course Editor</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Privitjay Academy</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div id="home-page">
+            <section class="hero-section">
+                <h1>Welcome to Privitjay Academy</h1>
+                <div class="typing-terminal">
+                    <div class="typing-terminal-header">
+                        <div class="typing-dot red"></div>
+                        <div class="typing-dot yellow"></div>
+                        <div class="typing-dot green"></div>
+                    </div>
+                    <div class="typing-content">
+                        <span class="typing-prompt">student@privitjay:~$</span>
+                        <span class="typing-text" id="typing-text"></span>
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+                <p>Learn programming, Linux, networking, and more with hands-on interactive terminals</p>
+            </section>
+
+            <div class="course-grid">
+                <div class="course-card" onclick="startCourse('linux')">
+                    <h3>🐧 Linux Fundamentals</h3>
+                    <p>Master the command line, file system navigation, and essential Linux commands through interactive exercises.</p>
+                    <button class="btn">Start Learning</button>
+                </div>
+
+                <div class="course-card" onclick="startCourse('python')">
+                    <h3>🐍 Python Programming</h3>
+                    <p>Learn Python from basics to advanced concepts with a built-in Python interpreter.</p>
+                    <button class="btn">Start Learning</button>
+                </div>
+
+                <div class="course-card" onclick="startCourse('networking')">
+                    <h3>🌐 Network Security</h3>
+                    <p>Understand networking concepts and security through simulated network environments.</p>
+                    <button class="btn">Start Learning</button>
+                </div>
+
+                <div class="course-card" onclick="startCourse('docker')">
+                    <h3>🐳 Docker & Containers</h3>
+                    <p>Learn containerization with hands-on Docker exercises and real container management.</p>
+                    <button class="btn">Start Learning</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="learning-interface" class="learning-interface">
+            <button class="btn back-btn" onclick="goHome()">← Back to Courses</button>
+            
+            <div class="lesson-panel">
+                <div id="lesson-content" class="lesson-content">
+                    <!-- Lesson content will be loaded here -->
+                </div>
+            </div>
+
+            <div class="terminal-panel">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                    <div class="terminal-title">Interactive Terminal</div>
+                </div>
+                <div class="terminal-body" id="terminal">
+                    <div class="terminal-line">
+                        <span class="prompt">student@academy:~$</span>
+                        <input type="text" class="terminal-input" id="terminal-input" placeholder="Type your commands here...">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </nav>
 
-  <div class="main-content">
-    <section class="hero-section" id="home">
-      <h1>Welcome to Privitjay Academy</h1>
-      <div class="typing-terminal">
-        <div class="typing-terminal-header">
-          <div class="typing-dot red"></div>
-          <div class="typing-dot yellow"></div>
-          <div class="typing-dot green"></div>
-        </div>
-        <div class="typing-content">
-          <span class="typing-prompt">student@privitjay:~$</span>
-          <span class="typing-text" id="typing-text"></span>
-          <span class="cursor"></span>
-        </div>
-      </div>
-      <p>Learn programming, Linux, networking, and more with hands-on interactive terminals</p>
-    </section>
+    <script>
+        // Course content data
+        const courses = {
+            linux: {
+                title: "Linux Fundamentals - Lesson 1: Basic Commands",
+                content: `
+                    <h2>Welcome to Linux Fundamentals!</h2>
+                    <p>In this lesson, you'll learn the most essential Linux commands that every user should know.</p>
+                    
+                    <h3>Basic Navigation Commands</h3>
+                    <ul>
+                        <li><code>pwd</code> - Print working directory (shows where you are)</li>
+                        <li><code>ls</code> - List files and directories</li>
+                        <li><code>cd</code> - Change directory</li>
+                        <li><code>mkdir</code> - Create a new directory</li>
+                        <li><code>touch</code> - Create a new file</li>
+                    </ul>
 
-    <section class="course-editor" id="editor">
-      <h2>Course Builder</h2>
-      <form>
-        <label for="course-title">Course Title</label>
-        <input type="text" id="course-title" placeholder="Enter course title">
+                    <div class="exercise-box">
+                        <h3>🎯 Exercise 1</h3>
+                        <p>Try these commands in the terminal:</p>
+                        <ol>
+                            <li>Type <code>pwd</code> to see your current location</li>
+                            <li>Type <code>ls</code> to see what's in your directory</li>
+                            <li>Create a new directory: <code>mkdir my_project</code></li>
+                            <li>Navigate into it: <code>cd my_project</code></li>
+                            <li>Create a file: <code>touch hello.txt</code></li>
+                        </ol>
+                    </div>
 
-        <label for="course-description">Course Description</label>
-        <textarea id="course-description" rows="4" placeholder="Enter a brief description..."></textarea>
+                    <h3>File Operations</h3>
+                    <ul>
+                        <li><code>cat</code> - Display file contents</li>
+                        <li><code>cp</code> - Copy files</li>
+                        <li><code>mv</code> - Move/rename files</li>
+                        <li><code>rm</code> - Remove files</li>
+                    </ul>
 
-        <label for="course-content">Course Content (HTML or Markdown)</label>
-        <textarea id="course-content" rows="8" placeholder="Paste or write lesson content here..."></textarea>
+                    <div class="exercise-box">
+                        <h3>🎯 Exercise 2</h3>
+                        <p>Practice file operations:</p>
+                        <ol>
+                            <li>Add content to your file: <code>echo "Hello World" > hello.txt</code></li>
+                            <li>View the content: <code>cat hello.txt</code></li>
+                            <li>Copy the file: <code>cp hello.txt backup.txt</code></li>
+                            <li>List files to see both: <code>ls</code></li>
+                        </ol>
+                    </div>
+                `
+            },
+            python: {
+                title: "Python Programming - Lesson 1: Getting Started",
+                content: `
+                    <h2>Welcome to Python Programming!</h2>
+                    <p>Python is a powerful, easy-to-learn programming language. Let's start with the basics.</p>
+                    
+                    <h3>Your First Python Program</h3>
+                    <p>The traditional first program is "Hello, World!"</p>
+                    
+                    <div class="exercise-box">
+                        <h3>🎯 Exercise 1</h3>
+                        <p>Try these Python commands:</p>
+                        <ol>
+                            <li>Start Python: <code>python3</code></li>
+                            <li>Print a message: <code>print("Hello, World!")</code></li>
+                            <li>Try basic math: <code>2 + 3</code></li>
+                            <li>Create a variable: <code>name = "Your Name"</code></li>
+                            <li>Print the variable: <code>print(name)</code></li>
+                        </ol>
+                    </div>
 
-        <button type="submit">Save Course</button>
-      </form>
-    </section>
-  </div>
+                    <h3>Variables and Data Types</h3>
+                    <ul>
+                        <li>Strings: <code>"Hello"</code> or <code>'Hello'</code></li>
+                        <li>Numbers: <code>42</code> (integer) or <code>3.14</code> (float)</li>
+                        <li>Booleans: <code>True</code> or <code>False</code></li>
+                    </ul>
+                `
+            }
+        };
 
-  <script>
-    const messages = [
-      `echo \"Master Technology Through Practice\"`,
-      `echo \"Your Journey into Linux Starts Here\"`,
-      `echo \"Hacking Knowledge, One Command at a Time\"`
-    ];
+        // Simulated file system for Linux course
+        let fileSystem = {
+            '/home/student': {
+                type: 'directory',
+                contents: {}
+            }
+        };
+        let currentPath = '/home/student';
+        let commandHistory = [];
 
-    let messageIndex = 0;
-    let charIndex = 0;
-    const typingText = document.getElementById("typing-text");
-    const cursor = document.querySelector(".cursor");
+        function startCourse(courseType) {
+            document.getElementById('home-page').style.display = 'none';
+            document.getElementById('learning-interface').style.display = 'grid';
+            
+            // Load course content
+            if (courses[courseType]) {
+                document.getElementById('lesson-content').innerHTML = courses[courseType].content;
+            }
+            
+            // Set up terminal for the specific course
+            setupTerminal(courseType);
+        }
 
-    function typeMessage() {
-      const currentMessage = messages[messageIndex];
+        function goHome() {
+            document.getElementById('home-page').style.display = 'block';
+            document.getElementById('learning-interface').style.display = 'none';
+            resetTerminal();
+        }
 
-      if (charIndex < currentMessage.length) {
-        typingText.textContent += currentMessage.charAt(charIndex);
-        charIndex++;
-        setTimeout(typeMessage, 100 + Math.random() * 50);
-      } else {
-        const output = document.createElement("div");
-        output.style.color = "#fff";
-        output.style.marginTop = "0.5rem";
-        output.textContent = currentMessage.replace('echo ', '').replace(/\"/g, '');
-        output.style.animation = "fadeIn 0.5s ease";
-        typingText.parentElement.appendChild(output);
+        function setupTerminal(courseType) {
+            const terminal = document.getElementById('terminal');
+            const input = document.getElementById('terminal-input');
+            
+            // Clear terminal
+            terminal.innerHTML = '<div class="terminal-line"><span class="prompt">student@academy:~$</span><input type="text" class="terminal-input" id="terminal-input" placeholder="Type your command..."></div>';
+            
+            // Refocus input
+            const newInput = document.getElementById('terminal-input');
+            newInput.focus();
+            
+            // Add command processing
+            newInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    processCommand(this.value, courseType);
+                    this.value = '';
+                }
+            });
+        }
 
-        setTimeout(() => {
-          typingText.textContent = "";
-          typingText.parentElement.removeChild(output);
-          charIndex = 0;
-          messageIndex = (messageIndex + 1) % messages.length;
-          typeMessage();
-        }, 3000);
-      }
-    }
+        function processCommand(command, courseType) {
+            const terminal = document.getElementById('terminal');
+            
+            // Add command to terminal
+            const commandLine = document.createElement('div');
+            commandLine.className = 'terminal-line';
+            commandLine.innerHTML = `<span class="prompt">student@academy:~$</span> ${command}`;
+            terminal.appendChild(commandLine);
+            
+            // Process the command based on course type
+            let output = '';
+            let outputClass = '';
+            
+            if (courseType === 'linux') {
+                ({ output, outputClass } = processLinuxCommand(command));
+            } else if (courseType === 'python') {
+                ({ output, outputClass } = processPythonCommand(command));
+            }
+            
+            // Add output if any
+            if (output) {
+                const outputLine = document.createElement('div');
+                outputLine.className = `output ${outputClass}`;
+                outputLine.textContent = output;
+                terminal.appendChild(outputLine);
+            }
+            
+            // Add new input line
+            const newInputLine = document.createElement('div');
+            newInputLine.className = 'terminal-line';
+            newInputLine.innerHTML = '<span class="prompt">student@academy:~$</span><input type="text" class="terminal-input" id="terminal-input" placeholder="Type your command...">';
+            terminal.appendChild(newInputLine);
+            
+            // Focus new input and setup event listener
+            const newInput = document.getElementById('terminal-input');
+            newInput.focus();
+            newInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    processCommand(this.value, courseType);
+                    this.value = '';
+                }
+            });
+            
+            // Scroll to bottom
+            terminal.scrollTop = terminal.scrollHeight;
+        }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      setTimeout(typeMessage, 1000);
-    });
-  </script>
+        function processLinuxCommand(command) {
+            const parts = command.trim().split(' ');
+            const cmd = parts[0];
+            const args = parts.slice(1);
+            
+            switch (cmd) {
+                case 'pwd':
+                    return { output: currentPath, outputClass: '' };
+                    
+                case 'ls':
+                    const currentDir = getDirectory(currentPath);
+                    if (currentDir && currentDir.contents) {
+                        const items = Object.keys(currentDir.contents);
+                        return { output: items.length > 0 ? items.join('  ') : '', outputClass: '' };
+                    }
+                    return { output: '', outputClass: '' };
+                    
+                case 'mkdir':
+                    if (args.length === 0) {
+                        return { output: 'mkdir: missing operand', outputClass: 'error' };
+                    }
+                    const dirName = args[0];
+                    const currentDirObj = getDirectory(currentPath);
+                    if (currentDirObj) {
+                        currentDirObj.contents[dirName] = { type: 'directory', contents: {} };
+                        return { output: '', outputClass: 'success' };
+                    }
+                    break;
+                    
+                case 'cd':
+                    if (args.length === 0) {
+                        currentPath = '/home/student';
+                        return { output: '', outputClass: '' };
+                    }
+                    const targetDir = args[0];
+                    if (targetDir === '..') {
+                        const pathParts = currentPath.split('/').filter(p => p);
+                        if (pathParts.length > 2) {
+                            pathParts.pop();
+                            currentPath = '/' + pathParts.join('/');
+                        }
+                    } else {
+                        const currentDirObj2 = getDirectory(currentPath);
+                        if (currentDirObj2 && currentDirObj2.contents[targetDir] && currentDirObj2.contents[targetDir].type === 'directory') {
+                            currentPath = currentPath === '/' ? `/${targetDir}` : `${currentPath}/${targetDir}`;
+                        } else {
+                            return { output: `cd: ${targetDir}: No such file or directory`, outputClass: 'error' };
+                        }
+                    }
+                    return { output: '', outputClass: '' };
+                    
+                case 'touch':
+                    if (args.length === 0) {
+                        return { output: 'touch: missing file operand', outputClass: 'error' };
+                    }
+                    const fileName = args[0];
+                    const currentDirObj3 = getDirectory(currentPath);
+                    if (currentDirObj3) {
+                        currentDirObj3.contents[fileName] = { type: 'file', content: '' };
+                        return { output: '', outputClass: 'success' };
+                    }
+                    break;
+                    
+                case 'echo':
+                    if (command.includes(' > ')) {
+                        const parts = command.split(' > ');
+                        const content = parts[0].replace('echo ', '').replace(/"/g, '');
+                        const file = parts[1].trim();
+                        const currentDirObj4 = getDirectory(currentPath);
+                        if (currentDirObj4) {
+                            currentDirObj4.contents[file] = { type: 'file', content: content };
+                            return { output: '', outputClass: 'success' };
+                        }
+                    } else {
+                        const content = args.join(' ').replace(/"/g, '');
+                        return { output: content, outputClass: '' };
+                    }
+                    break;
+                    
+                case 'cat':
+                    if (args.length === 0) {
+                        return { output: 'cat: missing file operand', outputClass: 'error' };
+                    }
+                    const fileToRead = args[0];
+                    const currentDirObj5 = getDirectory(currentPath);
+                    if (currentDirObj5 && currentDirObj5.contents[fileToRead] && currentDirObj5.contents[fileToRead].type === 'file') {
+                        return { output: currentDirObj5.contents[fileToRead].content, outputClass: '' };
+                    } else {
+                        return { output: `cat: ${fileToRead}: No such file or directory`, outputClass: 'error' };
+                    }
+                    
+                case 'cp':
+                    if (args.length < 2) {
+                        return { output: 'cp: missing file operand', outputClass: 'error' };
+                    }
+                    const source = args[0];
+                    const dest = args[1];
+                    const currentDirObj6 = getDirectory(currentPath);
+                    if (currentDirObj6 && currentDirObj6.contents[source]) {
+                        currentDirObj6.contents[dest] = { ...currentDirObj6.contents[source] };
+                        return { output: '', outputClass: 'success' };
+                    } else {
+                        return { output: `cp: ${source}: No such file or directory`, outputClass: 'error' };
+                    }
+                    
+                case 'clear':
+                    document.getElementById('terminal').innerHTML = '';
+                    return { output: '', outputClass: '' };
+                    
+                default:
+                    return { output: `${cmd}: command not found`, outputClass: 'error' };
+            }
+            
+            return { output: '', outputClass: '' };
+        }
+
+        function processPythonCommand(command) {
+            // Simple Python interpreter simulation
+            try {
+                if (command === 'python3' || command === 'python') {
+                    return { output: 'Python 3.9.2 (default, Mar 12 2021, 04:06:34)\nType "help", "copyright", "credits" or "license" for more information.\n>>>', outputClass: '' };
+                }
+                
+                if (command.startsWith('print(')) {
+                    const content = command.match(/print\(['"](.*)['"\])/);
+                    if (content) {
+                        return { output: content[1], outputClass: 'success' };
+                    }
+                }
+                
+                if (command.includes('=') && !command.includes('==')) {
+                    return { output: '', outputClass: 'success' };
+                }
+                
+                if (/^\d+\s*[\+\-\*\/]\s*\d+$/.test(command)) {
+                    try {
+                        const result = eval(command);
+                        return { output: result.toString(), outputClass: 'success' };
+                    } catch (e) {
+                        return { output: 'Error in calculation', outputClass: 'error' };
+                    }
+                }
+                
+                return { output: `${command}`, outputClass: '' };
+            } catch (error) {
+                return { output: `Error: ${error.message}`, outputClass: 'error' };
+            }
+        }
+
+        function getDirectory(path) {
+            let current = fileSystem;
+            const parts = path.split('/').filter(p => p);
+            
+            for (const part of parts) {
+                if (current[part]) {
+                    current = current[part].contents || current[part];
+                } else {
+                    return null;
+                }
+            }
+            
+            return current[parts[parts.length - 1]] || fileSystem[path];
+        }
+
+        function resetTerminal() {
+            fileSystem = {
+                '/home/student': {
+                    type: 'directory',
+                    contents: {}
+                }
+            };
+            currentPath = '/home/student';
+        }
+
+        // Create typing sound effect
+        function createTypingSound() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+            oscillator.type = 'square';
+            
+            gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+            gainNode.gain.linearRampToValueAtTime(0.1, audioContext.currentTime + 0.01);
+            gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.1);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.1);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Typing animation
+            const textToType = "echo 'Master Technology Through Practice'";
+            const typingElement = document.getElementById('typing-text');
+            let i = 0;
+            
+            function typeWriter() {
+                if (i < textToType.length) {
+                    // Add character
+                    typingElement.textContent += textToType.charAt(i);
+                    
+                    // Play typing sound
+                    try {
+                        createTypingSound();
+                    } catch (e) {
+                        // Audio context might not be available
+                        console.log('Audio not available');
+                    }
+                    
+                    i++;
+                    setTimeout(typeWriter, 150 + Math.random() * 100); // Variable typing speed
+                } else {
+                    // After typing is complete, show the output
+                    setTimeout(() => {
+                        // Hide the cursor from the typing line
+                        const cursor = typingElement.nextElementSibling;
+                        if (cursor && cursor.classList.contains('cursor')) {
+                            cursor.style.display = 'none';
+                        }
+                        
+                        // Add output
+                        const output = document.createElement('div');
+                        output.style.color = '#fff';
+                        output.style.marginTop = '0.5rem';
+                        output.textContent = 'Master Technology Through Practice';
+                        output.style.animation = 'fadeIn 0.5s ease';
+                        typingElement.parentElement.appendChild(output);
+                        
+                        // Add new prompt line
+                        setTimeout(() => {
+                            const newPrompt = document.createElement('div');
+                            newPrompt.style.marginTop = '0.5rem';
+                            newPrompt.innerHTML = '<span class="typing-prompt">student@privitjay:~$</span><span class="cursor"></span>';
+                            newPrompt.style.animation = 'fadeIn 0.3s ease';
+                            typingElement.parentElement.appendChild(newPrompt);
+                        }, 800);
+                    }, 1000);
+                }
+            }
+            
+            // Start typing animation after a short delay
+            setTimeout(() => {
+                // Enable audio context on first user interaction
+                document.addEventListener('click', function enableAudio() {
+                    if (window.AudioContext || window.webkitAudioContext) {
+                        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                        if (audioContext.state === 'suspended') {
+                            audioContext.resume();
+                        }
+                    }
+                    document.removeEventListener('click', enableAudio);
+                }, { once: true });
+                
+                typeWriter();
+            }, 1000);
+            
+            // Focus terminal input when clicking on terminal
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.terminal-body')) {
+                    const input = document.getElementById('terminal-input');
+                    if (input) input.focus();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
