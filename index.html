@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privitjay Academy - Interactive Learning</title>
+  <style>
+    /* [Full original styles preserved from uploaded file] */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0e27;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    .navbar {
+      background: rgba(10, 14, 39, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    .logo::before {
+      content: "student@academy:~$ ";
+      color: #00d4ff;
+      font-family: 'Courier New', monospace;
+      margin-right: 0.5rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #00d4ff;
+    }
+    .main-content {
+      margin-top: 100px;
+    }
+    .typing-terminal {
+      background: #000;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 2rem auto;
+      max-width: 600px;
+      font-family: 'Courier New', monospace;
+      border: 1px solid #333;
+    }
+    .typing-terminal-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .typing-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    .typing-dot.red { background: #ff5f56; }
+    .typing-dot.yellow { background: #ffbd2e; }
+    .typing-dot.green { background: #27ca3f; }
+    .typing-content { color: #00ff00; font-size: 1.1rem; }
+    .typing-prompt { color: #00d4ff; }
+    .cursor {
+      display: inline-block;
+      background: #00ff00;
+      animation: blink 1s infinite;
+      width: 2px;
+      height: 1.2em;
+      margin-left: 2px;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    .course-editor {
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .course-editor h2 {
+      margin-bottom: 1rem;
+      color: #00d4ff;
+    }
+    .course-editor label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .course-editor input,
+    .course-editor textarea {
+      width: 100%;
+      padding: 0.5rem;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      color: #fff;
+      border-radius: 5px;
+    }
+    .course-editor button {
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(45deg, #00d4ff, #7c3aed);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">Privitjay Academy</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#editor">Course Editor</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    <section class="hero-section" id="home">
+      <h1>Welcome to Privitjay Academy</h1>
+      <div class="typing-terminal">
+        <div class="typing-terminal-header">
+          <div class="typing-dot red"></div>
+          <div class="typing-dot yellow"></div>
+          <div class="typing-dot green"></div>
+        </div>
+        <div class="typing-content">
+          <span class="typing-prompt">student@privitjay:~$</span>
+          <span class="typing-text" id="typing-text"></span>
+          <span class="cursor"></span>
+        </div>
+      </div>
+      <p>Learn programming, Linux, networking, and more with hands-on interactive terminals</p>
+    </section>
+
+    <section class="course-editor" id="editor">
+      <h2>Course Builder</h2>
+      <form>
+        <label for="course-title">Course Title</label>
+        <input type="text" id="course-title" placeholder="Enter course title">
+
+        <label for="course-description">Course Description</label>
+        <textarea id="course-description" rows="4" placeholder="Enter a brief description..."></textarea>
+
+        <label for="course-content">Course Content (HTML or Markdown)</label>
+        <textarea id="course-content" rows="8" placeholder="Paste or write lesson content here..."></textarea>
+
+        <button type="submit">Save Course</button>
+      </form>
+    </section>
+  </div>
+
+  <script>
+    const messages = [
+      `echo \"Master Technology Through Practice\"`,
+      `echo \"Your Journey into Linux Starts Here\"`,
+      `echo \"Hacking Knowledge, One Command at a Time\"`
+    ];
+
+    let messageIndex = 0;
+    let charIndex = 0;
+    const typingText = document.getElementById("typing-text");
+    const cursor = document.querySelector(".cursor");
+
+    function typeMessage() {
+      const currentMessage = messages[messageIndex];
+
+      if (charIndex < currentMessage.length) {
+        typingText.textContent += currentMessage.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeMessage, 100 + Math.random() * 50);
+      } else {
+        const output = document.createElement("div");
+        output.style.color = "#fff";
+        output.style.marginTop = "0.5rem";
+        output.textContent = currentMessage.replace('echo ', '').replace(/\"/g, '');
+        output.style.animation = "fadeIn 0.5s ease";
+        typingText.parentElement.appendChild(output);
+
+        setTimeout(() => {
+          typingText.textContent = "";
+          typingText.parentElement.removeChild(output);
+          charIndex = 0;
+          messageIndex = (messageIndex + 1) % messages.length;
+          typeMessage();
+        }, 3000);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(typeMessage, 1000);
+    });
+  </script>
+</body>
+</html>
