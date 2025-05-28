@@ -39,11 +39,11 @@
         }
 
         .logo {
-            font-size: 1.4rem; /* Reduced from 1.8rem */
+            font-size: 1.4rem; 
             font-weight: bold;
             font-family: 'Courier New', monospace;
             background: #000;
-            padding: 0.4rem 0.8rem; /* Reduced from 0.5rem 1rem */
+            padding: 0.4rem 0.8rem; 
             border-radius: 8px;
             border: 1px solid #333;
         }
@@ -73,7 +73,7 @@
         }
 
         .main-content {
-            margin-top: 80px; /* Assuming navbar height is around 60-80px */
+            margin-top: 80px; 
             min-height: 100vh;
         }
 
@@ -353,53 +353,65 @@
             margin-top: 0.2rem;
         }
 
-        /* Browse Categories Section Styles */
+        /* Browse Categories Section Styles - REDESIGNED */
         .browse-categories-section {
             max-width: 1200px;
-            margin: 4rem auto 2rem auto; /* Top/bottom margin, auto left/right */
+            margin: 3rem auto; /* Reduced top/bottom margin */
             padding: 0 2rem;
+            text-align: center; /* Center the title and button */
         }
 
-        .browse-categories-title-terminal {
-            background: #000;
-            border-radius: 10px;
-            padding: 1rem 1.5rem;
-            margin: 0 auto 2rem auto; /* Centered, bottom margin */
-            max-width: 700px;
-            font-family: 'Courier New', monospace;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            border: 1px solid #333;
-        }
-
-        .terminal-header-dots { /* Re-using class name for styling, ensure dots are smaller if needed */
+        .section-title-container {
+            margin-bottom: 2rem;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            margin-bottom: 0.8rem;
-            padding-bottom: 0.4rem;
-            border-bottom: 1px solid #333;
+            gap: 1rem;
         }
-        .terminal-header-dots .terminal-dot { /* Specific dot styling for this context if different */
-             width: 10px; height: 10px; margin-right: 6px;
-        }
-
-
-        .browse-categories-title-terminal .terminal-title-content {
-            color: #00ff00;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        .browse-categories-title-terminal .terminal-prompt { /* Re-using class name for styling */
+        
+        .section-title {
+            font-size: 2.2rem; /* Reduced size */
+            font-family: 'Courier New', monospace;
             color: #00d4ff;
-            margin-right: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem; /* Space before button */
+            display: inline-block; /* To allow text-align center on parent */
         }
-        .browse-categories-title-terminal .terminal-command {
-            color: #fff; /* Or #00ff00 if preferred */
+
+        .section-title::after { /* Decorative underline */
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            border-radius: 2px;
+        }
+        
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            border-radius: 20px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
+        }
+        .btn-outline:hover {
+            background: rgba(0, 212, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
         }
 
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); /* Slightly smaller minmax */
             gap: 1.5rem;
         }
 
@@ -407,7 +419,7 @@
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
-            padding: 1.5rem; /* Increased padding */
+            padding: 1.5rem; 
             text-align: center;
             font-family: 'Courier New', monospace;
             cursor: pointer;
@@ -416,7 +428,7 @@
             position: relative;
             overflow: hidden;
         }
-        .category-item::before { /* Shine effect on hover */
+        .category-item::before { 
             content: '';
             position: absolute;
             top: 0;
@@ -432,28 +444,27 @@
         }
 
         .category-item:hover {
-            background: rgba(0, 212, 255, 0.05); /* Slightly lighter on hover */
+            background: rgba(0, 212, 255, 0.05); 
             border-color: #00d4ff;
-            transform: translateY(-5px); /* Lift effect */
+            transform: translateY(-5px); 
             box-shadow: 0 8px 20px rgba(0, 212, 255, 0.15);
         }
 
         .category-item .category-name {
-            font-size: 1.3rem; /* Larger name */
+            font-size: 1.2rem; /* Slightly reduced */
             font-weight: bold;
             display: block;
             margin-bottom: 0.5rem;
-            color: #fff; /* White for better contrast for name */
+            color: #fff; 
         }
-         .category-item .category-name .highlight { /* For parts like (Linux) */
-            color: #00ff88; /* Green highlight */
+         .category-item .category-name .highlight { 
+            color: #00ff88; 
             font-size: 0.9em;
         }
 
-
         .category-item .category-examples {
-            font-size: 0.9rem; /* Slightly larger examples */
-            color: #bbb; /* Lighter grey */
+            font-size: 0.85rem; /* Slightly reduced */
+            color: #bbb; 
             line-height: 1.4;
         }
 
@@ -461,7 +472,7 @@
         .course-grid {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem; /* Existing padding */
+            padding: 2rem; /* Reduced top padding, bottom padding will come from footer */
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
@@ -472,10 +483,11 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             padding: 2rem;
-            transition: all 0.3s ease;
+            transition: all 0.3s ease, opacity 0.3s ease; /* Added opacity transition */
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            /* display: block; Default, will be managed by JS */
         }
 
         .course-card::before {
@@ -594,6 +606,8 @@
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
             min-height: calc(100vh - 80px);
+            opacity: 0; /* For fade-in/out */
+            transition: opacity 0.3s ease-in-out;
         }
 
         .lesson-panel {
@@ -857,17 +871,17 @@
             .discord-title {
                 font-size: 1.8rem;
             }
-            .browse-categories-title-terminal {
-                padding: 0.8rem 1rem;
-            }
-            .browse-categories-title-terminal .terminal-title-content {
-                font-size: 1rem;
+            .section-title {
+                font-size: 1.8rem;
             }
             .category-item .category-name {
                 font-size: 1.1rem;
             }
             .category-item .category-examples {
                 font-size: 0.8rem;
+            }
+             .course-grid {
+                padding: 1rem; /* Adjust padding for smaller screens */
             }
         }
     </style>
@@ -890,7 +904,7 @@
 
     <div class="main-content">
         <div id="home-page">
-            <section class="hero-section" id="home"> <!-- Added id for nav link -->
+            <section class="hero-section" id="home">
                 <div class="cyber-subtitle">◤◥ CYBER LEARNING PROTOCOL INITIATED ◤◥</div>
                 <h1 class="hero-title glitch-text" data-text="PrivitJayAcademy">
                     <span class="privit">PrivitJay</span><span class="academy">Academy</span>
@@ -938,43 +952,34 @@
                 </div>
             </section>
 
-            <!-- NEW BROWSE CATEGORIES SECTION START -->
+            <!-- BROWSE CATEGORIES SECTION - REDESIGNED -->
             <section id="browse-categories" class="browse-categories-section">
-                <div class="browse-categories-title-terminal">
-                    <div class="terminal-header-dots">
-                        <div class="terminal-dot red"></div>
-                        <div class="terminal-dot yellow"></div>
-                        <div class="terminal-dot green"></div>
-                    </div>
-                    <div class="terminal-title-content">
-                        <span class="terminal-prompt">root@academy:~#</span>
-                        <span class="terminal-command">echo "Browse Course Categories"</span>
-                    </div>
+                <div class="section-title-container">
+                    <h2 class="section-title">Browse Categories</h2>
+                    <button class="btn btn-small btn-outline" onclick="filterCoursesByCategory('all')">Show All Categories</button>
                 </div>
                 <div class="category-grid">
-                    <div class="category-item" onclick="filterCoursesByCategory('sysadmin_linux')">
+                    <div class="category-item" onclick="filterCoursesByCategory('linux')">
                         <span class="category-name">System Admin <span class="highlight">(Linux)</span></span>
-                        <span class="category-examples">File Systems, User Management, Permissions, Shell Basics</span>
+                        <span class="category-examples">File Systems, User Management, Shell Basics</span>
                     </div>
-                    <div class="category-item" onclick="filterCoursesByCategory('bash_scripting')">
+                    <div class="category-item" onclick="filterCoursesByCategory('linux')">
                         <span class="category-name">Bash Scripting <span class="highlight">(Linux)</span></span>
                         <span class="category-examples">Automation, Scripting Logic, Task Management</span>
                     </div>
                     <div class="category-item" onclick="filterCoursesByCategory('networking')">
                         <span class="category-name">Networking</span>
-                        <span class="category-examples">TCP/IP, Protocols, Network Security Fundamentals</span>
+                        <span class="category-examples">TCP/IP, Protocols, Network Security</span>
                     </div>
-                    <div class="category-item" onclick="filterCoursesByCategory('programming')">
+                    <div class="category-item" onclick="filterCoursesByCategory('python')">
                         <span class="category-name">Programming</span>
-                        <span class="category-examples">Python, Web Development Concepts, Algorithms</span>
+                        <span class="category-examples">Python Basics, Data Structures, Web Concepts</span>
                     </div>
                 </div>
             </section>
-            <!-- NEW BROWSE CATEGORIES SECTION END -->
-
 
             <div class="course-grid" id="courses"> 
-                <div class="course-card" onclick="startCourse('linux')">
+                <div class="course-card" data-category="linux" onclick="startCourse('linux')">
                     <div class="course-header">
                         <div class="course-title">
                             <h3>🐧 Linux Fundamentals</h3>
@@ -988,7 +993,7 @@
                     <button class="btn">Start Learning</button>
                 </div>
 
-                <div class="course-card" onclick="startCourse('python')">
+                <div class="course-card" data-category="python" onclick="startCourse('python')">
                     <div class="course-header">
                         <div class="course-title">
                             <h3>🐍 Python Programming</h3>
@@ -1002,7 +1007,7 @@
                     <button class="btn">Start Learning</button>
                 </div>
 
-                <div class="course-card" onclick="startCourse('networking')">
+                <div class="course-card" data-category="networking" onclick="startCourse('networking')">
                     <div class="course-header">
                         <div class="course-title">
                             <h3>🌐 Network Security</h3>
@@ -1015,6 +1020,7 @@
                     <p>Understand networking concepts and security through simulated network environments.</p>
                     <button class="btn">Start Learning</button>
                 </div>
+                <!-- Add more course cards here with appropriate data-category attributes -->
             </div>
         </div>
 
@@ -1027,19 +1033,16 @@
                         <h3>Hands-On Experience</h3>
                         <p>Learn by doing with real interactive terminals and simulators. No theoretical fluff - just practical, hands-on coding and system administration experience.</p>
                     </div>
-
                     <div class="feature-card">
                         <div class="feature-icon">🎯</div>
                         <h3>Real-World Projects</h3>
                         <p>Work on actual projects that mirror industry challenges. Build your portfolio while learning essential skills that employers are looking for.</p>
                     </div>
-
                     <div class="feature-card">
                         <div class="feature-icon">🔧</div>
                         <h3>Interactive Learning</h3>
                         <p>Our built-in terminals and simulators let you practice immediately. No need to set up environments - start coding and experimenting right away.</p>
                     </div>
-
                     <div class="feature-card">
                         <div class="feature-icon">🌟</div>
                         <h3>24/7 Access</h3>
@@ -1047,10 +1050,10 @@
                     </div>
                 </div>
 
-                <div class="discord-join-section" id="contact"> <!-- Added ID for nav link -->
+                <div class="discord-join-section" id="contact"> 
                     <h2 class="discord-title">Join Our Community</h2>
                     <p class="discord-description">Connect with fellow learners, ask questions, and share your progress on our Discord server!</p>
-                    <a href="https://discord.gg/YOUR_INVITE_CODE" target="_blank" class="btn discord-btn"> <!-- Replace YOUR_INVITE_CODE -->
+                    <a href="https://discord.gg/YOUR_INVITE_CODE" target="_blank" class="btn discord-btn"> 
                         <svg aria-hidden="true" role="img" viewBox="0 0 24 24"><path fill="currentColor" d="M20.317 4.36981C18.7915 3.09531 16.9067 2.15581 14.8317 1.63081C14.6825 1.58081 14.5267 1.68248 14.4908 1.83081L14.2075 3.04498C12.9608 2.81665 11.6558 2.81665 10.4092 3.04498L10.1258 1.83081C10.0892 1.68248 9.93416 1.58081 9.78416 1.63081C7.70833 2.15581 5.82416 3.09531 4.29916 4.36981C4.29916 4.36981 -0.200838 9.68398 0.00166183 14.9065C0.00166183 14.9065 1.89583 17.9473 6.06916 18.4515C6.06916 18.4515 6.61416 17.4481 6.9025 16.9698C5.3225 16.2331 4.15833 14.9481 4.15833 14.9481C4.15833 14.9481 4.22166 14.8905 4.3025 14.8098C6.695 16.1023 9.4475 16.3731 12.0017 16.1365C12.0017 16.1365 12.0017 16.1365 12.0017 16.1365C14.5558 16.3731 17.3083 16.1023 19.7008 14.8098C19.7808 14.8905 19.8442 14.9481 19.8442 14.9481C19.8442 14.9481 18.6808 16.2331 17.1008 16.9698C17.3892 17.4481 17.9333 18.4515 17.9333 18.4515C22.1058 17.9473 24.0017 14.9065 24.0017 14.9065C24.2042 9.68398 20.317 4.36981 20.317 4.36981ZM8.02083 12.5998C7.02416 12.5998 6.22416 11.7998 6.22416 10.7998C6.22416 9.80065 7.02416 8.99981 8.02083 8.99981C9.0175 8.99981 9.8175 9.80065 9.8175 10.7998C9.8175 11.7998 9.0175 12.5998 8.02083 12.5998ZM15.9825 12.5998C14.9858 12.5998 14.1858 11.7998 14.1858 10.7998C14.1858 9.80065 14.9858 8.99981 15.9825 8.99981C16.9792 8.99981 17.7792 9.80065 17.7792 10.7998C17.7792 11.7998 16.9792 12.5998 15.9825 12.5998Z"></path></svg>
                         Join Discord
                     </a>
@@ -1142,12 +1145,37 @@
         scrollToElement('about');
     }
     
-    function filterCoursesByCategory(category) {
-        console.log("Filtering courses by category:", category);
-        // Placeholder: Implement actual filtering logic here
-        // For now, it could scroll to the courses section or display a message
-        scrollToCourses(); 
-        // alert("Filtering by " + category + " (feature coming soon!)");
+    function filterCoursesByCategory(targetCategory) {
+        console.log("Filtering courses by category:", targetCategory);
+        const courseCards = document.querySelectorAll('.course-grid .course-card');
+        let coursesFound = false;
+        let firstVisibleCard = null;
+
+        courseCards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+            if (targetCategory === 'all' || cardCategory === targetCategory) {
+                card.style.opacity = 0; // Prepare for fade-in
+                card.style.display = 'block'; // Or 'grid' if it's a grid item
+                setTimeout(() => card.style.opacity = 1, 10); // Start fade-in
+                if (!firstVisibleCard) firstVisibleCard = card;
+                coursesFound = true;
+            } else {
+                card.style.opacity = 0; // Start fade-out
+                setTimeout(() => card.style.display = 'none', 300); // Hide after fade-out (match CSS transition)
+            }
+        });
+
+        // Scroll to the courses section if courses are found or 'all' is selected
+        if (coursesFound || targetCategory === 'all') {
+             // Smooth scroll to the #courses element itself, rather than the first card
+             const coursesSection = document.getElementById('courses');
+             if (coursesSection) {
+                 coursesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+             }
+        } else {
+            console.log("No courses found for category:", targetCategory);
+            // Optionally, display a message to the user if no courses are found
+        }
     }
 
 
@@ -1155,38 +1183,49 @@
         console.log("Starting course:", courseName);
         document.getElementById('home-page').style.display = 'none';
         const learningInterface = document.getElementById('learning-interface');
-        learningInterface.style.display = 'grid'; // Show learning interface
-        learningInterface.style.opacity = 0; // For fade in
-        setTimeout(() => learningInterface.style.opacity = 1, 10); // Start fade in
+        learningInterface.style.display = 'grid';
+        // Force reflow for transition
+        learningInterface.offsetHeight; 
+        learningInterface.style.opacity = 1; 
 
-        // Example: Load lesson content
         const lessonContentEl = document.getElementById('lesson-content');
-        lessonContentEl.innerHTML = `<h2>Welcome to ${courseName.charAt(0).toUpperCase() + courseName.slice(1)}</h2><p>Loading lesson...</p>`;
-        // Add actual lesson loading logic here
+        lessonContentEl.innerHTML = `<h2>Welcome to ${courseName.charAt(0).toUpperCase() + courseName.slice(1)}</h2><p>Loading lesson...</p>
+        <h3>Lesson 1: Introduction to ${courseName}</h3>
+        <p>This is where the first lesson content would go. You will learn about the basics and how to get started. For example, if this is Linux, we'd talk about the terminal.</p>
+        <code>${courseName === 'linux' ? 'ls -la' : (courseName === 'python' ? 'print("Hello, World!")' : 'ping 8.8.8.8')}</code>
+        <div class="exercise-box">
+            <h4>Exercise: Your First Command</h4>
+            <p>Try typing the command above into the interactive terminal on the right and see what happens!</p>
+        </div>
+        <button class="btn" onclick="alert('Next lesson coming soon!')">Next Lesson</button>`;
     }
 
     function goHome() {
         console.log("Going back to home/courses");
         const learningInterface = document.getElementById('learning-interface');
-        learningInterface.style.opacity = 0; // For fade out
+        learningInterface.style.opacity = 0; 
         setTimeout(() => {
             learningInterface.style.display = 'none';
             document.getElementById('home-page').style.display = 'block'; 
-             window.scrollTo(0,0); // Scroll to top
-        }, 300); // Match transition time
+            filterCoursesByCategory('all'); // Show all courses when returning home
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top smoothly
+        }, 300); 
     }
 
 
     document.addEventListener("DOMContentLoaded", () => {
       setTimeout(typeMessage, 1000);
 
-      // Smooth scroll for nav links
       document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
+                // If navigating to #courses, ensure all are visible first
+                if (targetId === '#courses') {
+                    filterCoursesByCategory('all');
+                }
                 targetElement.scrollIntoView({
                     behavior: 'smooth'
                 });
