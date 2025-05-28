@@ -273,13 +273,11 @@
             z-index: 2;
         }
         
-        /* General .terminal-container styles */
         .terminal-container {
             background: #000;
             border-radius: 10px;
             font-family: 'Courier New', monospace;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            /* border: 1px solid #333; Default border removed for hero action buttons */
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
@@ -301,69 +299,169 @@
             left: 100%;
         }
         
-        /* General hover for .terminal-container */
         .terminal-container:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(0, 255, 136, 0.2);
-            /* border-color: #00ff88; Default border color on hover removed for hero action buttons */
         }
 
-        /* Specific styles for hero action "terminal" buttons */
         .hero-actions .terminal-container {
-            padding: 0.8rem; /* Reduced */
-            border: none; /* Explicitly remove border */
-            min-width: 160px; /* Reduced */
-            max-width: 240px; /* Added max-width */
+            padding: 0.8rem; 
+            border: none; 
+            min-width: 160px; 
+            max-width: 240px; 
         }
         
         .hero-actions .terminal-header {
             display: flex;
             align-items: center;
-            margin-bottom: 0.6rem; /* Adjusted */
-            padding-bottom: 0.3rem; /* Adjusted */
-            border-bottom: 1px solid #333; /* Kept border for header part */
+            margin-bottom: 0.6rem; 
+            padding-bottom: 0.3rem; 
+            border-bottom: 1px solid #333; 
         }
 
-        .hero-actions .terminal-dot { /* Scoped to hero actions */
-            width: 6px; /* Reduced */
-            height: 6px; /* Reduced */
+        .hero-actions .terminal-dot { 
+            width: 6px; 
+            height: 6px; 
             border-radius: 50%;
-            margin-right: 4px; /* Reduced */
+            margin-right: 4px; 
         }
-        /* Dots color still handled by .red, .yellow, .green which are general */
         .terminal-dot.red { background: #ff5f56; }
         .terminal-dot.yellow { background: #ffbd2e; }
         .terminal-dot.green { background: #27ca3f; }
 
 
         .hero-actions .terminal-content {
-            color: #00ff00; /* Base color */
-            font-size: 0.75rem; /* Reduced */
-            line-height: 1.3; /* Adjusted */
+            color: #00ff00; 
+            font-size: 0.75rem; 
+            line-height: 1.3; 
         }
 
         .hero-actions .terminal-prompt {
-            color: #00d4ff; /* Prompt color */
+            color: #00d4ff; 
         }
 
         .hero-actions .terminal-action {
             color: #fff;
-            margin-top: 0.3rem; /* Reduced */
+            margin-top: 0.3rem; 
             font-weight: bold;
-            font-size: 0.85rem; /* Reduced */
+            font-size: 0.85rem; 
         }
 
         .hero-actions .terminal-description {
             color: #888;
-            font-size: 0.65rem; /* Reduced */
+            font-size: 0.65rem; 
             margin-top: 0.2rem;
+        }
+
+        /* Browse Categories Section Styles */
+        .browse-categories-section {
+            max-width: 1200px;
+            margin: 4rem auto 2rem auto; /* Top/bottom margin, auto left/right */
+            padding: 0 2rem;
+        }
+
+        .browse-categories-title-terminal {
+            background: #000;
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            margin: 0 auto 2rem auto; /* Centered, bottom margin */
+            max-width: 700px;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 1px solid #333;
+        }
+
+        .terminal-header-dots { /* Re-using class name for styling, ensure dots are smaller if needed */
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid #333;
+        }
+        .terminal-header-dots .terminal-dot { /* Specific dot styling for this context if different */
+             width: 10px; height: 10px; margin-right: 6px;
+        }
+
+
+        .browse-categories-title-terminal .terminal-title-content {
+            color: #00ff00;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .browse-categories-title-terminal .terminal-prompt { /* Re-using class name for styling */
+            color: #00d4ff;
+            margin-right: 0.5rem;
+        }
+        .browse-categories-title-terminal .terminal-command {
+            color: #fff; /* Or #00ff00 if preferred */
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem; /* Increased padding */
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #00d4ff; 
+            position: relative;
+            overflow: hidden;
+        }
+        .category-item::before { /* Shine effect on hover */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .category-item:hover::before {
+            left: 100%;
+        }
+
+        .category-item:hover {
+            background: rgba(0, 212, 255, 0.05); /* Slightly lighter on hover */
+            border-color: #00d4ff;
+            transform: translateY(-5px); /* Lift effect */
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.15);
+        }
+
+        .category-item .category-name {
+            font-size: 1.3rem; /* Larger name */
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #fff; /* White for better contrast for name */
+        }
+         .category-item .category-name .highlight { /* For parts like (Linux) */
+            color: #00ff88; /* Green highlight */
+            font-size: 0.9em;
+        }
+
+
+        .category-item .category-examples {
+            font-size: 0.9rem; /* Slightly larger examples */
+            color: #bbb; /* Lighter grey */
+            line-height: 1.4;
         }
 
 
         .course-grid {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 4rem 2rem; /* Existing padding */
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
@@ -479,8 +577,8 @@
             margin-top: 1rem;
             position: relative;
             z-index: 1;
-            text-decoration: none; /* For <a> tags styled as buttons */
-            display: inline-block; /* For <a> tags */
+            text-decoration: none; 
+            display: inline-block; 
         }
 
         .btn:hover {
@@ -512,23 +610,20 @@
             overflow: hidden;
         }
         
-        /* This .terminal-header is for the learning interface terminal, not hero actions */
         .terminal-panel .terminal-header {
             background: #2d2d2d;
             padding: 0.5rem 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            border-bottom: 1px solid #333; /* Added border for consistency */
+            border-bottom: 1px solid #333; 
         }
 
-        /* This .terminal-dot is for the learning interface terminal */
         .terminal-panel .terminal-dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
         }
-        /* These .dot-red, .dot-yellow, .dot-green are for learning interface terminal */
         .dot-red { background: #ff5f56; }
         .dot-yellow { background: #ffbd2e; }
         .dot-green { background: #27ca3f; }
@@ -555,7 +650,7 @@
             align-items: center;
         }
 
-        .prompt { /* General prompt style for terminal body */
+        .prompt { 
             color: #00d4ff;
             margin-right: 0.5rem;
         }
@@ -701,13 +796,12 @@
             z-index: 1;
         }
 
-        /* Styles for Discord Join Section */
         .discord-join-section {
             text-align: center;
             padding: 3rem 2rem;
-            background: rgba(10, 14, 39, 0.85); /* Darker, similar to navbar */
+            background: rgba(10, 14, 39, 0.85); 
             border-radius: 15px;
-            margin: 4rem auto; /* Spacing */
+            margin: 4rem auto; 
             max-width: 800px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -733,16 +827,15 @@
         }
 
         .discord-btn {
-            /* .btn styles are inherited and slightly augmented */
             padding: 14px 28px;
             font-size: 1rem;
         }
 
-        .discord-btn svg { /* Style for the SVG icon */
+        .discord-btn svg { 
             vertical-align: middle;
             margin-right: 8px;
-            width: 24px; /* Explicitly set SVG size */
-            height: 24px; /* Explicitly set SVG size */
+            width: 24px; 
+            height: 24px; 
         }
 
 
@@ -758,13 +851,23 @@
                 flex-direction: column;
                 align-items: center;
             }
-            /* .terminal-container min-width was here, removed as hero actions now have own min/max width */
-
             .footer-title {
                 font-size: 2rem;
             }
             .discord-title {
                 font-size: 1.8rem;
+            }
+            .browse-categories-title-terminal {
+                padding: 0.8rem 1rem;
+            }
+            .browse-categories-title-terminal .terminal-title-content {
+                font-size: 1rem;
+            }
+            .category-item .category-name {
+                font-size: 1.1rem;
+            }
+            .category-item .category-examples {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -787,7 +890,7 @@
 
     <div class="main-content">
         <div id="home-page">
-            <section class="hero-section">
+            <section class="hero-section" id="home"> <!-- Added id for nav link -->
                 <div class="cyber-subtitle">◤◥ CYBER LEARNING PROTOCOL INITIATED ◤◥</div>
                 <h1 class="hero-title glitch-text" data-text="PrivitJayAcademy">
                     <span class="privit">PrivitJay</span><span class="academy">Academy</span>
@@ -808,7 +911,7 @@
                 
                 <div class="hero-actions">
                     <div class="terminal-container" onclick="scrollToCourses()">
-                        <div class="terminal-header"> <!-- This header uses .hero-actions .terminal-dot -->
+                        <div class="terminal-header"> 
                             <div class="terminal-dot red"></div>
                             <div class="terminal-dot yellow"></div>
                             <div class="terminal-dot green"></div>
@@ -821,7 +924,7 @@
                     </div>
 
                     <div class="terminal-container" onclick="scrollToAbout()">
-                        <div class="terminal-header"> <!-- This header uses .hero-actions .terminal-dot -->
+                        <div class="terminal-header"> 
                             <div class="terminal-dot red"></div>
                             <div class="terminal-dot yellow"></div>
                             <div class="terminal-dot green"></div>
@@ -835,7 +938,42 @@
                 </div>
             </section>
 
-            <div class="course-grid" id="courses"> <!-- Added ID for scrolling -->
+            <!-- NEW BROWSE CATEGORIES SECTION START -->
+            <section id="browse-categories" class="browse-categories-section">
+                <div class="browse-categories-title-terminal">
+                    <div class="terminal-header-dots">
+                        <div class="terminal-dot red"></div>
+                        <div class="terminal-dot yellow"></div>
+                        <div class="terminal-dot green"></div>
+                    </div>
+                    <div class="terminal-title-content">
+                        <span class="terminal-prompt">root@academy:~#</span>
+                        <span class="terminal-command">echo "Browse Course Categories"</span>
+                    </div>
+                </div>
+                <div class="category-grid">
+                    <div class="category-item" onclick="filterCoursesByCategory('sysadmin_linux')">
+                        <span class="category-name">System Admin <span class="highlight">(Linux)</span></span>
+                        <span class="category-examples">File Systems, User Management, Permissions, Shell Basics</span>
+                    </div>
+                    <div class="category-item" onclick="filterCoursesByCategory('bash_scripting')">
+                        <span class="category-name">Bash Scripting <span class="highlight">(Linux)</span></span>
+                        <span class="category-examples">Automation, Scripting Logic, Task Management</span>
+                    </div>
+                    <div class="category-item" onclick="filterCoursesByCategory('networking')">
+                        <span class="category-name">Networking</span>
+                        <span class="category-examples">TCP/IP, Protocols, Network Security Fundamentals</span>
+                    </div>
+                    <div class="category-item" onclick="filterCoursesByCategory('programming')">
+                        <span class="category-name">Programming</span>
+                        <span class="category-examples">Python, Web Development Concepts, Algorithms</span>
+                    </div>
+                </div>
+            </section>
+            <!-- NEW BROWSE CATEGORIES SECTION END -->
+
+
+            <div class="course-grid" id="courses"> 
                 <div class="course-card" onclick="startCourse('linux')">
                     <div class="course-header">
                         <div class="course-title">
@@ -909,16 +1047,14 @@
                     </div>
                 </div>
 
-                <!-- NEW DISCORD SECTION START -->
-                <div class="discord-join-section">
+                <div class="discord-join-section" id="contact"> <!-- Added ID for nav link -->
                     <h2 class="discord-title">Join Our Community</h2>
                     <p class="discord-description">Connect with fellow learners, ask questions, and share your progress on our Discord server!</p>
-                    <a href="https://discord.gg/REPLACE_WITH_YOUR_INVITE_CODE" target="_blank" class="btn discord-btn">
+                    <a href="https://discord.gg/YOUR_INVITE_CODE" target="_blank" class="btn discord-btn"> <!-- Replace YOUR_INVITE_CODE -->
                         <svg aria-hidden="true" role="img" viewBox="0 0 24 24"><path fill="currentColor" d="M20.317 4.36981C18.7915 3.09531 16.9067 2.15581 14.8317 1.63081C14.6825 1.58081 14.5267 1.68248 14.4908 1.83081L14.2075 3.04498C12.9608 2.81665 11.6558 2.81665 10.4092 3.04498L10.1258 1.83081C10.0892 1.68248 9.93416 1.58081 9.78416 1.63081C7.70833 2.15581 5.82416 3.09531 4.29916 4.36981C4.29916 4.36981 -0.200838 9.68398 0.00166183 14.9065C0.00166183 14.9065 1.89583 17.9473 6.06916 18.4515C6.06916 18.4515 6.61416 17.4481 6.9025 16.9698C5.3225 16.2331 4.15833 14.9481 4.15833 14.9481C4.15833 14.9481 4.22166 14.8905 4.3025 14.8098C6.695 16.1023 9.4475 16.3731 12.0017 16.1365C12.0017 16.1365 12.0017 16.1365 12.0017 16.1365C14.5558 16.3731 17.3083 16.1023 19.7008 14.8098C19.7808 14.8905 19.8442 14.9481 19.8442 14.9481C19.8442 14.9481 18.6808 16.2331 17.1008 16.9698C17.3892 17.4481 17.9333 18.4515 17.9333 18.4515C22.1058 17.9473 24.0017 14.9065 24.0017 14.9065C24.2042 9.68398 20.317 4.36981 20.317 4.36981ZM8.02083 12.5998C7.02416 12.5998 6.22416 11.7998 6.22416 10.7998C6.22416 9.80065 7.02416 8.99981 8.02083 8.99981C9.0175 8.99981 9.8175 9.80065 9.8175 10.7998C9.8175 11.7998 9.0175 12.5998 8.02083 12.5998ZM15.9825 12.5998C14.9858 12.5998 14.1858 11.7998 14.1858 10.7998C14.1858 9.80065 14.9858 8.99981 15.9825 8.99981C16.9792 8.99981 17.7792 9.80065 17.7792 10.7998C17.7792 11.7998 16.9792 12.5998 15.9825 12.5998Z"></path></svg>
                         Join Discord
                     </a>
                 </div>
-                <!-- NEW DISCORD SECTION END -->
 
                 <div class="footer-bottom">
                     <p>© 2024 Privitjay Academy. Empowering the next generation of tech professionals.</p>
@@ -936,7 +1072,7 @@
             </div>
 
             <div class="terminal-panel">
-                 <div class="terminal-header"> <!-- This is for the learning interface terminal -->
+                 <div class="terminal-header"> 
                     <div class="terminal-dot dot-red"></div>
                     <div class="terminal-dot dot-yellow"></div>
                     <div class="terminal-dot dot-green"></div>
@@ -964,7 +1100,7 @@
     const cursor = document.querySelector(".cursor");
 
     function typeMessage() {
-      if (!typingText) return; // Guard against null if element not found
+      if (!typingText) return; 
       const currentMessage = messages[messageIndex];
 
       if (charIndex < currentMessage.length) {
@@ -981,7 +1117,7 @@
 
         setTimeout(() => {
           typingText.textContent = "";
-          if (output.parentNode === typingText.parentElement) { // Check if still child
+          if (output.parentNode === typingText.parentElement) { 
             typingText.parentElement.removeChild(output);
           }
           charIndex = 0;
@@ -991,32 +1127,72 @@
       }
     }
 
+    function scrollToElement(elementId) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
     function scrollToCourses() {
-        document.getElementById('courses').scrollIntoView({ behavior: 'smooth' });
+        scrollToElement('courses');
     }
 
     function scrollToAbout() {
-        document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+        scrollToElement('about');
+    }
+    
+    function filterCoursesByCategory(category) {
+        console.log("Filtering courses by category:", category);
+        // Placeholder: Implement actual filtering logic here
+        // For now, it could scroll to the courses section or display a message
+        scrollToCourses(); 
+        // alert("Filtering by " + category + " (feature coming soon!)");
     }
 
-    // Placeholder for startCourse and goHome if they involve more complex logic
-    // For now, they are simple. If learning interface is shown/hidden, those functions would handle it.
+
     function startCourse(courseName) {
         console.log("Starting course:", courseName);
-        // Example: document.getElementById('home-page').style.display = 'none';
-        // Example: document.getElementById('learning-interface').style.display = 'grid';
-        // Load lesson content for courseName...
+        document.getElementById('home-page').style.display = 'none';
+        const learningInterface = document.getElementById('learning-interface');
+        learningInterface.style.display = 'grid'; // Show learning interface
+        learningInterface.style.opacity = 0; // For fade in
+        setTimeout(() => learningInterface.style.opacity = 1, 10); // Start fade in
+
+        // Example: Load lesson content
+        const lessonContentEl = document.getElementById('lesson-content');
+        lessonContentEl.innerHTML = `<h2>Welcome to ${courseName.charAt(0).toUpperCase() + courseName.slice(1)}</h2><p>Loading lesson...</p>`;
+        // Add actual lesson loading logic here
     }
 
     function goHome() {
         console.log("Going back to home/courses");
-        // Example: document.getElementById('learning-interface').style.display = 'none';
-        // Example: document.getElementById('home-page').style.display = 'block'; // or whatever initial display was
+        const learningInterface = document.getElementById('learning-interface');
+        learningInterface.style.opacity = 0; // For fade out
+        setTimeout(() => {
+            learningInterface.style.display = 'none';
+            document.getElementById('home-page').style.display = 'block'; 
+             window.scrollTo(0,0); // Scroll to top
+        }, 300); // Match transition time
     }
 
 
     document.addEventListener("DOMContentLoaded", () => {
       setTimeout(typeMessage, 1000);
+
+      // Smooth scroll for nav links
+      document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+      });
     });
   </script>
 </body>
