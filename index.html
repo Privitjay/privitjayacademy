@@ -331,7 +331,7 @@
         .exercise-box h4 { font-size: 1rem; } .exercise-box p { font-size: 0.9rem;}
 
         .back-btn { position: fixed; top: 80px; left: 1rem; z-index: 1001; } /* For Learning Interface */
-        .back-to-academy-btn { /* For About Page - MOVED TO LEFT */
+        .back-to-academy-btn { 
             position: fixed; top: 80px; left: 1rem; z-index: 1001;
             background: rgba(0, 212, 255, 0.2); border: 1px solid #00d4ff;
             color: #00d4ff; padding: 8px 12px; font-size: 0.9rem; border-radius: 20px;
@@ -340,8 +340,10 @@
 
         /* MODIFIED for About Us page top spacing */
         #about-page {
-            /* padding: 1.5rem 1rem; /* Old */
-            padding: 0.5rem 1rem 1.5rem 1rem; /* Reduced top padding */
+            padding-top: 4rem; /* Increased top padding for the page container */
+            padding-right: 1rem;
+            padding-bottom: 1.5rem;
+            padding-left: 1rem;
             max-width: 1200px;
             margin: 0 auto;
             color: #e0e0e0;
@@ -350,7 +352,7 @@
         
         .about-header-section {
             margin-bottom: 2.5rem; 
-            padding: 0.2rem 1.2rem 1.2rem 1.2rem; 
+            padding: 0 1.2rem 1.2rem 1.2rem; /* Top padding removed from this section */
             background: rgba(255, 255, 255, 0.02);
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -520,7 +522,9 @@
             .feature-card h3 { font-size: 1.1rem; } .feature-card p { font-size: 0.85rem; }
 
             /* Adjust About page padding for mobile too if needed */
-            #about-page { padding-top: 0.5rem; } /* Example for mobile */
+            #about-page { 
+                padding-top: 3.5rem; /* Slightly less padding for mobile to account for smaller button/navbar */
+            } 
 
             .about-header-section h1 { font-size: 2rem; }
             .about-intro { font-size: 0.95rem; }
@@ -922,9 +926,17 @@
         });
         setActiveNavLink(activeNavId);
 
-        if (pageIdToShow !== 'learning-interface') {
+        // Scroll to top logic, ensuring it doesn't interfere with About page's specific needs
+        if (pageIdToShow !== 'learning-interface' && pageIdToShow !== 'about-page') {
              window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else if (pageIdToShow === 'about-page') {
+            // For about page, specific scrolling handled by showHomePageAndScroll or if directly navigated
+            // If directly showing about page (not via nav link that scrolls), then scroll to top.
+            if (!activeNavId || activeNavId === 'about-link') { // Check if it's a direct show, not a scroll-to-section
+                 window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
+
 
         if (pageIdToShow === 'home-page' && typingText && typingText.textContent === '') {
             charIndex = 0;
@@ -943,21 +955,32 @@
                     topPos = 0; 
                 } else if (sectionId === 'courses') {
                     topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20; 
-                } else if (sectionId === 'contact') {
-                    topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                } else if (sectionId === 'contact') { // Contact section is in the footer
+                    // Scroll to the top of the footer, then the browser will handle the rest.
+                    const footer = document.getElementById('site-footer');
+                    if (footer) {
+                         topPos = footer.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                    } else { // fallback to contact div itself
+                         topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                    }
                 }
                 window.scrollTo({ top: topPos , behavior: 'smooth'});
             } else {
                  window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-            if(sectionId === 'courses' || sectionId === 'home-hero' || activeLink === 'home-link' || activeLink === 'courses-link'){
+            // Ensure courses are visible if navigating to a section that should show them.
+            if(sectionId === 'courses' || (sectionId === 'home-hero' && activeLink === 'home-link') || activeLink === 'courses-link'){
                 filterCoursesByCategory('all');
             }
-        }, 50);
+        }, 50); // Increased timeout slightly for page transition before scroll
     }
 
     function showAboutPage() {
         showPage('about-page', 'about-link');
+         // Ensure About page scrolls to its own top correctly
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 50);
     }
 
     function startCourse(courseName) {
