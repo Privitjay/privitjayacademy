@@ -359,8 +359,8 @@
         }
         
         #about-page > .about-page-section:first-child { /* This is .about-header-section */
-            padding-top: 0.5rem;  
-            margin-top: 0;
+            padding-top: 0;  /* NO top padding here */
+            margin-top: 0;   /* NO top margin here */
             background: none; 
             border: none;     
             padding-left: 0;  
@@ -368,14 +368,32 @@
             margin-bottom: 2.5rem; 
         }
         #about-page > .about-page-section:first-child h1 {
-            margin-top: 0; 
-            font-size: 2.6rem; 
+            margin-top: 0; /* H1 starts flush */
+            font-size: 2.8rem; 
             font-family: 'Courier New', monospace; 
             text-align: center; 
-            margin-bottom: 1.2rem; 
+            margin-bottom: 1.5rem; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
         }
-        #about-page > .about-page-section:first-child h1 .privit { color: #00d4ff; }
-        #about-page > .about-page-section:first-child h1 .academy { color: #7c3aed; }
+        #about-page > .about-page-section:first-child h1 .privit { 
+            color: #00d4ff;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+        }
+        #about-page > .about-page-section:first-child h1 .academy { 
+            color: #7c3aed;
+            text-shadow: 0 0 10px rgba(124, 58, 237, 0.3);
+        }
+        #about-page > .about-page-section:first-child h1::after {
+            content: '';
+            display: block;
+            width: 70%; 
+            height: 3px;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            margin: 0.5rem auto 0; 
+            border-radius: 2px;
+        }
 
         #about-page > .about-page-section:first-child .about-intro-main {
             font-size: 1.1rem; 
@@ -389,9 +407,9 @@
         }
 
         /* Mission & Approach Dual Section */
-        .mission-approach-dual-section { /* This is an .about-page-section */
+        .mission-approach-dual-section { 
             padding: 0; 
-            background: none; /* It's a container, boxes inside have bg */
+            background: none; 
             border: none;
         }
         .mission-approach-container-new {
@@ -475,7 +493,7 @@
             color: #c0c0c0; 
         }
 
-        .ready-to-learn-section { /* This is an .about-page-section */
+        .ready-to-learn-section { 
             text-align: center;
             padding: 2.5rem 1rem; 
             background: rgba(0, 212, 255, 0.07); 
@@ -528,23 +546,23 @@
         }
         .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
         
-        .discord-join-section { /* This also acts as an .about-page-section if on About page */
+        /* Discord section styling */
+        .discord-join-section { 
             text-align: center; 
             background: rgba(10, 14, 39, 0.85); 
             border-radius: 12px; 
-            margin: 0 auto 2.5rem auto; /* When on About page, centered */
+            margin: 0 auto 2.5rem auto;
             max-width: 90%; width: 700px; 
             border: 1px solid rgba(255, 255, 255, 0.1); 
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-             /* Padding is applied by .about-page-section if this class is also present */
         }
-        /* Ensure discord section on About page uses .about-page-section padding */
+        /* When discord section is on About page, it inherits .about-page-section padding */
         #about-page .discord-join-section {
-            padding: 1.5rem; /* Uses default .about-page-section padding */
+             /* padding is handled by .about-page-section class */
         }
-        /* But when it's in the footer, it has its own larger padding */
+        /* When discord section is in the global footer */
         #site-footer .discord-join-section {
-            padding: 2.5rem 1rem;
+            padding: 2.5rem 1rem; /* Specific padding for footer context */
         }
 
 
@@ -597,7 +615,7 @@
 
             .footer-title { font-size: 1.8rem; }
             .discord-join-section { width: auto; max-width: 95%; }
-             #site-footer .discord-join-section { padding: 2rem 0.5rem; } /* Adjust for footer context */
+             #site-footer .discord-join-section { padding: 2rem 0.5rem; } 
 
             .discord-title { font-size: 1.6rem; }
             .feature-card { padding: 1.2rem; } .feature-icon { font-size: 2.2rem; }
@@ -998,7 +1016,7 @@
     }
 
     function showPage(pageIdToShow, activeNavId) {
-        const pages = ['home-page', 'about-page', 'learning-interface']; // RE-ADDED 'about-page'
+        const pages = ['home-page', 'about-page', 'learning-interface']; 
         pages.forEach(pageId => {
             const pageElement = document.getElementById(pageId);
             if (!pageElement) return;
@@ -1067,7 +1085,7 @@
         }, 100); 
     }
 
-    function showAboutPage() { // RE-ADDED
+    function showAboutPage() { 
         showPage('about-page', 'about-link');
     }
 
@@ -1096,7 +1114,7 @@
             const linkId = this.getAttribute('id');
             if (linkId === 'home-link') showHomePageAndScroll('home-hero', 'home-link');
             else if (linkId === 'courses-link') showHomePageAndScroll('courses', 'courses-link');
-            else if (linkId === 'about-link') showAboutPage(); // RE-ADDED
+            else if (linkId === 'about-link') showAboutPage(); 
             else if (linkId === 'contact-link') showHomePageAndScroll('contact', 'contact-link');
         });
       });
