@@ -309,12 +309,10 @@
         
         #learning-interface.active-page { display: grid; } 
         
-        /* Ensure #home-page and #about-page are flex containers for vertical centering of footer parts */
         #home-page.active-page, 
         #about-page.active-page {
             display: flex; 
             flex-direction: column; 
-            /* flex-grow: 1; /* This is already handled by the general .active-page rule */
         }
 
 
@@ -344,7 +342,7 @@
 
         /* === About Page Top Spacing Fix === */
         #about-page {
-            /* padding-top: 4rem; /* REMOVED this */
+            padding-top: 4rem; /* THIS IS THE KEY: 64px. Positions content area below fixed button. */
             padding-right: 1rem;
             padding-bottom: 1.5rem;
             padding-left: 1rem;
@@ -354,8 +352,9 @@
         }
         .about-page-section { margin-bottom: 2.5rem; padding: 1.2rem; background: rgba(255, 255, 255, 0.02); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); }
         
+        /* First section on About page has no additional top padding of its own */
         .about-header-section {
-            padding-top: 3.75rem; /* ADDED: 60px - positions content below fixed button */
+            /* padding-top: 3.75rem; /* REMOVED */
             padding-right: 1.2rem;
             padding-bottom: 1.2rem;
             padding-left: 1.2rem;
@@ -436,11 +435,18 @@
         /* === Homepage Spacing Fix (after navigating) === */
         .why-learn-section {
             padding: 3rem 0 1rem 0; 
-            margin-top: auto; /* ADDED: This pushes .why-learn-section to the bottom of #home-page */
+            margin-top: auto; /* Pushes .why-learn-section to the bottom of #home-page flex container */
         }
         /* If .why-learn-section is preceded by .course-grid, ensure some default margin */
         .course-grid + .why-learn-section {
-            margin-top: 3rem; /* This will apply if .why-learn-section isn't already pushed by `auto` due to short content above */
+            /* This ensures that if content above .why-learn-section is long, 
+               it still has a margin. If content is short, margin-top:auto will take over.
+               However, with flex, margin-top:auto on the last item of a flex column 
+               will push it down. If you want a consistent margin from courses regardless, 
+               remove margin-top:auto and just use a fixed margin here.
+               Let's keep margin-top: auto for now on .why-learn-section for the general case of short content.
+            */
+             margin-top: 3rem; /* Re-apply default margin if not pushed by auto */
         }
 
 
@@ -466,7 +472,7 @@
 
         .footer { 
             background: linear-gradient(135deg, #0a0e27 0%, #1a1a1a 100%); 
-            padding: 1.5rem 0 1.5rem 0; /* Adjusted top padding slightly */
+            padding: 1.5rem 0 1.5rem 0; 
             margin-top: auto; 
             border-top: 1px solid rgba(255, 255, 255, 0.1); 
             width: 100%; 
@@ -535,9 +541,9 @@
             .feature-card { padding: 1.2rem; } .feature-icon { font-size: 2.2rem; }
             .feature-card h3 { font-size: 1.1rem; } .feature-card p { font-size: 0.85rem; }
 
-            .about-header-section {
-                padding-top: 3.25rem; /* Slightly less for smaller button/navbar context */
-            } 
+            #about-page {
+                padding-top: 3.125rem; /* Approx 50px for mobile */
+            }
             .about-header-section h1 { font-size: 2rem; }
             .about-intro { font-size: 0.95rem; }
             .mission-column h2, .approach-column h2 { font-size: 1.2rem; }
@@ -561,8 +567,8 @@
             .course-grid { grid-template-columns: 1fr; } 
             .footer-prompt { font-size: 0.8rem; } 
             .footer-copyright { font-size: 0.75rem; } 
-            .about-header-section {
-                padding-top: 2.8rem; 
+            #about-page {
+                padding-top: 2.8rem; /* Further adjustment for very small screens if button moves again */
             }
         }
     </style>
@@ -926,7 +932,7 @@
                 if (pageId === 'learning-interface') {
                      pageElement.style.display = 'grid';
                 } else {
-                     pageElement.style.display = 'flex'; // For home and about flex container
+                     pageElement.style.display = 'flex'; 
                 }
                 pageElement.offsetHeight; 
                 pageElement.style.opacity = 1;
@@ -941,18 +947,11 @@
         });
         setActiveNavLink(activeNavId);
 
-        // Smart scroll to top for pages, except when specific scrolling is handled
-        if (pageIdToShow !== 'learning-interface') {
-            // For homepage, scroll to top if not scrolling to a specific section already
-            if (pageIdToShow === 'home-page' && (!activeNavId || activeNavId === 'home-link' || !document.getElementById(activeNavId?.replace('-link','')))) {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } 
-            // For about page, always scroll to top when shown (unless a #hash link is implemented later)
-            else if (pageIdToShow === 'about-page') {
-                 window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
+        // Scroll to top for About page or general Home page view
+        if (pageIdToShow === 'about-page' || (pageIdToShow === 'home-page' && (activeNavId === 'home-link' || !activeNavId) )) {
+             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
+        // Note: Specific section scrolling for homepage is handled in showHomePageAndScroll
 
         if (pageIdToShow === 'home-page' && typingText && typingText.textContent === '') {
             charIndex = 0;
@@ -961,41 +960,40 @@
     }
 
     function showHomePageAndScroll(sectionId = 'home-hero', activeLink = 'home-link') {
-        showPage('home-page', activeLink);
+        showPage('home-page', activeLink); // showPage will handle basic top scroll if sectionId is 'home-hero'
+        
         setTimeout(() => {
-            const targetElement = document.getElementById(sectionId);
-            if (targetElement) {
-                const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 60;
-                let topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                if (sectionId === 'home-hero') { // Specifically for scrolling to the very top for hero
-                    topPos = 0; 
-                } else if (sectionId === 'courses' || sectionId === 'browse-categories') { // For sections needing slight offset
-                    topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20; 
-                } else if (sectionId === 'contact') { // For contact in footer
-                    const footer = document.getElementById('site-footer');
-                    if (footer) {
-                         topPos = footer.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                         // Ensure the contact section within the footer is visible
-                         const contactDivPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                         if (contactDivPos > topPos) topPos = contactDivPos; // Scroll to contact div if it's lower
-                    } else { 
-                         topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+            if (sectionId !== 'home-hero') { // Only do specific scroll if not already handled by showPage's hero scroll
+                const targetElement = document.getElementById(sectionId);
+                if (targetElement) {
+                    const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 60;
+                    let topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                
+                    if (sectionId === 'courses' || sectionId === 'browse-categories') { 
+                        topPos -= 20; // Extra offset for these sections
+                    } else if (sectionId === 'contact') { 
+                        const footer = document.getElementById('site-footer');
+                        if (footer) {
+                             let footerTopPos = footer.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                             const contactDivPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                             topPos = Math.min(footerTopPos, contactDivPos); // Ensure we see the contact section within footer
+                        }
                     }
+                    window.scrollTo({ top: topPos , behavior: 'smooth'});
+                } else if (sectionId !== 'home-hero') { // Fallback if specific section not found, but not hero
+                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
-                window.scrollTo({ top: topPos , behavior: 'smooth'});
-            } else { // Fallback if sectionId is not found, scroll to top of page.
-                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-            // Show all courses if navigating to a view that should display them
+            
             if(activeLink === 'home-link' || activeLink === 'courses-link' || sectionId === 'courses'){
                 filterCoursesByCategory('all');
             }
-        }, 100); // Slightly increased timeout for transitions
+        }, 100); 
     }
 
     function showAboutPage() {
         showPage('about-page', 'about-link');
-        // No specific scroll needed here as showPage with 'about-page' already scrolls to top.
+        // showPage for 'about-page' already handles scrolling to its top.
     }
 
     function startCourse(courseName) {
