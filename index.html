@@ -21,7 +21,7 @@
         .navbar {
             background: rgba(10, 14, 39, 0.95);
             backdrop-filter: blur(10px);
-            padding: 0.8rem 0; /* Reduced padding */
+            padding: 0.8rem 0; 
             position: fixed;
             width: 100%;
             top: 0;
@@ -32,22 +32,22 @@
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1rem; /* Adjusted padding for mobile */
+            padding: 0 1rem; 
             display: flex;
-            justify-content: space-between; /* Reverted for better link spacing on desktop */
+            justify-content: space-between; 
             align-items: center;
-            gap: 1rem; /* Spacing between logo and links */
+            gap: 1rem; 
         }
 
         .logo {
-            font-size: 1.2rem; /* Further reduced */
+            font-size: 1.2rem; 
             font-weight: bold;
             font-family: 'Courier New', monospace;
             background: #000;
-            padding: 0.3rem 0.6rem; /* Further reduced */
-            border-radius: 6px; /* Slightly smaller radius */
+            padding: 0.3rem 0.6rem; 
+            border-radius: 6px; 
             border: 1px solid #333;
-            white-space: nowrap; /* Prevent wrapping */
+            white-space: nowrap; 
         }
 
         .logo-prompt { color: #00d4ff; }
@@ -55,9 +55,9 @@
 
         .nav-links {
             display: flex;
-            gap: 1.5rem; /* Adjusted gap for links */
+            gap: 1.5rem; 
             list-style: none;
-            margin-left: auto; /* Push links to the right */
+            margin-left: auto; 
         }
 
         .nav-links a {
@@ -65,7 +65,7 @@
             text-decoration: none;
             transition: color 0.3s, transform 0.3s;
             padding-bottom: 8px;
-            font-size: 0.95rem; /* Slightly smaller nav links */
+            font-size: 0.95rem; 
         }
 
         .nav-links a:hover {
@@ -96,7 +96,7 @@
 
 
         .main-content {
-            margin-top: 60px; /* Adjusted for navbar new height */
+            margin-top: 60px; 
             display: flex; 
             flex-direction: column; 
             min-height: calc(100vh - 60px); 
@@ -342,7 +342,7 @@
 
         /* === About Page Top Spacing Fix === */
         #about-page {
-            padding-top: 4rem; /* THIS IS THE KEY: 64px. Positions content area below fixed button. */
+            padding-top: 4.3rem; /* Approx 69px. Positions content area below fixed button. */
             padding-right: 1rem;
             padding-bottom: 1.5rem;
             padding-left: 1rem;
@@ -350,20 +350,26 @@
             margin: 0 auto;
             color: #e0e0e0;
         }
-        .about-page-section { margin-bottom: 2.5rem; padding: 1.2rem; background: rgba(255, 255, 255, 0.02); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); }
-        
-        /* First section on About page has no additional top padding of its own */
-        .about-header-section {
-            /* padding-top: 3.75rem; /* REMOVED */
-            padding-right: 1.2rem;
-            padding-bottom: 1.2rem;
-            padding-left: 1.2rem;
+        /* Default padding for all about page sections */
+        .about-page-section { 
             margin-bottom: 2.5rem; 
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1.2rem; /* Default padding for all sides */
+            background: rgba(255, 255, 255, 0.02); 
+            border-radius: 12px; 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
         }
-        .about-header-section h1 { 
+        
+        /* Specifically target the FIRST .about-page-section within #about-page */
+        #about-page > .about-page-section:first-child {
+            padding-top: 0; /* Remove its own top padding, as #about-page parent handles positioning */
+            margin-top: 0;  /* Remove its own top margin */
+        }
+         /* Ensure the H1 inside that first section also has no top margin */
+        #about-page > .about-page-section:first-child h1 {
+            margin-top: 0; /* Ensures H1 starts flush with the (now 0) top padding of its container */
+        }
+
+        .about-header-section h1 { /* General H1 styling, margin-top handled by specific rule above */
             font-size: 2.4rem; 
             font-family: 'Courier New', monospace; 
             text-align: center; 
@@ -432,22 +438,12 @@
             font-size: 1rem; 
         }
         
-        /* === Homepage Spacing Fix (after navigating) === */
+        /* === Homepage Space Fix === */
         .why-learn-section {
-            padding: 3rem 0 1rem 0; 
-            margin-top: auto; /* Pushes .why-learn-section to the bottom of #home-page flex container */
+            margin-top: 3rem; /* Standard spacing from courses, removed margin-top: auto */
+            padding: 3rem 0 1.5rem 0; /* Top padding for its own content, bottom padding before footer */
         }
-        /* If .why-learn-section is preceded by .course-grid, ensure some default margin */
-        .course-grid + .why-learn-section {
-            /* This ensures that if content above .why-learn-section is long, 
-               it still has a margin. If content is short, margin-top:auto will take over.
-               However, with flex, margin-top:auto on the last item of a flex column 
-               will push it down. If you want a consistent margin from courses regardless, 
-               remove margin-top:auto and just use a fixed margin here.
-               Let's keep margin-top: auto for now on .why-learn-section for the general case of short content.
-            */
-             margin-top: 3rem; /* Re-apply default margin if not pushed by auto */
-        }
+        /* Removed .course-grid + .why-learn-section as the general margin-top should suffice */
 
 
         .footer-title { 
@@ -472,8 +468,8 @@
 
         .footer { 
             background: linear-gradient(135deg, #0a0e27 0%, #1a1a1a 100%); 
-            padding: 1.5rem 0 1.5rem 0; 
-            margin-top: auto; 
+            padding: 1.5rem 0 1.5rem 0; /* Consistent padding */
+            margin-top: auto; /* Pushes footer to bottom of .main-content flex container */
             border-top: 1px solid rgba(255, 255, 255, 0.1); 
             width: 100%; 
         }
@@ -542,8 +538,17 @@
             .feature-card h3 { font-size: 1.1rem; } .feature-card p { font-size: 0.85rem; }
 
             #about-page {
-                padding-top: 3.125rem; /* Approx 50px for mobile */
+                padding-top: 3.125rem; /* Approx 50px for mobile, (110px desired start - 60px navbar) */
             }
+             /* First section on About page has no top padding, handled by #about-page */
+            #about-page > .about-page-section:first-child {
+                padding-top: 0; 
+                margin-top: 0;
+            }
+            #about-page > .about-page-section:first-child h1 {
+                margin-top: 0;
+            }
+
             .about-header-section h1 { font-size: 2rem; }
             .about-intro { font-size: 0.95rem; }
             .mission-column h2, .approach-column h2 { font-size: 1.2rem; }
@@ -568,7 +573,9 @@
             .footer-prompt { font-size: 0.8rem; } 
             .footer-copyright { font-size: 0.75rem; } 
             #about-page {
-                padding-top: 2.8rem; /* Further adjustment for very small screens if button moves again */
+                 /* Button top 70px. Button height ~27px. Bottom ~97px. Desired start ~107px.
+                    Padding-top = 107px - 60px = 47px = ~2.9rem */
+                padding-top: 2.9rem; 
             }
         }
     </style>
@@ -947,11 +954,12 @@
         });
         setActiveNavLink(activeNavId);
 
-        // Scroll to top for About page or general Home page view
-        if (pageIdToShow === 'about-page' || (pageIdToShow === 'home-page' && (activeNavId === 'home-link' || !activeNavId) )) {
+        // Scroll to top when a new page (not a section on home) is shown
+        // This is especially for About page, or if Home is clicked directly
+        if (pageIdToShow === 'about-page' || (pageIdToShow === 'home-page' && activeNavId === 'home-link')) {
              window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-        // Note: Specific section scrolling for homepage is handled in showHomePageAndScroll
+        // Specific section scrolling for homepage sections (like #courses, #contact) is handled by showHomePageAndScroll
 
         if (pageIdToShow === 'home-page' && typingText && typingText.textContent === '') {
             charIndex = 0;
@@ -960,27 +968,31 @@
     }
 
     function showHomePageAndScroll(sectionId = 'home-hero', activeLink = 'home-link') {
-        showPage('home-page', activeLink); // showPage will handle basic top scroll if sectionId is 'home-hero'
+        showPage('home-page', activeLink); 
         
         setTimeout(() => {
-            if (sectionId !== 'home-hero') { // Only do specific scroll if not already handled by showPage's hero scroll
+            // Only scroll to a specific section if it's not the default 'home-hero' when 'home-link' is clicked
+            // because showPage already handles scrolling to top for 'home-link'.
+            if (!(sectionId === 'home-hero' && activeLink === 'home-link')) {
                 const targetElement = document.getElementById(sectionId);
                 if (targetElement) {
                     const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 60;
                     let topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
                 
                     if (sectionId === 'courses' || sectionId === 'browse-categories') { 
-                        topPos -= 20; // Extra offset for these sections
+                        topPos -= 20; 
                     } else if (sectionId === 'contact') { 
                         const footer = document.getElementById('site-footer');
                         if (footer) {
                              let footerTopPos = footer.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
                              const contactDivPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                             topPos = Math.min(footerTopPos, contactDivPos); // Ensure we see the contact section within footer
+                             topPos = Math.min(footerTopPos, contactDivPos); 
                         }
+                    } else if (sectionId === 'home-hero') { // Explicitly handle hero if called by other means
+                        topPos = 0;
                     }
                     window.scrollTo({ top: topPos , behavior: 'smooth'});
-                } else if (sectionId !== 'home-hero') { // Fallback if specific section not found, but not hero
+                } else if (sectionId !== 'home-hero') { 
                      window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
             }
@@ -993,7 +1005,6 @@
 
     function showAboutPage() {
         showPage('about-page', 'about-link');
-        // showPage for 'about-page' already handles scrolling to its top.
     }
 
     function startCourse(courseName) {
