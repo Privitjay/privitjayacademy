@@ -342,92 +342,78 @@
 
         /* === About Page Top Spacing Fix === */
         #about-page {
-            padding-top: 0; /* NO top padding on the page container itself */
+            padding-top: 0; /* CRITICAL: No top padding on the page container itself */
             padding-right: 1rem;
-            padding-bottom: 1.5rem; /* Keep bottom/side padding */
+            padding-bottom: 1.5rem; 
             padding-left: 1rem;
             max-width: 1200px;
             margin: 0 auto;
             color: #e0e0e0;
         }
-        /* Default padding for all about page sections, except the first one's top */
+        /* Default styling for all sections within the About page */
         .about-page-section { 
-            margin-bottom: 2.5rem; 
-            padding: 1.2rem; 
+            margin-bottom: 2rem; 
+            padding: 1.5rem;    
             background: rgba(255, 255, 255, 0.02); 
             border-radius: 12px; 
             border: 1px solid rgba(255, 255, 255, 0.08); 
         }
         
-        /* Specifically target the FIRST .about-page-section directly under #about-page */
+        /* Specifically target the VERY FIRST .about-page-section within #about-page */
         #about-page > .about-page-section:first-child {
-            padding-top: 0; /* Remove its own top padding */
-            margin-top: 0;  /* Remove its own top margin */
+            padding-top: 0.5rem;  /* Minimal top padding, just enough for H1 to breathe slightly */
+            margin-top: 0;
+            background: none; 
+            border: none;     
+            padding-left: 0;  
+            padding-right: 0;
+            margin-bottom: 2rem; /* Space before the next distinct section */
         }
-         /* Ensure the H1 inside that first section also has no top margin */
+         /* The H1 inside that very first section */
         #about-page > .about-page-section:first-child h1 {
-            margin-top: 0; 
+            margin-top: 0; /* H1 starts flush with the top of its container */
+            font-size: 2.4rem;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            margin-bottom: 1rem; /* Space after H1 */
         }
-        /* Styling for the new About page structure */
-        .about-header-section h1 { 
-            font-size: 2.4rem; 
-            font-family: 'Courier New', monospace; 
-            text-align: center; 
-            margin-bottom: 1rem; /* Reduced space below H1 */
-        }
-        .about-header-section h1 .privit { color: #00d4ff; } 
-        .about-header-section h1 .academy { color: #7c3aed; }
-        
-        .about-intro-main { /* New class for the main intro */
-            font-size: 1.05rem; /* Slightly larger */
-            line-height: 1.65; 
-            text-align: center; 
-            margin-bottom: 2rem; /* More space after main intro */
-            max-width: 850px; /* Control width for readability */
-            margin-left: auto; 
-            margin-right: auto; 
+        #about-page > .about-page-section:first-child h1 .privit { color: #00d4ff; }
+        #about-page > .about-page-section:first-child h1 .academy { color: #7c3aed; }
+
+        #about-page > .about-page-section:first-child .about-intro-main {
+            font-size: 1.05rem;
+            line-height: 1.65;
+            text-align: center;
+            margin-bottom: 0; /* No margin if it's the last element in this first section */
+            max-width: 850px;
+            margin-left: auto;
+            margin-right: auto;
             color: #e8e8e8;
         }
-        .about-header-section h3.vision-title { /* Class for vision title */
-            font-size: 1.6rem; 
-            color: #00d4ff; 
-            text-align: center; 
-            margin-top: 0; /* No top margin if it follows intro closely */
-            margin-bottom: 0.8rem; 
-            font-family: 'Courier New', monospace;
-        }
-        .about-header-section p.vision-text { /* Class for vision paragraph */
-            font-size: 0.95rem; 
-            line-height: 1.6; 
-            max-width: 800px; 
-            margin-left: auto; 
-            margin-right: auto; 
+
+        /* "The PrivitJay Difference" Section */
+        .difference-section h2 {
+            font-size: 1.8rem;
+            color: #00d4ff;
+            margin-bottom: 0.5rem; /* Tighter space to intro paragraph */
             text-align: center;
-            color: #d0d0d0;
-        }
-        /* Core Philosophy / What Sets Us Apart Section */
-        .philosophy-section h2, .what-sets-us-apart-section h2 {
-            font-size: 1.8rem; 
-            color: #00d4ff; 
-            margin-bottom: 1.2rem; 
-            text-align: center; 
             font-family: 'Courier New', monospace;
         }
-        .philosophy-section p, .what-sets-us-apart-section p.intro-p {
+        .difference-section .difference-intro {
             font-size: 1rem;
             line-height: 1.6;
             color: #d8d8d8;
             text-align: center;
             max-width: 750px;
-            margin: 0 auto 1.5rem auto;
+            margin: 0 auto 1.5rem auto; /* Space before the list */
         }
-        .what-sets-us-apart-section ul {
+        .difference-section ul {
             list-style: none;
             padding-left: 0;
             max-width: 700px;
             margin: 0 auto;
         }
-        .what-sets-us-apart-section li {
+        .difference-section li {
             margin-bottom: 1rem;
             padding-left: 1.8rem;
             position: relative;
@@ -435,44 +421,18 @@
             line-height: 1.55;
             color: #ccc;
         }
-        .what-sets-us-apart-section li::before {
-            content: '🚀'; /* Default, can be changed per item or removed if icons are used in text */
+        .difference-section li::before {
+            content: '✓'; /* Checkmark or other suitable icon */
             color: #00ff88;
             position: absolute;
             left: 0;
             font-size: 1.2rem;
+            font-weight: bold;
         }
-        .what-sets-us-apart-section li strong {
+        .difference-section li strong {
             color: #00d4ff;
             font-weight: 600;
         }
-
-
-        .mission-approach-section h2 { font-size: 1.6rem; color: #00d4ff; margin-bottom: 1.2rem; text-align: center; }
-        .mission-approach-container { display: flex; gap: 1.5rem; align-items: flex-start; flex-wrap: wrap; }
-        .mission-column, .approach-column { flex: 1; min-width: 280px; padding: 1.2rem; background: rgba(255, 255, 255, 0.03); border-radius: 8px; }
-        .mission-column h2, .approach-column h2 { text-align: left; font-size: 1.3rem; color: #fff; margin-bottom: 0.8rem; }
-        .mission-column p, .approach-column p, .approach-column li { font-size: 0.9rem; line-height: 1.55; }
-        
-        .mission-icon-container {
-            text-align: center;
-            margin-bottom: 0.8rem;
-        }
-        .mission-icon {
-            font-size: 4rem; 
-            color: #00d4ff; 
-            line-height: 1;
-            display: inline-block; 
-            padding: 0.5rem;
-            border: 1.5px solid rgba(0, 212, 255, 0.4);
-            border-radius: 8px;
-        }
-
-        /* Keep existing approach column if used, or integrate into .what-sets-us-apart-section */
-        .approach-column ul { list-style: none; padding-left: 0; }
-        .approach-column li { margin-bottom: 0.7rem; padding-left: 1.3rem; position: relative; }
-        .approach-column li::before { content: '⚡'; color: #00ff88; position: absolute; left: 0; font-size: 1rem; }
-        .approach-column li strong { color: #00d4ff; }
 
         .team-section h2 { font-size: 1.8rem; color: #00d4ff; text-align: center; margin-bottom: 1.5rem; }
         .founder-card {
@@ -482,8 +442,12 @@
         }
         .founder-image { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 0.8rem; border: 2.5px solid #7c3aed; }
         .founder-card h3 { font-size: 1.25rem; color: #fff; margin-bottom: 0.25rem; }
-        .founder-position { font-size: 0.85rem; color: #00ff88; font-family: 'Courier New', monospace; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.8px; }
-        .founder-bio { font-size: 0.85rem; line-height: 1.55; color: #ccc; }
+        .founder-card .founder-position { /* More specific selector */
+            font-size: 0.85rem; color: #00ff88; font-family: 'Courier New', monospace; 
+            margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.8px; 
+        }
+        .founder-card .founder-bio { font-size: 0.85rem; line-height: 1.55; color: #ccc; }
+
 
         .ready-to-learn-section {
             text-align: center;
@@ -604,21 +568,16 @@
 
             /* Mobile About Page Spacing */
             #about-page {
-                padding-top: 2.9rem; /* Approx 47px for mobile */
+                padding-top: 0; 
             }
             #about-page > .about-page-section:first-child {
-                padding-top: 0; 
-                margin-top: 0;
+                padding-top: 0.5rem; 
             }
             #about-page > .about-page-section:first-child h1 {
                 margin-top: 0;
+                font-size: 2rem;
             }
-
-            .about-header-section h1 { font-size: 2rem; }
-            .about-intro-main { font-size: 1rem; margin-bottom: 1.5rem; }
-            .about-header-section h3.vision-title { font-size: 1.4rem; }
-            .philosophy-section h2, .what-sets-us-apart-section h2 { font-size: 1.6rem; }
-
+            .difference-section h2 { font-size: 1.6rem; }
 
             .mission-column h2, .approach-column h2 { font-size: 1.2rem; }
             .team-section h2 { font-size: 1.6rem; }
@@ -642,14 +601,14 @@
             .footer-prompt { font-size: 0.8rem; } 
             .footer-copyright { font-size: 0.75rem; } 
             #about-page {
-                padding-top: 2.9rem; /* Keep consistent with 768px or fine-tune */
-            }
-            #about-page > .about-page-section:first-child {
                 padding-top: 0; 
-                margin-top: 0;
+            }
+             #about-page > .about-page-section:first-child {
+                padding-top: 0.5rem;
             }
             #about-page > .about-page-section:first-child h1 {
                 margin-top: 0;
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -821,26 +780,20 @@
         <div id="about-page">
             <button class="btn back-to-academy-btn" onclick="showHomePageAndScroll('home-hero', 'home-link')">← Back to Academy</button>
 
-            <section class="about-page-section about-header-section" id="about-content">
+            <!-- Section 1: Main Header and Intro -->
+            <section class="about-page-section about-header-section" id="about-content-intro">
                 <h1>About <span class="privit">PrivitJay</span><span class="academy">Academy</span></h1>
                 <p class="about-intro-main">
                     Welcome to PrivitJayAcademy – your direct pipeline to mastering real-world tech. We're not about dry theory; we're about the practical, hands-on skills that power today's digital world. If you're driven to understand the nuts and bolts of Linux, demystify networking, code with confidence, or delve into cybersecurity, you've logged into the right place.
                 </p>
-                <h3 class="vision-title">Our Vision</h3>
-                <p class="vision-text">
-                    To forge a new generation of tech-savvy innovators and problem-solvers, equipped with the hands-on expertise and critical thinking to thrive in a constantly evolving digital landscape. We envision a world where complex technology is demystified and accessible to all who are driven to learn.
-                </p>
             </section>
 
-            <section class="about-page-section philosophy-section">
-                <h2>The PrivitJay Method: Learn by Doing</h2>
-                <p>
+            <!-- Section 2: The PrivitJay Difference -->
+            <section class="about-page-section difference-section">
+                <h2>The PrivitJay Difference: Learn by Doing</h2>
+                <p class="difference-intro">
                     Our philosophy is built on a single, powerful principle: <strong>Learn by Doing.</strong> We believe that true mastery comes from practical application. Our mission is to provide an immersive, interactive environment where you can roll up your sleeves, experiment, make mistakes, and build real skills that translate directly to the tech industry.
                 </p>
-            </section>
-            
-            <section class="about-page-section what-sets-us-apart-section">
-                <h2>What Sets Us Apart?</h2>
                 <ul>
                     <li><strong>Live Interactive Terminals:</strong> Forget passive videos. Code, configure, and command real (simulated) systems directly in your browser. Your learning environment is always one click away.</li>
                     <li><strong>Scenario-Based Learning:</strong> Tackle challenges and projects designed to mirror the tasks and problems you'll face in professional tech roles. Build a portfolio that truly showcases your capabilities.</li>
@@ -850,7 +803,7 @@
                 </ul>
             </section>
 
-
+            <!-- Section 3: Meet the Founder -->
             <section class="about-page-section team-section">
                 <h2>Meet the Founder</h2>
                 <div class="founder-card">
@@ -863,6 +816,7 @@
                 </div>
             </section>
 
+            <!-- Section 4: Discord CTA -->
             <div class="discord-join-section" id="about-discord"> 
                 <h2 class="discord-title">Join Our Community</h2>
                 <p class="discord-description">Connect with fellow learners, ask questions, and share your progress on our Discord server!</p>
@@ -872,9 +826,10 @@
                 </a>
             </div>
 
+            <!-- Section 5: Ready to Learn CTA -->
             <section class="about-page-section ready-to-learn-section">
                 <h2>Ready to Start Learning?</h2>
-                <p>Join PrivitJayAcademy and begin your journey into the exciting world of technology today!</p>
+                <p>Your journey into the exciting world of technology begins now. Explore our courses and find your path!</p>
                 <button class="btn" onclick="showHomePageAndScroll('courses', 'courses-link')">Browse Courses 🚀</button>
             </section>
         </div>
