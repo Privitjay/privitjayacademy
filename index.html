@@ -340,8 +340,24 @@
 
         #about-page { padding: 1.5rem 1rem; max-width: 1200px; margin: 0 auto; color: #e0e0e0; }
         .about-page-section { margin-bottom: 2.5rem; padding: 1.2rem; background: rgba(255, 255, 255, 0.02); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); }
-        .about-header-section h1 { font-size: 2.4rem; font-family: 'Courier New', monospace; text-align: center; margin-bottom: 1.2rem; }
-        .about-header-section h1 .privit { color: #00d4ff; } .about-header-section h1 .academy { color: #7c3aed; }
+        
+        /* MODIFIED for About Us spacing */
+        .about-header-section {
+            margin-bottom: 2.5rem; /* Keeps space after this section */
+            /* padding: 1.2rem; /* Old */
+            padding: 0.2rem 1.2rem 1.2rem 1.2rem; /* Significantly reduced top padding */
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .about-header-section h1 { 
+            font-size: 2.4rem; 
+            font-family: 'Courier New', monospace; 
+            text-align: center; 
+            margin-bottom: 1.2rem; /* This is space between H1 and intro paragraph */
+        }
+        .about-header-section h1 .privit { color: #00d4ff; } 
+        .about-header-section h1 .academy { color: #7c3aed; }
         .about-intro { font-size: 1rem; line-height: 1.6; text-align: center; margin-bottom: 1.5rem; max-width: 90%; margin-left: auto; margin-right: auto; }
         .about-header-section h3 { font-size: 1.4rem; color: #00d4ff; text-align: center; margin-top: 1.5rem; margin-bottom: 0.8rem; }
         .about-header-section p { font-size: 0.95rem; line-height: 1.55; max-width: 90%; margin-left: auto; margin-right: auto; text-align: center; }
@@ -352,16 +368,15 @@
         .mission-column h2, .approach-column h2 { text-align: left; font-size: 1.3rem; color: #fff; margin-bottom: 0.8rem; }
         .mission-column p, .approach-column p, .approach-column li { font-size: 0.9rem; line-height: 1.55; }
         
-        /* Styles for mission icon */
         .mission-icon-container {
             text-align: center;
             margin-bottom: 0.8rem;
         }
         .mission-icon {
-            font-size: 4rem; /* Adjust size as needed */
+            font-size: 4rem; 
             color: #00d4ff; 
             line-height: 1;
-            display: inline-block; /* To allow padding/border if desired for icon itself */
+            display: inline-block; 
             padding: 0.5rem;
             border: 1.5px solid rgba(0, 212, 255, 0.4);
             border-radius: 8px;
@@ -401,41 +416,26 @@
             margin-bottom: 1.5rem;
         }
         .ready-to-learn-section .btn {
-            font-size: 1rem; /* Ensure button text is readable */
+            font-size: 1rem; 
         }
         
-        /* Section for "Why Learn With Us" on homepage, formerly part of footer */
+        /* MODIFIED for Homepage spacing */
         .why-learn-section {
-            padding: 3rem 0 1.5rem 0; /* Similar to old footer top padding */
-            margin-top: 3rem; /* Spacing from course grid */
-            /* background: linear-gradient(135deg, #0a0e27 0%, #1a1a1a 100%); /* Optional: if it needs distinct background */
+            /* padding: 3rem 0 1.5rem 0; /* Old */
+            padding: 3rem 0 1rem 0; /* Reduced bottom padding */
+            margin-top: 3rem; 
         }
-        /* .footer-title and .features-grid styles are reused */
-
-
-        /* GLOBAL Footer Styling */
-        .footer { 
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1a1a 100%); 
-            padding: 2rem 0 1.5rem 0; /* Adjusted padding */ 
-            margin-top: auto; /* Pushes footer to bottom of flex container (.main-content) */
-            border-top: 1px solid rgba(255, 255, 255, 0.1); 
-            width: 100%; /* Ensure it spans full width if main-content is narrower */
-        }
-        .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-        
-        /* Styles for .footer-title and .features-grid are now used by .why-learn-section on home page */
-        /* If they were exclusively for footer, they'd be here. For now, keeping them general. */
-        .footer-title { /* This class is used by "Why Learn With Us" section now */
+        .footer-title { 
             text-align: center; font-size: 2.2rem; margin-bottom: 2rem; 
             background: linear-gradient(45deg, #00d4ff, #7c3aed); 
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
             font-weight: bold; 
         }
-        .features-grid { /* This class is used by "Why Learn With Us" section now */
+        .features-grid { 
              display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
              gap: 1.5rem; margin-bottom: 2rem; 
         }
-        .feature-card { /* This class is used by "Why Learn With Us" section now */
+        .feature-card { 
             background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); 
             border-radius: 12px; padding: 1.5rem; text-align: center; 
             transition: all 0.3s ease; position: relative; overflow: hidden; 
@@ -445,12 +445,22 @@
         .feature-card h3 { color: #00d4ff; margin-bottom: 0.8rem; font-size: 1.2rem; }
         .feature-card p { color: #ccc; line-height: 1.55; font-size: 0.9rem;}
 
-        /* Discord Section (now part of global footer) */
+        /* MODIFIED for Homepage spacing */
+        .footer { 
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a1a 100%); 
+            /* padding: 2rem 0 1.5rem 0; /* Old */
+            padding: 1rem 0 1.5rem 0; /* Reduced top padding */
+            margin-top: auto; 
+            border-top: 1px solid rgba(255, 255, 255, 0.1); 
+            width: 100%; 
+        }
+        .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        
         .discord-join-section { 
             text-align: center; padding: 2.5rem 1rem; 
-            background: rgba(10, 14, 39, 0.85); /* Or remove if footer bg is enough */
+            background: rgba(10, 14, 39, 0.85); 
             border-radius: 12px; 
-            margin: 0 auto 2.5rem auto; /* Centered, with bottom margin */
+            margin: 0 auto 2.5rem auto; 
             max-width: 90%; width: 700px; 
             border: 1px solid rgba(255, 255, 255, 0.1); 
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); 
@@ -473,20 +483,19 @@
         .footer-prompt {
             font-family: 'Courier New', monospace;
             color: #00d4ff;
-            /* margin-right: auto; Removed to allow copyright to center better */
-            white-space: nowrap; /* Prevent wrapping of prompt */
+            white-space: nowrap; 
         }
         .footer-copyright {
-            margin-left: auto; /* Pushes copyright to center relative to prompt and right edge */
-            margin-right: auto; /* Pushes copyright to center relative to prompt and right edge */
-            text-align: center; /* Ensures text itself is centered if it wraps */
-            flex-grow: 1; /* Allows it to take space but auto margins handle centering */
-             padding-bottom: 5px; /* Kept from original */
+            margin-left: auto; 
+            margin-right: auto; 
+            text-align: center; 
+            flex-grow: 1; 
+             padding-bottom: 5px; 
         }
 
 
         @media (max-width: 768px) {
-            .nav-links { gap: 1rem; margin-left: 0; /* Allow default flow for smaller screens */ }
+            .nav-links { gap: 1rem; margin-left: 0; }
             .nav-links a { font-size: 0.85rem; padding-bottom: 6px; }
             .logo { font-size: 1.1rem; padding: 0.25rem 0.5rem; }
             
@@ -517,21 +526,21 @@
 
             .back-to-academy-btn, .back-btn { top: 70px; font-size: 0.8rem; padding: 6px 10px; }
             
-            .footer-bottom { justify-content: center; /* Center items on small screens */ }
+            .footer-bottom { justify-content: center; }
             .footer-prompt, .footer-copyright { 
                 margin: 0.2rem auto; 
                 width:100%; 
                 text-align: center;
-                flex-grow: 0; /* Reset grow for stacked layout */
+                flex-grow: 0; 
             }
         }
-        @media (max-width: 480px) { /* Extra small screens */
-            .nav-links { display: none; /* Ideally implement hamburger menu here */ }
+        @media (max-width: 480px) { 
+            .nav-links { display: none; }
             .hero-title { font-size: 1.8rem; }
             .category-grid { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 0.5rem; }
-            .course-grid { grid-template-columns: 1fr; } /* Single column for very small */
-            .footer-prompt { font-size: 0.8rem; } /* Adjust prompt if too large */
-            .footer-copyright { font-size: 0.75rem; } /* Adjust copyright if too large */
+            .course-grid { grid-template-columns: 1fr; } 
+            .footer-prompt { font-size: 0.8rem; } 
+            .footer-copyright { font-size: 0.75rem; } 
         }
     </style>
 </head>
@@ -670,9 +679,8 @@
                 </div>
             </div>
 
-            <!-- "Why Learn With Us?" section - moved from old home-footer to be part of home-page content -->
             <section class="why-learn-section">
-                <div class="footer-container"> <!-- Re-use for styling -->
+                <div class="footer-container"> 
                     <h2 class="footer-title">Why Learn With Us?</h2>
                     <div class="features-grid">
                         <div class="feature-card">
@@ -777,11 +785,9 @@
             </div>
         </div>
 
-        <!-- GLOBAL FOOTER -->
         <footer class="footer" id="site-footer">
             <div class="footer-container">
-                <!-- Global Discord Section -->
-                <div class="discord-join-section" id="contact"> <!-- ID for nav link -->
+                <div class="discord-join-section" id="contact"> 
                     <h2 class="discord-title">Join Our Community</h2>
                     <p class="discord-description">Connect with fellow learners, ask questions, and share your progress on our Discord server!</p>
                     <a href="https://discord.gg/YOUR_INVITE_CODE" target="_blank" class="btn discord-btn">
@@ -789,7 +795,6 @@
                         Join Discord
                     </a>
                 </div>
-                <!-- Global Footer Bottom -->
                 <div class="footer-bottom">
                     <span class="footer-prompt">> PrivitjayAcademy_</span>
                     <span class="footer-copyright">© 2025 Privitjay Academy. Empowering the next gen.</span>
@@ -868,10 +873,9 @@
         if (coursesFound || targetCategory === 'all') {
              const coursesSection = document.getElementById('courses');
              if (coursesSection && document.getElementById('home-page').classList.contains('active-page')) {
-                 // Scroll a bit higher than the section to account for fixed navbar
                  const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 60;
                  const elementPosition = coursesSection.getBoundingClientRect().top + window.pageYOffset;
-                 const offsetPosition = elementPosition - navbarHeight - 20; // 20px extra padding
+                 const offsetPosition = elementPosition - navbarHeight - 20; 
 
                  window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
              }
@@ -896,11 +900,10 @@
 
             if (pageId === pageIdToShow) {
                 pageElement.classList.add('active-page');
-                // display style is now handled by .active-page CSS for home/about flex
                 if (pageId === 'learning-interface') {
                      pageElement.style.display = 'grid';
                 } else {
-                     pageElement.style.display = 'flex'; // For home and about flex container
+                     pageElement.style.display = 'flex'; 
                 }
                 pageElement.offsetHeight;
                 pageElement.style.opacity = 1;
@@ -927,25 +930,26 @@
 
     function showHomePageAndScroll(sectionId = 'home-hero', activeLink = 'home-link') {
         showPage('home-page', activeLink);
-        filterCoursesByCategory('all');
+        // filterCoursesByCategory('all'); // This might cause scroll jump if called before targetElement scroll
         setTimeout(() => {
             const targetElement = document.getElementById(sectionId);
             if (targetElement) {
-                if (sectionId === 'home-hero' || sectionId === 'contact') { // For top hero or bottom contact
-                    const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 60;
-                    let topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                    if (sectionId === 'home-hero') topPos = 0; // scroll to very top for hero
-                    window.scrollTo({ top: topPos , behavior: 'smooth'});
-
-                } else { // For mid-page sections like 'courses'
-                     const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 60;
-                     const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                     const offsetPosition = elementPosition - navbarHeight - 20; // 20px extra padding
-                     window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 60;
+                let topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                if (sectionId === 'home-hero') {
+                    topPos = 0; 
+                } else if (sectionId === 'courses') {
+                    topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20; // Extra padding for courses
+                } else if (sectionId === 'contact') {
+                    // Make sure footer is visible
+                    topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
                 }
-
+                window.scrollTo({ top: topPos , behavior: 'smooth'});
             } else {
                  window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            if(sectionId === 'courses' || sectionId === 'home-hero'){ // Only filter if relevant to course display
+                filterCoursesByCategory('all');
             }
         }, 50);
     }
@@ -984,8 +988,8 @@
         });
       });
 
-      showHomePageAndScroll('home-hero', 'home-link'); 
-      filterCoursesByCategory('all');
+      showHomePageAndScroll('home-hero', 'home-link');
+      // filterCoursesByCategory('all'); // Moved into showHomePageAndScroll to avoid scroll conflicts
     });
   </script>
 </body>
