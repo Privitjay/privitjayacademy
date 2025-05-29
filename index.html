@@ -65,16 +65,42 @@
         .nav-links a {
             color: #fff;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s; /* Added transform for subtle effects */
+            padding-bottom: 8px; /* Space for underline */
         }
 
         .nav-links a:hover {
             color: #00d4ff;
+            transform: translateY(-2px);
         }
 
+        /* Active Nav Link Style */
+        .nav-links a.nav-active {
+            color: #00d4ff;
+            font-weight: bold;
+            position: relative;
+        }
+        .nav-links a.nav-active::after {
+            content: '';
+            position: absolute;
+            width: 70%; /* Adjust width of underline */
+            height: 2px;
+            background-color: #00d4ff;
+            bottom: 0px; /* Position underline closer */
+            left: 15%; /* Center underline */
+            animation: navLinkActiveAnim 0.3s ease-out;
+        }
+
+        @keyframes navLinkActiveAnim {
+            from { width: 0; opacity: 0; }
+            to { width: 70%; opacity: 1; }
+        }
+
+
         .main-content {
-            margin-top: 80px; 
-            min-height: 100vh;
+            margin-top: 70px; /* Adjusted for navbar padding */
+            min-height: calc(100vh - 70px);
+            position: relative; /* For positioning child elements like back buttons */
         }
 
         .hero-section {
@@ -283,7 +309,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .terminal-container:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(0, 255, 136, 0.2);
@@ -338,7 +363,6 @@
             margin-top: 0.2rem;
         }
 
-        /* Browse Categories Section Styles */
         .browse-categories-section {
             max-width: 1200px;
             margin: 3rem auto; 
@@ -396,32 +420,32 @@
 
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Reduced minmax */
-            gap: 1rem; /* Reduced gap */
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
+            gap: 1rem; 
         }
 
         .category-item {
-            background: rgba(30, 30, 45, 0.5); /* Darker, more terminal-like bg */
-            border: 1px solid rgba(100, 100, 120, 0.3); /* Subtler border */
+            background: rgba(30, 30, 45, 0.5); 
+            border: 1px solid rgba(100, 100, 120, 0.3); 
             border-radius: 6px; 
-            padding: 0.8rem; /* Significantly reduced padding */
-            text-align: left; /* More terminal-like */
+            padding: 0.8rem; 
+            text-align: left; 
             font-family: 'Courier New', monospace;
             cursor: pointer;
             transition: all 0.2s ease; 
             color: #00d4ff; 
             position: relative;
-            overflow: hidden; /* For ::after shine effect */
+            overflow: hidden; 
         }
         
-        .category-item::after { /* Shine/Scanline effect on hover */
+        .category-item::after { 
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.05), transparent); /* Subtler shine */
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.05), transparent); 
             transition: left 0.4s ease-out;
         }
 
@@ -437,14 +461,14 @@
         }
 
         .category-item .category-name {
-            font-size: 0.9rem; /* Reduced font size */
+            font-size: 0.9rem; 
             font-weight: bold;
             display: block; 
             margin-bottom: 0.3rem; 
             color: #e0e0e0; 
-            line-height: 1.3; /* Adjusted line-height */
+            line-height: 1.3; 
         }
-        .category-item .category-name::before { /* Terminal prompt */
+        .category-item .category-name::before { 
             content: '~ $ '; 
             color: #00d4ff;
             font-size: 0.9em; 
@@ -458,13 +482,12 @@
         }
 
         .category-item .category-examples {
-            font-size: 0.7rem; /* Reduced font size */
+            font-size: 0.7rem; 
             color: #999; 
             line-height: 1.3;
             display: block; 
-            margin-left: 22px; /* Indent examples under the prompt */
+            margin-left: 22px; 
         }
-
 
         .course-grid {
             max-width: 1200px;
@@ -485,23 +508,6 @@
             position: relative;
             overflow: hidden;
         }
-
-        .course-card::before { /* Old shine effect, can remove if category-item::after is enough */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .course-card:hover::before {
-            left: 100%;
-        }
-
-
         .course-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
@@ -544,35 +550,24 @@
             color: #fff;
             box-shadow: 0 2px 10px rgba(81, 207, 102, 0.3);
         }
-
         .level-intermediate {
             background: linear-gradient(45deg, #ffd43b, #fab005);
             color: #000;
             box-shadow: 0 2px 10px rgba(255, 212, 59, 0.3);
         }
-
         .level-advanced {
             background: linear-gradient(45deg, #ff6b6b, #e03131);
             color: #fff;
             box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
         }
-
         .level-expert {
             background: linear-gradient(45deg, #7c3aed, #5b21b6);
             color: #fff;
             box-shadow: 0 2px 10px rgba(124, 58, 237, 0.3);
         }
 
-        .level-icon {
-            font-size: 1rem;
-        }
-
-        .course-card p {
-            opacity: 0.8;
-            line-height: 1.6;
-            position: relative;
-            z-index: 1;
-        }
+        .level-icon { font-size: 1rem; }
+        .course-card p { opacity: 0.8; line-height: 1.6; position: relative; z-index: 1; }
 
         .btn {
             background: linear-gradient(45deg, #00d4ff, #7c3aed);
@@ -589,303 +584,243 @@
             text-decoration: none; 
             display: inline-block; 
         }
-
         .btn:hover {
             transform: scale(1.05);
             box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
         }
 
-        .learning-interface {
-            display: none;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            min-height: calc(100vh - 80px);
-            opacity: 0; 
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .lesson-panel {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .terminal-panel {
-            background: #1a1a1a;
-            border-radius: 15px;
-            border: 1px solid #333;
-            overflow: hidden;
-        }
-        
-        .terminal-panel .terminal-header {
-            background: #2d2d2d;
-            padding: 0.5rem 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            border-bottom: 1px solid #333; 
-        }
-
-        .terminal-panel .terminal-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-        .dot-red { background: #ff5f56; }
-        .dot-yellow { background: #ffbd2e; }
-        .dot-green { background: #27ca3f; }
-
-
-        .terminal-title {
-            margin-left: 1rem;
-            color: #ccc;
-            font-size: 0.9rem;
-        }
-
-        .terminal-body {
-            padding: 1rem;
-            height: 500px;
-            overflow-y: auto;
-            font-family: 'Courier New', monospace;
-            background: #000;
-        }
-
-        .terminal-line {
-            color: #00ff00;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .prompt { 
-            color: #00d4ff;
-            margin-right: 0.5rem;
-        }
-
-        .terminal-input {
-            background: transparent;
-            border: none;
-            color: #00ff00;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            outline: none;
-            flex: 1;
-        }
-
-        .output {
-            color: #fff;
-            margin: 0.5rem 0;
-            white-space: pre-wrap;
-        }
-
-        .error {
-            color: #ff6b6b;
-        }
-
-        .success {
-            color: #51cf66;
-        }
-
-        .lesson-content h2 {
-            color: #00d4ff;
-            margin-bottom: 1rem;
-        }
-
-        .lesson-content h3 {
-            color: #7c3aed;
-            margin: 1.5rem 0 0.5rem 0;
-        }
-
-        .lesson-content code {
-            background: rgba(0, 212, 255, 0.1);
-            padding: 2px 6px;
-            border-radius: 4px;
-            color: #00d4ff;
-        }
-
-        .exercise-box {
-            background: rgba(124, 58, 237, 0.1);
-            border-left: 4px solid #7c3aed;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .back-btn {
-            position: fixed;
-            top: 100px;
-            left: 2rem;
-            z-index: 999;
-        }
-
-        .footer {
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1a1a 100%);
-            padding: 4rem 0 2rem 0;
-            margin-top: 4rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .footer-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            background: linear-gradient(45deg, #00d4ff, #7c3aed);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: bold;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 49%, rgba(0, 212, 255, 0.02) 50%, transparent 51%);
+        /* Page containers for SPA-like behavior */
+        #home-page, #about-page, #learning-interface {
+            display: none; /* Initially hidden, JS will manage visibility */
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease-in-out;
         }
-
-        .feature-card:hover::before {
+        #home-page.active-page, 
+        #about-page.active-page,
+        #learning-interface.active-page {
+            display: block; /* Or grid for learning-interface */
             opacity: 1;
         }
+        #learning-interface.active-page { display: grid; }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 212, 255, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+
+        .lesson-panel { background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .terminal-panel { background: #1a1a1a; border-radius: 15px; border: 1px solid #333; overflow: hidden; }
+        .terminal-panel .terminal-header { background: #2d2d2d; padding: 0.5rem 1rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid #333; }
+        .terminal-panel .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot-red { background: #ff5f56; } .dot-yellow { background: #ffbd2e; } .dot-green { background: #27ca3f; }
+        .terminal-title { margin-left: 1rem; color: #ccc; font-size: 0.9rem; }
+        .terminal-body { padding: 1rem; height: 500px; overflow-y: auto; font-family: 'Courier New', monospace; background: #000; }
+        .terminal-line { color: #00ff00; margin-bottom: 0.5rem; display: flex; align-items: center; }
+        .prompt { color: #00d4ff; margin-right: 0.5rem; }
+        .terminal-input { background: transparent; border: none; color: #00ff00; font-family: 'Courier New', monospace; font-size: 14px; outline: none; flex: 1; }
+        .output { color: #fff; margin: 0.5rem 0; white-space: pre-wrap; }
+        .error { color: #ff6b6b; } .success { color: #51cf66; }
+        .lesson-content h2 { color: #00d4ff; margin-bottom: 1rem; }
+        .lesson-content h3 { color: #7c3aed; margin: 1.5rem 0 0.5rem 0; }
+        .lesson-content code { background: rgba(0, 212, 255, 0.1); padding: 2px 6px; border-radius: 4px; color: #00d4ff; }
+        .exercise-box { background: rgba(124, 58, 237, 0.1); border-left: 4px solid #7c3aed; padding: 1rem; margin: 1rem 0; border-radius: 0 8px 8px 0; }
+
+        .back-btn { /* For Learning Interface */
+            position: fixed;
+            top: 100px; 
+            left: 2rem;
+            z-index: 1001;
         }
 
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #00d4ff, #7c3aed);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: block;
-        }
 
-        .feature-card h3 {
+        /* About Page Specific Styles */
+        .back-to-academy-btn { /* For About Page */
+            position: fixed;
+            top: 100px; 
+            right: 2rem;
+            z-index: 1001; 
+            background: rgba(0, 212, 255, 0.2);
+            border: 1px solid #00d4ff;
             color: #00d4ff;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+        }
+        .back-to-academy-btn:hover {
+            background: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
         }
 
-        .feature-card p {
-            color: #ccc;
-            line-height: 1.6;
-            position: relative;
-            z-index: 1;
+        #about-page {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto; /* Will be overridden for active-page */
+            color: #e0e0e0;
+            /* opacity & transition handled by .active-page */
         }
 
-        .discord-join-section {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: rgba(10, 14, 39, 0.85); 
+        .about-page-section {
+            margin-bottom: 3rem; /* Consistent spacing */
+            padding: 1.5rem; /* Slightly reduced padding for sections */
+            background: rgba(255, 255, 255, 0.02);
             border-radius: 15px;
-            margin: 4rem auto; 
-            max-width: 800px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .discord-title {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            color: #00d4ff;
+        .about-header-section h1 {
+            font-size: 2.8rem;
             font-family: 'Courier New', monospace;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 1.5rem;
         }
+        .about-header-section h1 .privit { color: #00d4ff; }
+        .about-header-section h1 .academy { color: #7c3aed; }
 
-        .discord-description {
-            color: #ccc;
-            font-size: 1.1rem;
-            line-height: 1.6;
+        .about-intro {
+            font-size: 1.1rem; /* Slightly reduced */
+            line-height: 1.7;
+            text-align: center;
             margin-bottom: 2rem;
-            max-width: 600px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .discord-btn {
-            padding: 14px 28px;
-            font-size: 1rem;
-        }
-
-        .discord-btn svg { 
-            vertical-align: middle;
-            margin-right: 8px;
-            width: 24px; 
-            height: 24px; 
-        }
-
-
-        .footer-bottom {
+        .about-header-section h3 { /* For "Our Goal" */
+            font-size: 1.6rem; /* Reduced */
+            color: #00d4ff;
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #888;
+            margin-top: 2rem; /* Reduced */
+            margin-bottom: 1rem;
         }
+        .about-header-section p { /* Paragraphs under "Our Goal" */
+            font-size: 1rem; /* Reduced */
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+
+        .mission-approach-section h2 { /* Shared "Our Mission", "Learning Approach" */
+            font-size: 1.8rem; /* Reduced */
+            color: #00d4ff;
+            margin-bottom: 1.5rem;
+            text-align: center; /* Center section titles */
+        }
+
+        .mission-approach-container {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start; 
+        }
+
+        .mission-column, .approach-column {
+            flex: 1;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+        }
+        .mission-column h2, .approach-column h2 { /* Specific H2s inside columns */
+            text-align: left;
+            font-size: 1.4rem; /* Further reduced for column titles */
+            color: #fff; /* Differentiate from main section titles */
+        }
+        .mission-column p, .approach-column p, .approach-column li {
+             font-size: 0.95rem; line-height: 1.6;
+        }
+
+        .mission-image {
+            width: 100%;
+            max-width: 300px; 
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid rgba(0, 212, 255, 0.5);
+        }
+
+        .approach-column ul { list-style: none; padding-left: 0; }
+        .approach-column li { margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; }
+        .approach-column li::before { content: '⚡'; color: #00ff88; position: absolute; left: 0; font-size: 1.1rem; }
+        .approach-column li strong { color: #00d4ff; }
+
+
+        .team-section h2 {
+            font-size: 2rem; /* Reduced */
+            color: #00d4ff;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .founder-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem; /* Reduced */
+            max-width: 400px; /* Reduced */
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25); /* Slightly softer shadow */
+        }
+
+        .founder-image {
+            width: 120px; /* Reduced */
+            height: 120px; /* Reduced */
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid #7c3aed;
+        }
+
+        .founder-card h3 {
+            font-size: 1.4rem; /* Reduced */
+            color: #fff;
+            margin-bottom: 0.3rem;
+        }
+
+        .founder-position {
+            font-size: 0.9rem; /* Reduced */
+            color: #00ff88; 
+            font-family: 'Courier New', monospace;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .founder-bio { font-size: 0.9rem; line-height: 1.6; color: #ccc; }
+
+
+        .footer { background: linear-gradient(135deg, #0a0e27 0%, #1a1a1a 100%); padding: 4rem 0 2rem 0; margin-top: 4rem; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .footer-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; background: linear-gradient(45deg, #00d4ff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+        .feature-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 15px; padding: 2rem; text-align: center; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, transparent 49%, rgba(0, 212, 255, 0.02) 50%, transparent 51%); opacity: 0; transition: opacity 0.3s ease; }
+        .feature-card:hover::before { opacity: 1; }
+        .feature-card:hover { transform: translateY(-5px); border-color: rgba(0, 212, 255, 0.3); box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1); }
+        .feature-icon { font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(45deg, #00d4ff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; }
+        .feature-card h3 { color: #00d4ff; margin-bottom: 1rem; font-size: 1.3rem; }
+        .feature-card p { color: #ccc; line-height: 1.6; position: relative; z-index: 1; }
+        .discord-join-section { text-align: center; padding: 3rem 2rem; background: rgba(10, 14, 39, 0.85); border-radius: 15px; margin: 4rem auto; max-width: 800px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
+        .discord-title { font-size: 2.2rem; margin-bottom: 1rem; color: #00d4ff; font-family: 'Courier New', monospace; text-transform: uppercase; letter-spacing: 2px; }
+        .discord-description { color: #ccc; font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .discord-btn { padding: 14px 28px; font-size: 1rem; }
+        .discord-btn svg { vertical-align: middle; margin-right: 8px; width: 24px; height: 24px; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); color: #888; }
 
         @media (max-width: 768px) {
-            .hero-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            .footer-title {
-                font-size: 2rem;
-            }
-            .discord-title {
-                font-size: 1.8rem;
-            }
-            .section-title {
-                font-size: 1.8rem;
-            }
-            /* Category items are already small, these ensure they don't get tinier unless needed */
-            .category-item .category-name {
-                font-size: 0.85rem; /* Slightly smaller on mobile if needed */
-            }
-            .category-item .category-examples {
-                font-size: 0.65rem; /* Slightly smaller on mobile if needed */
-                margin-left: 18px; /* Adjust indent for smaller prompt */
-            }
-             .course-grid {
-                padding: 1rem; 
-            }
-            .category-grid {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Even smaller min for mobile */
-                gap: 0.8rem;
-            }
+            .hero-actions { flex-direction: column; align-items: center; }
+            .footer-title { font-size: 2rem; }
+            .discord-title { font-size: 1.8rem; }
+            .section-title { font-size: 1.8rem; }
+            .category-item .category-name { font-size: 0.85rem; }
+            .category-item .category-examples { font-size: 0.65rem; margin-left: 18px; }
+            .course-grid { padding: 1rem; }
+            .category-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; }
+
+            /* About Page Responsive */
+            .mission-approach-container { flex-direction: column; }
+            .about-header-section h1 { font-size: 2.2rem; }
+            .about-intro { font-size: 1rem; }
+            .mission-column h2, .approach-column h2 { font-size: 1.4rem; }
+            .founder-card { max-width: 90%; }
+            .back-to-academy-btn { top: 80px; padding: 8px 12px; font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -897,10 +832,10 @@
                 <span class="logo-text"> ./</span>
             </div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#courses">Courses</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" id="home-link">Home</a></li>
+                <li><a href="#courses" id="courses-link">Courses</a></li>
+                <li><a href="#about" id="about-link">About</a></li>
+                <li><a href="#contact" id="contact-link">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -927,7 +862,7 @@
                 <p>Learn programming, Linux, networking, and more with hands-on interactive terminals</p>
                 
                 <div class="hero-actions">
-                    <div class="terminal-container" onclick="scrollToCourses()">
+                    <div class="terminal-container" onclick="showHomePageAndScroll('courses', 'courses-link')">
                         <div class="terminal-header"> 
                             <div class="terminal-dot red"></div>
                             <div class="terminal-dot yellow"></div>
@@ -940,7 +875,7 @@
                         </div>
                     </div>
 
-                    <div class="terminal-container" onclick="scrollToAbout()">
+                    <div class="terminal-container" onclick="showAboutPage()">
                         <div class="terminal-header"> 
                             <div class="terminal-dot red"></div>
                             <div class="terminal-dot yellow"></div>
@@ -1023,58 +958,110 @@
                     <button class="btn">Start Learning</button>
                 </div>
             </div>
+             <footer class="footer" id="footer-home"> <!-- Unique ID for home page footer if needed, or just use general -->
+                <div class="footer-container">
+                    <h2 class="footer-title">Why Learn With Us?</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">💻</div>
+                            <h3>Hands-On Experience</h3>
+                            <p>Learn by doing with real interactive terminals and simulators. No theoretical fluff - just practical, hands-on coding and system administration experience.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🎯</div>
+                            <h3>Real-World Projects</h3>
+                            <p>Work on actual projects that mirror industry challenges. Build your portfolio while learning essential skills that employers are looking for.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🔧</div>
+                            <h3>Interactive Learning</h3>
+                            <p>Our built-in terminals and simulators let you practice immediately. No need to set up environments - start coding and experimenting right away.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🌟</div>
+                            <h3>24/7 Access</h3>
+                            <p>Learn at your own pace, anytime, anywhere. Our platform is always available with instant feedback and guidance when you need it most.</p>
+                        </div>
+                    </div>
+
+                    <div class="discord-join-section" id="contact"> 
+                        <h2 class="discord-title">Join Our Community</h2>
+                        <p class="discord-description">Connect with fellow learners, ask questions, and share your progress on our Discord server!</p>
+                        <a href="https://discord.gg/YOUR_INVITE_CODE" target="_blank" class="btn discord-btn"> 
+                            <svg aria-hidden="true" role="img" viewBox="0 0 24 24"><path fill="currentColor" d="M20.317 4.36981C18.7915 3.09531 16.9067 2.15581 14.8317 1.63081C14.6825 1.58081 14.5267 1.68248 14.4908 1.83081L14.2075 3.04498C12.9608 2.81665 11.6558 2.81665 10.4092 3.04498L10.1258 1.83081C10.0892 1.68248 9.93416 1.58081 9.78416 1.63081C7.70833 2.15581 5.82416 3.09531 4.29916 4.36981C4.29916 4.36981 -0.200838 9.68398 0.00166183 14.9065C0.00166183 14.9065 1.89583 17.9473 6.06916 18.4515C6.06916 18.4515 6.61416 17.4481 6.9025 16.9698C5.3225 16.2331 4.15833 14.9481 4.15833 14.9481C4.15833 14.9481 4.22166 14.8905 4.3025 14.8098C6.695 16.1023 9.4475 16.3731 12.0017 16.1365C12.0017 16.1365 12.0017 16.1365 12.0017 16.1365C14.5558 16.3731 17.3083 16.1023 19.7008 14.8098C19.7808 14.8905 19.8442 14.9481 19.8442 14.9481C19.8442 14.9481 18.6808 16.2331 17.1008 16.9698C17.3892 17.4481 17.9333 18.4515 17.9333 18.4515C22.1058 17.9473 24.0017 14.9065 24.0017 14.9065C24.2042 9.68398 20.317 4.36981 20.317 4.36981ZM8.02083 12.5998C7.02416 12.5998 6.22416 11.7998 6.22416 10.7998C6.22416 9.80065 7.02416 8.99981 8.02083 8.99981C9.0175 8.99981 9.8175 9.80065 9.8175 10.7998C9.8175 11.7998 9.0175 12.5998 8.02083 12.5998ZM15.9825 12.5998C14.9858 12.5998 14.1858 11.7998 14.1858 10.7998C14.1858 9.80065 14.9858 8.99981 15.9825 8.99981C16.9792 8.99981 17.7792 9.80065 17.7792 10.7998C17.7792 11.7998 16.9792 12.5998 15.9825 12.5998Z"></path></svg>
+                            Join Discord
+                        </a>
+                    </div>
+
+                    <div class="footer-bottom">
+                        <p>© 2024 Privitjay Academy. Empowering the next generation of tech professionals.</p>
+                    </div>
+                </div>
+            </footer>
         </div>
 
-        <footer class="footer" id="about">
-            <div class="footer-container">
-                <h2 class="footer-title">Why Learn With Us?</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">💻</div>
-                        <h3>Hands-On Experience</h3>
-                        <p>Learn by doing with real interactive terminals and simulators. No theoretical fluff - just practical, hands-on coding and system administration experience.</p>
+        <div id="about-page">
+            <button class="btn back-to-academy-btn" onclick="showHomePageAndScroll('home', 'home-link')">← Back to Academy</button>
+
+            <section class="about-page-section about-header-section" id="about"> <!-- ID for direct linking if needed -->
+                <h1>About <span class="privit">PrivitJay</span><span class="academy">Academy</span></h1>
+                <p class="about-intro">
+                    PrivitJayAcademy is your gateway to mastering the world of technology through practical, hands-on learning. We believe that the best way to learn is by doing, and our platform is built around this core philosophy.
+                </p>
+                <h3>Our Goal</h3>
+                <p>
+                    Our primary goal is to empower individuals with the skills and confidence needed to excel in the tech industry. We aim to demystify complex topics like Linux administration, programming, and network security, making them accessible and engaging for everyone, from absolute beginners to aspiring experts.
+                </p>
+            </section>
+
+            <section class="about-page-section mission-approach-section">
+                <div class="mission-approach-container">
+                    <div class="mission-column">
+                        <h2>Our Mission</h2>
+                        <img src="https://via.placeholder.com/300x180/00d4ff/0a0e27?text=Interactive+Learning" alt="Our Mission Graphic" class="mission-image">
+                        <p>To provide an immersive and interactive learning environment where students can gain real-world technical skills, build impressive projects, and cultivate a passion for lifelong learning in technology.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3>Real-World Projects</h3>
-                        <p>Work on actual projects that mirror industry challenges. Build your portfolio while learning essential skills that employers are looking for.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔧</div>
-                        <h3>Interactive Learning</h3>
-                        <p>Our built-in terminals and simulators let you practice immediately. No need to set up environments - start coding and experimenting right away.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🌟</div>
-                        <h3>24/7 Access</h3>
-                        <p>Learn at your own pace, anytime, anywhere. Our platform is always available with instant feedback and guidance when you need it most.</p>
+                    <div class="approach-column">
+                        <h2>Learning Approach</h2>
+                        <p>We champion a "learn by doing" methodology. Our courses are packed with:</p>
+                        <ul>
+                            <li><strong>Interactive Terminals:</strong> Practice commands and concepts in a simulated environment directly within your browser.</li>
+                            <li><strong>Real-World Scenarios:</strong> Tackle challenges that mirror problems faced by professionals in the field.</li>
+                            <li><strong>Project-Based Learning:</strong> Apply your knowledge by building tangible projects to showcase your skills.</li>
+                            <li><strong>Step-by-Step Guidance:</strong> Clear explanations and structured lessons to guide you through complex topics.</li>
+                            <li><strong>Instant Feedback:</strong> Our system provides immediate feedback on your exercises, helping you learn and correct mistakes efficiently.</li>
+                        </ul>
                     </div>
                 </div>
+            </section>
 
-                <div class="discord-join-section" id="contact"> 
-                    <h2 class="discord-title">Join Our Community</h2>
-                    <p class="discord-description">Connect with fellow learners, ask questions, and share your progress on our Discord server!</p>
-                    <a href="https://discord.gg/YOUR_INVITE_CODE" target="_blank" class="btn discord-btn"> 
-                        <svg aria-hidden="true" role="img" viewBox="0 0 24 24"><path fill="currentColor" d="M20.317 4.36981C18.7915 3.09531 16.9067 2.15581 14.8317 1.63081C14.6825 1.58081 14.5267 1.68248 14.4908 1.83081L14.2075 3.04498C12.9608 2.81665 11.6558 2.81665 10.4092 3.04498L10.1258 1.83081C10.0892 1.68248 9.93416 1.58081 9.78416 1.63081C7.70833 2.15581 5.82416 3.09531 4.29916 4.36981C4.29916 4.36981 -0.200838 9.68398 0.00166183 14.9065C0.00166183 14.9065 1.89583 17.9473 6.06916 18.4515C6.06916 18.4515 6.61416 17.4481 6.9025 16.9698C5.3225 16.2331 4.15833 14.9481 4.15833 14.9481C4.15833 14.9481 4.22166 14.8905 4.3025 14.8098C6.695 16.1023 9.4475 16.3731 12.0017 16.1365C12.0017 16.1365 12.0017 16.1365 12.0017 16.1365C14.5558 16.3731 17.3083 16.1023 19.7008 14.8098C19.7808 14.8905 19.8442 14.9481 19.8442 14.9481C19.8442 14.9481 18.6808 16.2331 17.1008 16.9698C17.3892 17.4481 17.9333 18.4515 17.9333 18.4515C22.1058 17.9473 24.0017 14.9065 24.0017 14.9065C24.2042 9.68398 20.317 4.36981 20.317 4.36981ZM8.02083 12.5998C7.02416 12.5998 6.22416 11.7998 6.22416 10.7998C6.22416 9.80065 7.02416 8.99981 8.02083 8.99981C9.0175 8.99981 9.8175 9.80065 9.8175 10.7998C9.8175 11.7998 9.0175 12.5998 8.02083 12.5998ZM15.9825 12.5998C14.9858 12.5998 14.1858 11.7998 14.1858 10.7998C14.1858 9.80065 14.9858 8.99981 15.9825 8.99981C16.9792 8.99981 17.7792 9.80065 17.7792 10.7998C17.7792 11.7998 16.9792 12.5998 15.9825 12.5998Z"></path></svg>
-                        Join Discord
-                    </a>
+            <section class="about-page-section team-section">
+                <h2>Meet the Team</h2>
+                <div class="founder-card">
+                    <img src="https://via.placeholder.com/120/7c3aed/FFFFFF?text=Founder" alt="Founder Photo" class="founder-image">
+                    <h3>Privit Jay</h3>
+                    <p class="founder-position">Founder & Lead Instructor</p>
+                    <p class="founder-bio">
+                        With a deep passion for cybersecurity, Linux, and open-source technologies, Privit Jay established the academy to share knowledge and make tech education more practical and accessible. Believing that hands-on experience is key, they designed the platform to bridge the gap between theoretical knowledge and practical application.
+                    </p>
                 </div>
-
-                <div class="footer-bottom">
-                    <p>© 2024 Privitjay Academy. Empowering the next generation of tech professionals.</p>
+            </section>
+            <footer class="footer"> <!-- Footer can be shared or specific -->
+                 <div class="footer-container">
+                    <div class="footer-bottom" style="border-top:none; padding-top:0;"> <!-- Simpler footer for about page -->
+                        <p>© 2024 Privitjay Academy. All Rights Reserved.</p>
+                    </div>
                 </div>
-            </div>
-        </footer>
+            </footer>
+        </div>
 
-        <div id="learning-interface" class="learning-interface">
-            <button class="btn back-btn" onclick="goHome()">← Back to Courses</button>
-            
+        <div id="learning-interface">
+            <button class="btn back-btn" onclick="goHomeFromLearning()">← Back to Courses</button>
             <div class="lesson-panel">
                 <div id="lesson-content" class="lesson-content">
                     <!-- Lesson content will be loaded here -->
                 </div>
             </div>
-
             <div class="terminal-panel">
                  <div class="terminal-header"> 
                     <div class="terminal-dot dot-red"></div>
@@ -1130,21 +1117,6 @@
         }, 3000);
       }
     }
-
-    function scrollToElement(elementId) {
-        const element = document.getElementById(elementId);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-
-    function scrollToCourses() {
-        scrollToElement('courses');
-    }
-
-    function scrollToAbout() {
-        scrollToElement('about');
-    }
     
     function filterCoursesByCategory(targetCategory) {
         console.log("Filtering courses by category:", targetCategory);
@@ -1156,17 +1128,17 @@
             const shouldShow = (targetCategory === 'all' || cardCategory === targetCategory);
             
             if (shouldShow) {
-                if (card.style.display === 'none' || card.style.opacity === '0') { // Only animate if hidden or hiding
+                if (card.style.display === 'none' || card.style.opacity === '0') { 
                     card.style.opacity = 0; 
                     card.style.display = 'block'; 
                     setTimeout(() => card.style.opacity = 1, 10); 
                 }
                 coursesFound = true;
             } else {
-                if (card.style.display !== 'none' && card.style.opacity !== '0') { // Only animate if visible or showing
+                if (card.style.display !== 'none' && card.style.opacity !== '0') { 
                     card.style.opacity = 0; 
                     setTimeout(() => card.style.display = 'none', 300); 
-                } else { // If already hidden, ensure it stays hidden
+                } else { 
                     card.style.display = 'none';
                     card.style.opacity = 0;
                 }
@@ -1175,23 +1147,82 @@
 
         if (coursesFound || targetCategory === 'all') {
              const coursesSection = document.getElementById('courses');
-             if (coursesSection) {
+             if (coursesSection && document.getElementById('home-page').classList.contains('active-page')) { // Only scroll if on home page
                  coursesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
              }
         } else {
             console.log("No courses found for category:", targetCategory);
-            // Optionally, display a "No courses found" message in the .course-grid
         }
+    }
+
+    function setActiveNavLink(activeLinkId) {
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.classList.remove('nav-active');
+        });
+        if (activeLinkId) {
+            const activeLink = document.getElementById(activeLinkId);
+            if (activeLink) {
+                activeLink.classList.add('nav-active');
+            }
+        }
+    }
+
+    function showPage(pageIdToShow, activeNavId) {
+        const pages = ['home-page', 'about-page', 'learning-interface'];
+        pages.forEach(pageId => {
+            const pageElement = document.getElementById(pageId);
+            if (pageId === pageIdToShow) {
+                pageElement.classList.add('active-page');
+                // If it's the learning interface, ensure its display is grid
+                if (pageId === 'learning-interface') {
+                    pageElement.style.display = 'grid';
+                } else {
+                     pageElement.style.display = 'block';
+                }
+                // Force reflow for opacity transition
+                pageElement.offsetHeight; 
+                pageElement.style.opacity = 1;
+            } else {
+                pageElement.classList.remove('active-page');
+                pageElement.style.opacity = 0;
+                // After transition, set display to none
+                setTimeout(() => {
+                    if (!pageElement.classList.contains('active-page')) {
+                         pageElement.style.display = 'none';
+                    }
+                }, 400); // Match CSS transition time
+            }
+        });
+        setActiveNavLink(activeNavId);
+        if (pageIdToShow !== 'learning-interface') { // Don't scroll for learning interface
+             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+
+
+    function showHomePageAndScroll(sectionId = 'home', activeLink = 'home-link') {
+        showPage('home-page', activeLink);
+        filterCoursesByCategory('all'); // Show all courses when navigating to home sections
+
+        // Delay scroll until after page transition might have started
+        setTimeout(() => {
+            const targetElement = document.getElementById(sectionId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                 window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }, 50); // Small delay for page to become visible
+    }
+    
+    function showAboutPage() {
+        showPage('about-page', 'about-link');
     }
 
 
     function startCourse(courseName) {
         console.log("Starting course:", courseName);
-        document.getElementById('home-page').style.display = 'none';
-        const learningInterface = document.getElementById('learning-interface');
-        learningInterface.style.display = 'grid';
-        learningInterface.offsetHeight; 
-        learningInterface.style.opacity = 1; 
+        showPage('learning-interface', null); // No nav link active
 
         const lessonContentEl = document.getElementById('lesson-content');
         lessonContentEl.innerHTML = `<h2>Welcome to ${courseName.charAt(0).toUpperCase() + courseName.slice(1)}</h2><p>Loading lesson...</p>
@@ -1205,39 +1236,35 @@
         <button class="btn" onclick="alert('Next lesson coming soon!')">Next Lesson</button>`;
     }
 
-    function goHome() {
-        console.log("Going back to home/courses");
-        const learningInterface = document.getElementById('learning-interface');
-        learningInterface.style.opacity = 0; 
-        setTimeout(() => {
-            learningInterface.style.display = 'none';
-            document.getElementById('home-page').style.display = 'block'; 
-            filterCoursesByCategory('all'); 
-            window.scrollTo({ top: 0, behavior: 'smooth' }); 
-        }, 300); 
+    function goHomeFromLearning() {
+        console.log("Going back to home/courses from learning interface");
+        showHomePageAndScroll('courses', 'courses-link'); 
     }
 
 
     document.addEventListener("DOMContentLoaded", () => {
-      setTimeout(typeMessage, 1000);
+      if (typingText) setTimeout(typeMessage, 1000); // Check if typingText exists
 
-      document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function (e) {
             e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                if (targetId === '#courses') {
-                    filterCoursesByCategory('all');
-                }
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
+            const linkId = this.getAttribute('id');
+
+            if (linkId === 'home-link') {
+                showHomePageAndScroll('home', 'home-link');
+            } else if (linkId === 'courses-link') {
+                showHomePageAndScroll('courses', 'courses-link');
+            } else if (linkId === 'about-link') {
+                showAboutPage();
+            } else if (linkId === 'contact-link') {
+                showHomePageAndScroll('contact', 'contact-link');
             }
         });
       });
-      // Initially show all courses
-      filterCoursesByCategory('all');
+      
+      // Initially show home page and all courses
+      showHomePageAndScroll('home', 'home-link');
+      filterCoursesByCategory('all'); 
     });
   </script>
 </body>
