@@ -97,23 +97,22 @@
 
         .main-content {
             margin-top: 60px; /* Adjusted for navbar new height */
-            display: flex; /* Added for footer positioning */
-            flex-direction: column; /* Added for footer positioning */
-            min-height: calc(100vh - 60px); /* Ensures .main-content fills at least viewport height below navbar */
+            display: flex; 
+            flex-direction: column; 
+            min-height: calc(100vh - 60px); 
             position: relative;
         }
 
-        /* Active page div should grow to fill available space in .main-content */
         #home-page.active-page,
         #about-page.active-page,
         #learning-interface.active-page {
-            flex-grow: 1; /* Make the page content take up available vertical space */
+            flex-grow: 1; 
         }
 
 
         .hero-section {
             text-align: center;
-            padding: 3rem 1rem; /* Adjusted padding */
+            padding: 3rem 1rem; 
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             position: relative;
             overflow: hidden;
@@ -139,25 +138,25 @@
         }
 
         .hero-title {
-            font-size: 2.8rem; /* Adjusted for mobile */
+            font-size: 2.8rem; 
             margin-bottom: 1.5rem;
             position: relative;
             z-index: 2;
             font-family: 'Courier New', monospace;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 2px; /* Slightly reduced */
+            letter-spacing: 2px; 
         }
 
         .hero-title .privit { color: #00d4ff; text-shadow: 0 0 15px rgba(0, 212, 255, 0.5); }
         .hero-title .academy { color: #7c3aed; text-shadow: 0 0 15px rgba(124, 58, 237, 0.5); }
 
         .cyber-subtitle {
-            font-size: 1rem; /* Adjusted */
+            font-size: 1rem; 
             color: #00ff88;
             font-family: 'Courier New', monospace;
             text-transform: uppercase;
-            letter-spacing: 1.5px; /* Adjusted */
+            letter-spacing: 1.5px; 
             margin-bottom: 1rem;
             opacity: 0.8;
             animation: flicker 2s infinite alternate;
@@ -173,23 +172,23 @@
         @keyframes glitch-2 { 0%, 20%, 21%, 62%, 63%, 99%, 100% { transform: translate(0); } 21%, 62% { transform: translate(2px, -2px); } }
 
         .typing-terminal {
-            background: #000; border-radius: 8px; padding: 1rem; margin: 1.5rem auto; max-width: 90%; /* More responsive */
+            background: #000; border-radius: 8px; padding: 1rem; margin: 1.5rem auto; max-width: 90%; 
             font-family: 'Courier New', monospace; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); border: 1px solid #333;
             position: relative; z-index: 2;
         }
         .typing-terminal-header { display: flex; align-items: center; margin-bottom: 0.8rem; padding-bottom: 0.4rem; border-bottom: 1px solid #333; }
-        .typing-dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; } /* Smaller dots */
+        .typing-dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; } 
         .typing-dot.red { background: #ff5f56; } .typing-dot.yellow { background: #ffbd2e; } .typing-dot.green { background: #27ca3f; }
-        .typing-content { color: #00ff00; font-size: 1rem; line-height: 1.5; } /* Adjusted */
+        .typing-content { color: #00ff00; font-size: 1rem; line-height: 1.5; } 
         .typing-prompt { color: #00d4ff; } .typing-text { display: inline-block; }
-        .cursor { display: inline-block; background: #00ff00; animation: blink 1s infinite; width: 2px; height: 1.1em; margin-left: 2px; } /* Adjusted height */
+        .cursor { display: inline-block; background: #00ff00; animation: blink 1s infinite; width: 2px; height: 1.1em; margin-left: 2px; } 
         @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
         @keyframes typing { from { width: 0; } to { width: 100%; } }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .hero-section p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; position: relative; z-index: 2; } /* Adjusted */
+        .hero-section p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; position: relative; z-index: 2; } 
 
-        .hero-actions { display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; position: relative; z-index: 2; flex-wrap: wrap; } /* Added flex-wrap */
+        .hero-actions { display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; position: relative; z-index: 2; flex-wrap: wrap; } 
 
         .terminal-container {
             background: #000; border-radius: 8px; font-family: 'Courier New', monospace;
@@ -205,14 +204,14 @@
         .hero-actions .terminal-header {
             display: flex; align-items: center; margin-bottom: 0.5rem; padding-bottom: 0.25rem; border-bottom: 1px solid #333;
         }
-        .hero-actions .terminal-dot { width: 5px; height: 5px; border-radius: 50%; margin-right: 3px; } /* Further reduced */
-        .hero-actions .terminal-content { color: #00ff00; font-size: 0.7rem; line-height: 1.25; } /* Further reduced */
+        .hero-actions .terminal-dot { width: 5px; height: 5px; border-radius: 50%; margin-right: 3px; } 
+        .hero-actions .terminal-content { color: #00ff00; font-size: 0.7rem; line-height: 1.25; } 
         .hero-actions .terminal-prompt { color: #00d4ff; }
-        .hero-actions .terminal-action { color: #fff; margin-top: 0.25rem; font-weight: bold; font-size: 0.8rem; } /* Further reduced */
-        .hero-actions .terminal-description { color: #888; font-size: 0.6rem; margin-top: 0.15rem; } /* Further reduced */
+        .hero-actions .terminal-action { color: #fff; margin-top: 0.25rem; font-weight: bold; font-size: 0.8rem; } 
+        .hero-actions .terminal-description { color: #888; font-size: 0.6rem; margin-top: 0.15rem; } 
 
-        .browse-categories-section { max-width: 1200px; margin: 2.5rem auto; padding: 0 1rem; text-align: center; } /* Adjusted */
-        .section-title-container { margin-bottom: 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; } /* Adjusted */
+        .browse-categories-section { max-width: 1200px; margin: 2.5rem auto; padding: 0 1rem; text-align: center; } 
+        .section-title-container { margin-bottom: 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; } 
 
         .section-title {
             font-size: 2rem; font-family: 'Courier New', monospace; color: #00d4ff;
@@ -224,13 +223,13 @@
             width: 50%; height: 2.5px; background: linear-gradient(90deg, #00d4ff, #7c3aed); border-radius: 2px;
         }
 
-        .btn-small { padding: 7px 14px; font-size: 0.85rem; border-radius: 18px; } /* Adjusted */
-        .btn-outline { background: transparent; border: 1.5px solid #00d4ff; color: #00d4ff; } /* Adjusted border */
+        .btn-small { padding: 7px 14px; font-size: 0.85rem; border-radius: 18px; } 
+        .btn-outline { background: transparent; border: 1.5px solid #00d4ff; color: #00d4ff; } 
         .btn-outline:hover { background: rgba(0, 212, 255, 0.1); box-shadow: 0 4px 12px rgba(0, 212, 255, 0.2); }
 
         .category-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); /* Further reduced minmax */
-            gap: 0.8rem; /* Further reduced gap */
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); 
+            gap: 0.8rem; 
         }
 
         .category-item {
@@ -247,7 +246,7 @@
         }
         .category-item:hover::after { left: 100%; }
         .category-item:hover {
-            background: rgba(0, 212, 255, 0.06); border-color: #00aacc; /* Subtler hover border */
+            background: rgba(0, 212, 255, 0.06); border-color: #00aacc; 
             transform: translateY(-2px); box-shadow: 0 3px 8px rgba(0, 212, 255, 0.1);
         }
 
@@ -263,17 +262,17 @@
          .category-item .category-name .highlight { color: #00ee77; font-size: 0.85em; }
          .category-item .category-examples {
             font-size: 0.65rem; color: #888; line-height: 1.25;
-            display: block; margin-left: 18px; /* Adjusted for smaller prompt */
+            display: block; margin-left: 18px; 
         }
 
-        .course-grid { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1rem; /* Adjusted */
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted */
-            gap: 1.5rem; /* Adjusted */
+        .course-grid { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1rem; 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 1.5rem; 
         }
 
         .course-card {
             background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px; padding: 1.5rem; /* Adjusted */
+            border-radius: 12px; padding: 1.5rem; 
             transition: all 0.3s ease, opacity 0.3s ease;
             cursor: pointer; position: relative; overflow: hidden;
         }
@@ -283,34 +282,39 @@
         }
         .course-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; }
         .course-title { display: flex; align-items: center; gap: 0.4rem; }
-        .course-card h3 { font-size: 1.3rem; margin: 0; color: #00d4ff; } /* Adjusted */
+        .course-card h3 { font-size: 1.3rem; margin: 0; color: #00d4ff; } 
         .level-indicator {
-            display: flex; align-items: center; gap: 0.25rem; padding: 0.25rem 0.7rem; /* Adjusted */
+            display: flex; align-items: center; gap: 0.25rem; padding: 0.25rem 0.7rem; 
             border-radius: 18px; font-size: 0.75rem; font-weight: bold;
-            text-transform: uppercase; letter-spacing: 0.8px; /* Adjusted */
+            text-transform: uppercase; letter-spacing: 0.8px; 
         }
         .level-beginner { background: linear-gradient(45deg, #51cf66, #40c057); color: #fff; box-shadow: 0 1px 8px rgba(81, 207, 102, 0.25); }
         .level-intermediate { background: linear-gradient(45deg, #ffd43b, #fab005); color: #000; box-shadow: 0 1px 8px rgba(255, 212, 59, 0.25); }
         .level-advanced { background: linear-gradient(45deg, #ff6b6b, #e03131); color: #fff; box-shadow: 0 1px 8px rgba(255, 107, 107, 0.25); }
         .level-expert { background: linear-gradient(45deg, #7c3aed, #5b21b6); color: #fff; box-shadow: 0 1px 8px rgba(124, 58, 237, 0.25); }
-        .level-icon { font-size: 0.9rem; } /* Adjusted */
-        .course-card p { opacity: 0.8; line-height: 1.5; font-size: 0.9rem; position: relative; z-index: 1; } /* Adjusted */
+        .level-icon { font-size: 0.9rem; } 
+        .course-card p { opacity: 0.8; line-height: 1.5; font-size: 0.9rem; position: relative; z-index: 1; } 
 
         .btn {
             background: linear-gradient(45deg, #00d4ff, #7c3aed); color: white; border: none;
-            padding: 10px 20px; border-radius: 22px; cursor: pointer; /* Adjusted */
-            transition: all 0.3s ease; font-weight: bold; margin-top: 0.8rem; /* Adjusted */
+            padding: 10px 20px; border-radius: 22px; cursor: pointer; 
+            transition: all 0.3s ease; font-weight: bold; margin-top: 0.8rem; 
             position: relative; z-index: 1; text-decoration: none; display: inline-block;
-            font-size: 0.95rem; /* Adjusted */
+            font-size: 0.95rem; 
         }
         .btn:hover { transform: scale(1.04); box-shadow: 0 8px 25px rgba(0, 212, 255, 0.25); }
 
         #home-page, #about-page, #learning-interface { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
         #home-page.active-page, #about-page.active-page, #learning-interface.active-page { display: block; opacity: 1; }
-        #learning-interface.active-page { display: grid; } /* Keep this for learning interface layout */
-        #home-page.active-page, #about-page.active-page {
-            display: flex; /* For flex-grow to work with footer */
-            flex-direction: column; /* For flex-grow to work with footer */
+        
+        #learning-interface.active-page { display: grid; } 
+        
+        /* Ensure #home-page and #about-page are flex containers for vertical centering of footer parts */
+        #home-page.active-page, 
+        #about-page.active-page {
+            display: flex; 
+            flex-direction: column; 
+            /* flex-grow: 1; /* This is already handled by the general .active-page rule */
         }
 
 
@@ -330,7 +334,7 @@
         .exercise-box { background: rgba(124, 58, 237, 0.1); border-left: 3px solid #7c3aed; padding: 0.8rem; margin: 0.8rem 0; border-radius: 0 6px 6px 0; }
         .exercise-box h4 { font-size: 1rem; } .exercise-box p { font-size: 0.9rem;}
 
-        .back-btn { position: fixed; top: 80px; left: 1rem; z-index: 1001; } /* For Learning Interface */
+        .back-btn { position: fixed; top: 80px; left: 1rem; z-index: 1001; } 
         .back-to-academy-btn { 
             position: fixed; top: 80px; left: 1rem; z-index: 1001;
             background: rgba(0, 212, 255, 0.2); border: 1px solid #00d4ff;
@@ -338,9 +342,9 @@
         }
         .back-to-academy-btn:hover { background: rgba(0, 212, 255, 0.3); box-shadow: 0 0 15px rgba(0, 212, 255, 0.3); }
 
-        /* MODIFIED for About Us page top spacing */
+        /* === About Page Top Spacing Fix === */
         #about-page {
-            padding-top: 4rem; /* Increased top padding for the page container */
+            /* padding-top: 4rem; /* REMOVED this */
             padding-right: 1rem;
             padding-bottom: 1.5rem;
             padding-left: 1rem;
@@ -351,8 +355,11 @@
         .about-page-section { margin-bottom: 2.5rem; padding: 1.2rem; background: rgba(255, 255, 255, 0.02); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); }
         
         .about-header-section {
+            padding-top: 3.75rem; /* ADDED: 60px - positions content below fixed button */
+            padding-right: 1.2rem;
+            padding-bottom: 1.2rem;
+            padding-left: 1.2rem;
             margin-bottom: 2.5rem; 
-            padding: 0 1.2rem 1.2rem 1.2rem; /* Top padding removed from this section */
             background: rgba(255, 255, 255, 0.02);
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -426,10 +433,17 @@
             font-size: 1rem; 
         }
         
+        /* === Homepage Spacing Fix (after navigating) === */
         .why-learn-section {
             padding: 3rem 0 1rem 0; 
-            margin-top: 3rem; 
+            margin-top: auto; /* ADDED: This pushes .why-learn-section to the bottom of #home-page */
         }
+        /* If .why-learn-section is preceded by .course-grid, ensure some default margin */
+        .course-grid + .why-learn-section {
+            margin-top: 3rem; /* This will apply if .why-learn-section isn't already pushed by `auto` due to short content above */
+        }
+
+
         .footer-title { 
             text-align: center; font-size: 2.2rem; margin-bottom: 2rem; 
             background: linear-gradient(45deg, #00d4ff, #7c3aed); 
@@ -452,7 +466,7 @@
 
         .footer { 
             background: linear-gradient(135deg, #0a0e27 0%, #1a1a1a 100%); 
-            padding: 1rem 0 1.5rem 0; 
+            padding: 1.5rem 0 1.5rem 0; /* Adjusted top padding slightly */
             margin-top: auto; 
             border-top: 1px solid rgba(255, 255, 255, 0.1); 
             width: 100%; 
@@ -521,11 +535,9 @@
             .feature-card { padding: 1.2rem; } .feature-icon { font-size: 2.2rem; }
             .feature-card h3 { font-size: 1.1rem; } .feature-card p { font-size: 0.85rem; }
 
-            /* Adjust About page padding for mobile too if needed */
-            #about-page { 
-                padding-top: 3.5rem; /* Slightly less padding for mobile to account for smaller button/navbar */
+            .about-header-section {
+                padding-top: 3.25rem; /* Slightly less for smaller button/navbar context */
             } 
-
             .about-header-section h1 { font-size: 2rem; }
             .about-intro { font-size: 0.95rem; }
             .mission-column h2, .approach-column h2 { font-size: 1.2rem; }
@@ -549,6 +561,9 @@
             .course-grid { grid-template-columns: 1fr; } 
             .footer-prompt { font-size: 0.8rem; } 
             .footer-copyright { font-size: 0.75rem; } 
+            .about-header-section {
+                padding-top: 2.8rem; 
+            }
         }
     </style>
 </head>
@@ -845,7 +860,7 @@
           }
           charIndex = 0;
           messageIndex = (messageIndex + 1) % messages.length;
-          if(document.getElementById('home-page').classList.contains('active-page')) { // Only continue if home page is active
+          if(document.getElementById('home-page').classList.contains('active-page')) { 
              typeMessage();
           }
         }, 3000);
@@ -911,9 +926,9 @@
                 if (pageId === 'learning-interface') {
                      pageElement.style.display = 'grid';
                 } else {
-                     pageElement.style.display = 'flex'; 
+                     pageElement.style.display = 'flex'; // For home and about flex container
                 }
-                pageElement.offsetHeight; // Trigger reflow for transition
+                pageElement.offsetHeight; 
                 pageElement.style.opacity = 1;
             } else {
                 pageElement.style.opacity = 0;
@@ -926,13 +941,14 @@
         });
         setActiveNavLink(activeNavId);
 
-        // Scroll to top logic, ensuring it doesn't interfere with About page's specific needs
-        if (pageIdToShow !== 'learning-interface' && pageIdToShow !== 'about-page') {
-             window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else if (pageIdToShow === 'about-page') {
-            // For about page, specific scrolling handled by showHomePageAndScroll or if directly navigated
-            // If directly showing about page (not via nav link that scrolls), then scroll to top.
-            if (!activeNavId || activeNavId === 'about-link') { // Check if it's a direct show, not a scroll-to-section
+        // Smart scroll to top for pages, except when specific scrolling is handled
+        if (pageIdToShow !== 'learning-interface') {
+            // For homepage, scroll to top if not scrolling to a specific section already
+            if (pageIdToShow === 'home-page' && (!activeNavId || activeNavId === 'home-link' || !document.getElementById(activeNavId?.replace('-link','')))) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } 
+            // For about page, always scroll to top when shown (unless a #hash link is implemented later)
+            else if (pageIdToShow === 'about-page') {
                  window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
@@ -951,36 +967,35 @@
             if (targetElement) {
                 const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 60;
                 let topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                if (sectionId === 'home-hero') {
+                if (sectionId === 'home-hero') { // Specifically for scrolling to the very top for hero
                     topPos = 0; 
-                } else if (sectionId === 'courses') {
+                } else if (sectionId === 'courses' || sectionId === 'browse-categories') { // For sections needing slight offset
                     topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20; 
-                } else if (sectionId === 'contact') { // Contact section is in the footer
-                    // Scroll to the top of the footer, then the browser will handle the rest.
+                } else if (sectionId === 'contact') { // For contact in footer
                     const footer = document.getElementById('site-footer');
                     if (footer) {
                          topPos = footer.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                    } else { // fallback to contact div itself
+                         // Ensure the contact section within the footer is visible
+                         const contactDivPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                         if (contactDivPos > topPos) topPos = contactDivPos; // Scroll to contact div if it's lower
+                    } else { 
                          topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
                     }
                 }
                 window.scrollTo({ top: topPos , behavior: 'smooth'});
-            } else {
+            } else { // Fallback if sectionId is not found, scroll to top of page.
                  window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-            // Ensure courses are visible if navigating to a section that should show them.
-            if(sectionId === 'courses' || (sectionId === 'home-hero' && activeLink === 'home-link') || activeLink === 'courses-link'){
+            // Show all courses if navigating to a view that should display them
+            if(activeLink === 'home-link' || activeLink === 'courses-link' || sectionId === 'courses'){
                 filterCoursesByCategory('all');
             }
-        }, 50); // Increased timeout slightly for page transition before scroll
+        }, 100); // Slightly increased timeout for transitions
     }
 
     function showAboutPage() {
         showPage('about-page', 'about-link');
-         // Ensure About page scrolls to its own top correctly
-        setTimeout(() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 50);
+        // No specific scroll needed here as showPage with 'about-page' already scrolls to top.
     }
 
     function startCourse(courseName) {
