@@ -64,7 +64,7 @@
             color: #fff;
             text-decoration: none;
             transition: color 0.3s, transform 0.3s;
-            padding-bottom: 8px; 
+            padding-bottom: 8px;
             font-size: 0.95rem; /* Slightly smaller nav links */
         }
 
@@ -81,11 +81,11 @@
         .nav-links a.nav-active::after {
             content: '';
             position: absolute;
-            width: 60%; 
+            width: 60%;
             height: 2px;
             background-color: #00d4ff;
-            bottom: 0px; 
-            left: 20%; 
+            bottom: 0px;
+            left: 20%;
             animation: navLinkActiveAnim 0.3s ease-out;
         }
 
@@ -97,9 +97,19 @@
 
         .main-content {
             margin-top: 60px; /* Adjusted for navbar new height */
-            min-height: calc(100vh - 60px);
-            position: relative; 
+            display: flex; /* Added for footer positioning */
+            flex-direction: column; /* Added for footer positioning */
+            min-height: calc(100vh - 60px); /* Ensures .main-content fills at least viewport height below navbar */
+            position: relative;
         }
+
+        /* Active page div should grow to fill available space in .main-content */
+        #home-page.active-page,
+        #about-page.active-page,
+        #learning-interface.active-page {
+            flex-grow: 1; /* Make the page content take up available vertical space */
+        }
+
 
         .hero-section {
             text-align: center;
@@ -116,7 +126,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
+            background:
                 radial-gradient(circle at 20% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
                 linear-gradient(45deg, transparent 49%, rgba(0, 255, 136, 0.03) 50%, transparent 51%);
@@ -180,7 +190,7 @@
         .hero-section p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; position: relative; z-index: 2; } /* Adjusted */
 
         .hero-actions { display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; position: relative; z-index: 2; flex-wrap: wrap; } /* Added flex-wrap */
-        
+
         .terminal-container {
             background: #000; border-radius: 8px; font-family: 'Courier New', monospace;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); cursor: pointer; transition: all 0.3s ease;
@@ -189,31 +199,31 @@
         .terminal-container:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0, 255, 136, 0.2); }
 
         .hero-actions .terminal-container {
-            padding: 0.7rem; border: none; min-width: 150px; max-width: 220px; 
+            padding: 0.7rem; border: none; min-width: 150px; max-width: 220px;
         }
-        
+
         .hero-actions .terminal-header {
-            display: flex; align-items: center; margin-bottom: 0.5rem; padding-bottom: 0.25rem; border-bottom: 1px solid #333; 
+            display: flex; align-items: center; margin-bottom: 0.5rem; padding-bottom: 0.25rem; border-bottom: 1px solid #333;
         }
         .hero-actions .terminal-dot { width: 5px; height: 5px; border-radius: 50%; margin-right: 3px; } /* Further reduced */
         .hero-actions .terminal-content { color: #00ff00; font-size: 0.7rem; line-height: 1.25; } /* Further reduced */
-        .hero-actions .terminal-prompt { color: #00d4ff; } 
+        .hero-actions .terminal-prompt { color: #00d4ff; }
         .hero-actions .terminal-action { color: #fff; margin-top: 0.25rem; font-weight: bold; font-size: 0.8rem; } /* Further reduced */
         .hero-actions .terminal-description { color: #888; font-size: 0.6rem; margin-top: 0.15rem; } /* Further reduced */
 
         .browse-categories-section { max-width: 1200px; margin: 2.5rem auto; padding: 0 1rem; text-align: center; } /* Adjusted */
         .section-title-container { margin-bottom: 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; } /* Adjusted */
-        
+
         .section-title {
             font-size: 2rem; font-family: 'Courier New', monospace; color: #00d4ff;
             text-transform: uppercase; letter-spacing: 1.5px; position: relative; padding-bottom: 0.4rem;
-            margin-bottom: 0.4rem; display: inline-block; 
+            margin-bottom: 0.4rem; display: inline-block;
         }
-        .section-title::after { 
+        .section-title::after {
             content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
             width: 50%; height: 2.5px; background: linear-gradient(90deg, #00d4ff, #7c3aed); border-radius: 2px;
         }
-        
+
         .btn-small { padding: 7px 14px; font-size: 0.85rem; border-radius: 18px; } /* Adjusted */
         .btn-outline { background: transparent; border: 1.5px solid #00d4ff; color: #00d4ff; } /* Adjusted border */
         .btn-outline:hover { background: rgba(0, 212, 255, 0.1); box-shadow: 0 4px 12px rgba(0, 212, 255, 0.2); }
@@ -225,28 +235,28 @@
 
         .category-item {
             background: rgba(25, 25, 40, 0.6); border: 1px solid rgba(80, 80, 100, 0.25);
-            border-radius: 5px; padding: 0.6rem; text-align: left; 
-            font-family: 'Courier New', monospace; cursor: pointer; transition: all 0.2s ease; 
-            color: #00d4ff; position: relative; overflow: hidden; 
+            border-radius: 5px; padding: 0.6rem; text-align: left;
+            font-family: 'Courier New', monospace; cursor: pointer; transition: all 0.2s ease;
+            color: #00d4ff; position: relative; overflow: hidden;
         }
-        
-        .category-item::after { 
+
+        .category-item::after {
             content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.04), transparent); 
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.04), transparent);
             transition: left 0.4s ease-out;
         }
         .category-item:hover::after { left: 100%; }
         .category-item:hover {
             background: rgba(0, 212, 255, 0.06); border-color: #00aacc; /* Subtler hover border */
-            transform: translateY(-2px); box-shadow: 0 3px 8px rgba(0, 212, 255, 0.1); 
+            transform: translateY(-2px); box-shadow: 0 3px 8px rgba(0, 212, 255, 0.1);
         }
 
         .category-item .category-name {
-            font-size: 0.8rem; font-weight: bold; display: block; 
-            margin-bottom: 0.2rem; color: #d8d8d8; line-height: 1.25; 
+            font-size: 0.8rem; font-weight: bold; display: block;
+            margin-bottom: 0.2rem; color: #d8d8d8; line-height: 1.25;
         }
-        .category-item .category-name::before { 
-            content: '~ $ '; color: #00c0f0; font-size: 0.9em; 
+        .category-item .category-name::before {
+            content: '~ $ '; color: #00c0f0; font-size: 0.9em;
             margin-right: 3px; opacity: 0.75;
         }
 
@@ -264,7 +274,7 @@
         .course-card {
             background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px; padding: 1.5rem; /* Adjusted */
-            transition: all 0.3s ease, opacity 0.3s ease; 
+            transition: all 0.3s ease, opacity 0.3s ease;
             cursor: pointer; position: relative; overflow: hidden;
         }
         .course-card:hover {
@@ -290,14 +300,19 @@
             background: linear-gradient(45deg, #00d4ff, #7c3aed); color: white; border: none;
             padding: 10px 20px; border-radius: 22px; cursor: pointer; /* Adjusted */
             transition: all 0.3s ease; font-weight: bold; margin-top: 0.8rem; /* Adjusted */
-            position: relative; z-index: 1; text-decoration: none; display: inline-block; 
+            position: relative; z-index: 1; text-decoration: none; display: inline-block;
             font-size: 0.95rem; /* Adjusted */
         }
         .btn:hover { transform: scale(1.04); box-shadow: 0 8px 25px rgba(0, 212, 255, 0.25); }
 
         #home-page, #about-page, #learning-interface { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
         #home-page.active-page, #about-page.active-page, #learning-interface.active-page { display: block; opacity: 1; }
-        #learning-interface.active-page { display: grid; }
+        #learning-interface.active-page { display: grid; } /* Keep this for learning interface layout */
+        #home-page.active-page, #about-page.active-page {
+            display: flex; /* For flex-grow to work with footer */
+            flex-direction: column; /* For flex-grow to work with footer */
+        }
+
 
         .lesson-panel { background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1); }
         .terminal-panel { background: #1a1a1a; border-radius: 12px; border: 1px solid #333; overflow: hidden; }
@@ -317,7 +332,7 @@
 
         .back-btn { position: fixed; top: 80px; left: 1rem; z-index: 1001; } /* For Learning Interface */
         .back-to-academy-btn { /* For About Page - MOVED TO LEFT */
-            position: fixed; top: 80px; left: 1rem; z-index: 1001; 
+            position: fixed; top: 80px; left: 1rem; z-index: 1001;
             background: rgba(0, 212, 255, 0.2); border: 1px solid #00d4ff;
             color: #00d4ff; padding: 8px 12px; font-size: 0.9rem; border-radius: 20px;
         }
@@ -336,7 +351,22 @@
         .mission-column, .approach-column { flex: 1; min-width: 280px; /* Ensure readability when wrapped */ padding: 1.2rem; background: rgba(255, 255, 255, 0.03); border-radius: 8px; }
         .mission-column h2, .approach-column h2 { text-align: left; font-size: 1.3rem; color: #fff; margin-bottom: 0.8rem; }
         .mission-column p, .approach-column p, .approach-column li { font-size: 0.9rem; line-height: 1.55; }
-        .mission-image { width: 100%; max-width: 250px; height: auto; border-radius: 6px; margin-bottom: 0.8rem; display: block; margin-left: auto; margin-right: auto; border: 1.5px solid rgba(0, 212, 255, 0.4); }
+        
+        /* Styles for mission icon */
+        .mission-icon-container {
+            text-align: center;
+            margin-bottom: 0.8rem;
+        }
+        .mission-icon {
+            font-size: 4rem; /* Adjust size as needed */
+            color: #00d4ff; 
+            line-height: 1;
+            display: inline-block; /* To allow padding/border if desired for icon itself */
+            padding: 0.5rem;
+            border: 1.5px solid rgba(0, 212, 255, 0.4);
+            border-radius: 8px;
+        }
+
         .approach-column ul { list-style: none; padding-left: 0; }
         .approach-column li { margin-bottom: 0.7rem; padding-left: 1.3rem; position: relative; }
         .approach-column li::before { content: '⚡'; color: #00ff88; position: absolute; left: 0; font-size: 1rem; }
@@ -353,7 +383,6 @@
         .founder-position { font-size: 0.85rem; color: #00ff88; font-family: 'Courier New', monospace; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.8px; }
         .founder-bio { font-size: 0.85rem; line-height: 1.55; color: #ccc; }
 
-        /* Ready to learn section on About page */
         .ready-to-learn-section {
             text-align: center;
             padding: 2rem 1rem;
@@ -375,29 +404,67 @@
             font-size: 1rem; /* Ensure button text is readable */
         }
         
-        /* Shared Footer Styling */
-        .footer { background: linear-gradient(135deg, #0a0e27 0%, #1a1a1a 100%); padding: 3rem 0 1.5rem 0; /* Adjusted padding */ margin-top: 3rem; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        /* Section for "Why Learn With Us" on homepage, formerly part of footer */
+        .why-learn-section {
+            padding: 3rem 0 1.5rem 0; /* Similar to old footer top padding */
+            margin-top: 3rem; /* Spacing from course grid */
+            /* background: linear-gradient(135deg, #0a0e27 0%, #1a1a1a 100%); /* Optional: if it needs distinct background */
+        }
+        /* .footer-title and .features-grid styles are reused */
+
+
+        /* GLOBAL Footer Styling */
+        .footer { 
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a1a 100%); 
+            padding: 2rem 0 1.5rem 0; /* Adjusted padding */ 
+            margin-top: auto; /* Pushes footer to bottom of flex container (.main-content) */
+            border-top: 1px solid rgba(255, 255, 255, 0.1); 
+            width: 100%; /* Ensure it spans full width if main-content is narrower */
+        }
         .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-        .footer-title { text-align: center; font-size: 2.2rem; margin-bottom: 2rem; background: linear-gradient(45deg, #00d4ff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-        .feature-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        
+        /* Styles for .footer-title and .features-grid are now used by .why-learn-section on home page */
+        /* If they were exclusively for footer, they'd be here. For now, keeping them general. */
+        .footer-title { /* This class is used by "Why Learn With Us" section now */
+            text-align: center; font-size: 2.2rem; margin-bottom: 2rem; 
+            background: linear-gradient(45deg, #00d4ff, #7c3aed); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+            font-weight: bold; 
+        }
+        .features-grid { /* This class is used by "Why Learn With Us" section now */
+             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+             gap: 1.5rem; margin-bottom: 2rem; 
+        }
+        .feature-card { /* This class is used by "Why Learn With Us" section now */
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); 
+            border-radius: 12px; padding: 1.5rem; text-align: center; 
+            transition: all 0.3s ease; position: relative; overflow: hidden; 
+        }
         .feature-card:hover { transform: translateY(-4px); border-color: rgba(0, 212, 255, 0.3); box-shadow: 0 8px 25px rgba(0, 212, 255, 0.1); }
         .feature-icon { font-size: 2.5rem; margin-bottom: 0.8rem; background: linear-gradient(45deg, #00d4ff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; }
         .feature-card h3 { color: #00d4ff; margin-bottom: 0.8rem; font-size: 1.2rem; }
         .feature-card p { color: #ccc; line-height: 1.55; font-size: 0.9rem;}
 
-        /* Moved Discord Section (shared styles for when it appears) */
-        .discord-join-section { text-align: center; padding: 2.5rem 1rem; background: rgba(10, 14, 39, 0.85); border-radius: 12px; margin: 2.5rem auto; max-width: 90%; width: 700px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
+        /* Discord Section (now part of global footer) */
+        .discord-join-section { 
+            text-align: center; padding: 2.5rem 1rem; 
+            background: rgba(10, 14, 39, 0.85); /* Or remove if footer bg is enough */
+            border-radius: 12px; 
+            margin: 0 auto 2.5rem auto; /* Centered, with bottom margin */
+            max-width: 90%; width: 700px; 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); 
+        }
         .discord-title { font-size: 2rem; margin-bottom: 0.8rem; color: #00d4ff; font-family: 'Courier New', monospace; text-transform: uppercase; letter-spacing: 1.5px; }
         .discord-description { color: #ccc; font-size: 1rem; line-height: 1.55; margin-bottom: 1.5rem; max-width: 90%; margin-left:auto; margin-right:auto; }
         .discord-btn { padding: 12px 24px; font-size: 0.95rem; }
         .discord-btn svg { vertical-align: middle; margin-right: 7px; width: 22px; height: 22px; }
         
         .footer-bottom {
-            display: flex; /* Use flexbox for alignment */
-            justify-content: space-between; /* Space between prompt and copyright */
+            display: flex;
+            justify-content: space-between; 
             align-items: center;
-            flex-wrap: wrap; /* Allow wrapping on small screens */
+            flex-wrap: wrap; 
             text-align: center; 
             padding-top: 1.5rem; 
             border-top: 1px solid rgba(255, 255, 255, 0.1); 
@@ -406,12 +473,15 @@
         .footer-prompt {
             font-family: 'Courier New', monospace;
             color: #00d4ff;
-            margin-right: auto; /* Pushes copyright to the right */
-            padding-bottom: 5px; /* Align with copyright if it wraps */
+            /* margin-right: auto; Removed to allow copyright to center better */
+            white-space: nowrap; /* Prevent wrapping of prompt */
         }
         .footer-copyright {
-            margin-left: auto; /* Pushes itself to the right if no prompt, or centers if prompt takes full width */
-             padding-bottom: 5px;
+            margin-left: auto; /* Pushes copyright to center relative to prompt and right edge */
+            margin-right: auto; /* Pushes copyright to center relative to prompt and right edge */
+            text-align: center; /* Ensures text itself is centered if it wraps */
+            flex-grow: 1; /* Allows it to take space but auto margins handle centering */
+             padding-bottom: 5px; /* Kept from original */
         }
 
 
@@ -434,6 +504,7 @@
             .level-indicator { font-size: 0.7rem; padding: 0.2rem 0.6rem; }
 
             .footer-title { font-size: 1.8rem; }
+            .discord-join-section { width: auto; max-width: 95%; padding: 2rem 0.5rem; }
             .discord-title { font-size: 1.6rem; }
             .feature-card { padding: 1.2rem; } .feature-icon { font-size: 2.2rem; }
             .feature-card h3 { font-size: 1.1rem; } .feature-card p { font-size: 0.85rem; }
@@ -445,14 +516,22 @@
             .founder-card { max-width: 90%; padding: 1rem; } .founder-card h3 { font-size: 1.15rem; }
 
             .back-to-academy-btn, .back-btn { top: 70px; font-size: 0.8rem; padding: 6px 10px; }
+            
             .footer-bottom { justify-content: center; /* Center items on small screens */ }
-            .footer-prompt, .footer-copyright { margin: 0.2rem auto; width:100%; text-align: center;}
+            .footer-prompt, .footer-copyright { 
+                margin: 0.2rem auto; 
+                width:100%; 
+                text-align: center;
+                flex-grow: 0; /* Reset grow for stacked layout */
+            }
         }
         @media (max-width: 480px) { /* Extra small screens */
             .nav-links { display: none; /* Ideally implement hamburger menu here */ }
             .hero-title { font-size: 1.8rem; }
             .category-grid { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 0.5rem; }
             .course-grid { grid-template-columns: 1fr; } /* Single column for very small */
+            .footer-prompt { font-size: 0.8rem; } /* Adjust prompt if too large */
+            .footer-copyright { font-size: 0.75rem; } /* Adjust copyright if too large */
         }
     </style>
 </head>
@@ -460,7 +539,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <span class="logo-prompt">PJ_A:~#</span> <!-- Shorter prompt -->
+                <span class="logo-prompt">PJ_A:~#</span>
                 <span class="logo-text">./</span>
             </div>
             <ul class="nav-links">
@@ -474,7 +553,7 @@
 
     <div class="main-content">
         <div id="home-page">
-            <section class="hero-section" id="home-hero"> <!-- Changed ID slightly to avoid conflict if #home is reused -->
+            <section class="hero-section" id="home-hero">
                 <div class="cyber-subtitle">◤◥ CYBER LEARNING PROTOCOL INITIATED ◤◥</div>
                 <h1 class="hero-title glitch-text" data-text="PrivitJayAcademy">
                     <span class="privit">PrivitJay</span><span class="academy">Academy</span>
@@ -492,10 +571,10 @@
                     </div>
                 </div>
                 <p>Learn programming, Linux, networking, and more with hands-on interactive terminals</p>
-                
+
                 <div class="hero-actions">
                     <div class="terminal-container" onclick="showHomePageAndScroll('courses', 'courses-link')">
-                        <div class="terminal-header"> 
+                        <div class="terminal-header">
                             <div class="terminal-dot red"></div>
                             <div class="terminal-dot yellow"></div>
                             <div class="terminal-dot green"></div>
@@ -508,7 +587,7 @@
                     </div>
 
                     <div class="terminal-container" onclick="showAboutPage()">
-                        <div class="terminal-header"> 
+                        <div class="terminal-header">
                             <div class="terminal-dot red"></div>
                             <div class="terminal-dot yellow"></div>
                             <div class="terminal-dot green"></div>
@@ -547,7 +626,7 @@
                 </div>
             </section>
 
-            <div class="course-grid" id="courses"> 
+            <div class="course-grid" id="courses">
                 <div class="course-card" data-category="linux" onclick="startCourse('linux')">
                     <div class="course-header">
                         <div class="course-title">
@@ -590,8 +669,10 @@
                     <button class="btn">Start Learning</button>
                 </div>
             </div>
-             <footer class="footer" id="home-footer-content">
-                <div class="footer-container">
+
+            <!-- "Why Learn With Us?" section - moved from old home-footer to be part of home-page content -->
+            <section class="why-learn-section">
+                <div class="footer-container"> <!-- Re-use for styling -->
                     <h2 class="footer-title">Why Learn With Us?</h2>
                     <div class="features-grid">
                         <div class="feature-card">
@@ -615,21 +696,8 @@
                             <p>Learn at your own pace, anytime, anywhere. Our platform is always available with instant feedback and guidance when you need it most.</p>
                         </div>
                     </div>
-                    <!-- Discord section for homepage footer -->
-                    <div class="discord-join-section" id="contact"> 
-                        <h2 class="discord-title">Join Our Community</h2>
-                        <p class="discord-description">Connect with fellow learners, ask questions, and share your progress on our Discord server!</p>
-                        <a href="https://discord.gg/YOUR_INVITE_CODE" target="_blank" class="btn discord-btn"> 
-                            <svg aria-hidden="true" role="img" viewBox="0 0 24 24"><path fill="currentColor" d="M20.317 4.36981C18.7915 3.09531 16.9067 2.15581 14.8317 1.63081C14.6825 1.58081 14.5267 1.68248 14.4908 1.83081L14.2075 3.04498C12.9608 2.81665 11.6558 2.81665 10.4092 3.04498L10.1258 1.83081C10.0892 1.68248 9.93416 1.58081 9.78416 1.63081C7.70833 2.15581 5.82416 3.09531 4.29916 4.36981C4.29916 4.36981 -0.200838 9.68398 0.00166183 14.9065C0.00166183 14.9065 1.89583 17.9473 6.06916 18.4515C6.06916 18.4515 6.61416 17.4481 6.9025 16.9698C5.3225 16.2331 4.15833 14.9481 4.15833 14.9481C4.15833 14.9481 4.22166 14.8905 4.3025 14.8098C6.695 16.1023 9.4475 16.3731 12.0017 16.1365C12.0017 16.1365 12.0017 16.1365 12.0017 16.1365C14.5558 16.3731 17.3083 16.1023 19.7008 14.8098C19.7808 14.8905 19.8442 14.9481 19.8442 14.9481C19.8442 14.9481 18.6808 16.2331 17.1008 16.9698C17.3892 17.4481 17.9333 18.4515 17.9333 18.4515C22.1058 17.9473 24.0017 14.9065 24.0017 14.9065C24.2042 9.68398 20.317 4.36981 20.317 4.36981ZM8.02083 12.5998C7.02416 12.5998 6.22416 11.7998 6.22416 10.7998C6.22416 9.80065 7.02416 8.99981 8.02083 8.99981C9.0175 8.99981 9.8175 9.80065 9.8175 10.7998C9.8175 11.7998 9.0175 12.5998 8.02083 12.5998ZM15.9825 12.5998C14.9858 12.5998 14.1858 11.7998 14.1858 10.7998C14.1858 9.80065 14.9858 8.99981 15.9825 8.99981C16.9792 8.99981 17.7792 9.80065 17.7792 10.7998C17.7792 11.7998 16.9792 12.5998 15.9825 12.5998Z"></path></svg>
-                            Join Discord
-                        </a>
-                    </div>
-                    <div class="footer-bottom">
-                        <span class="footer-prompt">> PrivitjayAcademy_</span>
-                        <span class="footer-copyright">© 2024 Privitjay Academy. Empowering the next gen.</span>
-                    </div>
                 </div>
-            </footer>
+            </section>
         </div>
 
         <div id="about-page">
@@ -650,7 +718,9 @@
                 <div class="mission-approach-container">
                     <div class="mission-column">
                         <h2>Our Mission</h2>
-                        <img src="https://via.placeholder.com/250x150/00d4ff/0a0e27?text=Learn.Practice.Build" alt="Our Mission Graphic" class="mission-image">
+                        <div class="mission-icon-container">
+                            <span class="mission-icon">🎯</span>
+                        </div>
                         <p>To provide an immersive, interactive environment for gaining real-world tech skills, building projects, and fostering lifelong learning.</p>
                     </div>
                     <div class="approach-column">
@@ -679,30 +749,11 @@
                 </div>
             </section>
 
-            <!-- Discord Section on About Page -->
-            <div class="discord-join-section" id="about-discord"> 
-                <h2 class="discord-title">Join Our Community</h2>
-                <p class="discord-description">Connect with fellow learners, ask questions, and share your progress on our Discord server!</p>
-                <a href="https://discord.gg/YOUR_INVITE_CODE" target="_blank" class="btn discord-btn"> 
-                    <svg aria-hidden="true" role="img" viewBox="0 0 24 24"><path fill="currentColor" d="M20.317 4.36981C18.7915 3.09531 16.9067 2.15581 14.8317 1.63081C14.6825 1.58081 14.5267 1.68248 14.4908 1.83081L14.2075 3.04498C12.9608 2.81665 11.6558 2.81665 10.4092 3.04498L10.1258 1.83081C10.0892 1.68248 9.93416 1.58081 9.78416 1.63081C7.70833 2.15581 5.82416 3.09531 4.29916 4.36981C4.29916 4.36981 -0.200838 9.68398 0.00166183 14.9065C0.00166183 14.9065 1.89583 17.9473 6.06916 18.4515C6.06916 18.4515 6.61416 17.4481 6.9025 16.9698C5.3225 16.2331 4.15833 14.9481 4.15833 14.9481C4.15833 14.9481 4.22166 14.8905 4.3025 14.8098C6.695 16.1023 9.4475 16.3731 12.0017 16.1365C12.0017 16.1365 12.0017 16.1365 12.0017 16.1365C14.5558 16.3731 17.3083 16.1023 19.7008 14.8098C19.7808 14.8905 19.8442 14.9481 19.8442 14.9481C19.8442 14.9481 18.6808 16.2331 17.1008 16.9698C17.3892 17.4481 17.9333 18.4515 17.9333 18.4515C22.1058 17.9473 24.0017 14.9065 24.0017 14.9065C24.2042 9.68398 20.317 4.36981 20.317 4.36981ZM8.02083 12.5998C7.02416 12.5998 6.22416 11.7998 6.22416 10.7998C6.22416 9.80065 7.02416 8.99981 8.02083 8.99981C9.0175 8.99981 9.8175 9.80065 9.8175 10.7998C9.8175 11.7998 9.0175 12.5998 8.02083 12.5998ZM15.9825 12.5998C14.9858 12.5998 14.1858 11.7998 14.1858 10.7998C14.1858 9.80065 14.9858 8.99981 15.9825 8.99981C16.9792 8.99981 17.7792 9.80065 17.7792 10.7998C17.7792 11.7998 16.9792 12.5998 15.9825 12.5998Z"></path></svg>
-                    Join Discord
-                </a>
-            </div>
-
             <section class="about-page-section ready-to-learn-section">
                 <h2>Ready to Start Learning?</h2>
                 <p>Join PrivitJayAcademy and begin your journey into the exciting world of technology today!</p>
                 <button class="btn" onclick="showHomePageAndScroll('courses', 'courses-link')">Browse Courses 🚀</button>
             </section>
-
-            <footer class="footer">
-                 <div class="footer-container">
-                    <div class="footer-bottom" style="border-top:none; padding-top:0;">
-                        <span class="footer-prompt">> PrivitjayAcademy_</span>
-                        <span class="footer-copyright">© 2024 Privitjay Academy. All Rights Reserved.</span>
-                    </div>
-                </div>
-            </footer>
         </div>
 
         <div id="learning-interface">
@@ -711,7 +762,7 @@
                 <div id="lesson-content" class="lesson-content"></div>
             </div>
             <div class="terminal-panel">
-                 <div class="terminal-header"> 
+                 <div class="terminal-header">
                     <div class="terminal-dot dot-red"></div>
                     <div class="terminal-dot dot-yellow"></div>
                     <div class="terminal-dot dot-green"></div>
@@ -725,6 +776,26 @@
                 </div>
             </div>
         </div>
+
+        <!-- GLOBAL FOOTER -->
+        <footer class="footer" id="site-footer">
+            <div class="footer-container">
+                <!-- Global Discord Section -->
+                <div class="discord-join-section" id="contact"> <!-- ID for nav link -->
+                    <h2 class="discord-title">Join Our Community</h2>
+                    <p class="discord-description">Connect with fellow learners, ask questions, and share your progress on our Discord server!</p>
+                    <a href="https://discord.gg/YOUR_INVITE_CODE" target="_blank" class="btn discord-btn">
+                        <svg aria-hidden="true" role="img" viewBox="0 0 24 24"><path fill="currentColor" d="M20.317 4.36981C18.7915 3.09531 16.9067 2.15581 14.8317 1.63081C14.6825 1.58081 14.5267 1.68248 14.4908 1.83081L14.2075 3.04498C12.9608 2.81665 11.6558 2.81665 10.4092 3.04498L10.1258 1.83081C10.0892 1.68248 9.93416 1.58081 9.78416 1.63081C7.70833 2.15581 5.82416 3.09531 4.29916 4.36981C4.29916 4.36981 -0.200838 9.68398 0.00166183 14.9065C0.00166183 14.9065 1.89583 17.9473 6.06916 18.4515C6.06916 18.4515 6.61416 17.4481 6.9025 16.9698C5.3225 16.2331 4.15833 14.9481 4.15833 14.9481C4.15833 14.9481 4.22166 14.8905 4.3025 14.8098C6.695 16.1023 9.4475 16.3731 12.0017 16.1365C12.0017 16.1365 12.0017 16.1365 12.0017 16.1365C14.5558 16.3731 17.3083 16.1023 19.7008 14.8098C19.7808 14.8905 19.8442 14.9481 19.8442 14.9481C19.8442 14.9481 18.6808 16.2331 17.1008 16.9698C17.3892 17.4481 17.9333 18.4515 17.9333 18.4515C22.1058 17.9473 24.0017 14.9065 24.0017 14.9065C24.2042 9.68398 20.317 4.36981 20.317 4.36981ZM8.02083 12.5998C7.02416 12.5998 6.22416 11.7998 6.22416 10.7998C6.22416 9.80065 7.02416 8.99981 8.02083 8.99981C9.0175 8.99981 9.8175 9.80065 9.8175 10.7998C9.8175 11.7998 9.0175 12.5998 8.02083 12.5998ZM15.9825 12.5998C14.9858 12.5998 14.1858 11.7998 14.1858 10.7998C14.1858 9.80065 14.9858 8.99981 15.9825 8.99981C16.9792 8.99981 17.7792 9.80065 17.7792 10.7998C17.7792 11.7998 16.9792 12.5998 15.9825 12.5998Z"></path></svg>
+                        Join Discord
+                    </a>
+                </div>
+                <!-- Global Footer Bottom -->
+                <div class="footer-bottom">
+                    <span class="footer-prompt">> PrivitjayAcademy_</span>
+                    <span class="footer-copyright">© 2025 Privitjay Academy. Empowering the next gen.</span>
+                </div>
+            </div>
+        </footer>
     </div>
     <script>
     const messages = [
@@ -739,7 +810,7 @@
     const cursor = document.querySelector(".cursor");
 
     function typeMessage() {
-      if (!typingText) return; 
+      if (!typingText) return;
       const currentMessage = messages[messageIndex];
 
       if (charIndex < currentMessage.length) {
@@ -756,7 +827,7 @@
 
         setTimeout(() => {
           if(typingText) typingText.textContent = "";
-          if (output.parentNode === typingText.parentElement) { 
+          if (output.parentNode === typingText.parentElement) {
             typingText.parentElement.removeChild(output);
           }
           charIndex = 0;
@@ -767,27 +838,27 @@
         }, 3000);
       }
     }
-    
+
     function filterCoursesByCategory(targetCategory) {
         const courseCards = document.querySelectorAll('.course-grid .course-card');
         let coursesFound = false;
-        
+
         courseCards.forEach(card => {
             const cardCategory = card.getAttribute('data-category');
             const shouldShow = (targetCategory === 'all' || cardCategory === targetCategory);
-            
+
             if (shouldShow) {
-                if (card.style.display === 'none' || card.style.opacity === '0') { 
-                    card.style.opacity = 0; 
-                    card.style.display = 'block'; 
-                    setTimeout(() => card.style.opacity = 1, 10); 
+                if (card.style.display === 'none' || card.style.opacity === '0') {
+                    card.style.opacity = 0;
+                    card.style.display = 'block';
+                    setTimeout(() => card.style.opacity = 1, 10);
                 }
                 coursesFound = true;
             } else {
-                if (card.style.display !== 'none' && card.style.opacity !== '0') { 
-                    card.style.opacity = 0; 
-                    setTimeout(() => card.style.display = 'none', 300); 
-                } else { 
+                if (card.style.display !== 'none' && card.style.opacity !== '0') {
+                    card.style.opacity = 0;
+                    setTimeout(() => card.style.display = 'none', 300);
+                } else {
                     card.style.display = 'none';
                     card.style.opacity = 0;
                 }
@@ -797,7 +868,12 @@
         if (coursesFound || targetCategory === 'all') {
              const coursesSection = document.getElementById('courses');
              if (coursesSection && document.getElementById('home-page').classList.contains('active-page')) {
-                 coursesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                 // Scroll a bit higher than the section to account for fixed navbar
+                 const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 60;
+                 const elementPosition = coursesSection.getBoundingClientRect().top + window.pageYOffset;
+                 const offsetPosition = elementPosition - navbarHeight - 20; // 20px extra padding
+
+                 window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
              }
         }
     }
@@ -820,49 +896,66 @@
 
             if (pageId === pageIdToShow) {
                 pageElement.classList.add('active-page');
-                pageElement.style.display = (pageId === 'learning-interface') ? 'grid' : 'block';
-                pageElement.offsetHeight; 
+                // display style is now handled by .active-page CSS for home/about flex
+                if (pageId === 'learning-interface') {
+                     pageElement.style.display = 'grid';
+                } else {
+                     pageElement.style.display = 'flex'; // For home and about flex container
+                }
+                pageElement.offsetHeight;
                 pageElement.style.opacity = 1;
             } else {
                 pageElement.style.opacity = 0;
                 setTimeout(() => {
-                    if (pageElement.classList.contains('active-page')) return; // Don't hide if it became active in meantime
+                    if (pageElement.classList.contains('active-page')) return;
                     pageElement.style.display = 'none';
                     pageElement.classList.remove('active-page');
-                }, 400); 
+                }, 400);
             }
         });
         setActiveNavLink(activeNavId);
+
         if (pageIdToShow !== 'learning-interface') {
              window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-         // Restart typing animation if home page is shown
+
         if (pageIdToShow === 'home-page' && typingText && typingText.textContent === '') {
-            charIndex = 0; // Reset typing
-            // messageIndex can stay or be reset, depends on desired behavior
-            setTimeout(typeMessage, 500); // Delay a bit for page transition
+            charIndex = 0;
+            setTimeout(typeMessage, 500);
         }
     }
 
     function showHomePageAndScroll(sectionId = 'home-hero', activeLink = 'home-link') {
         showPage('home-page', activeLink);
-        filterCoursesByCategory('all'); 
+        filterCoursesByCategory('all');
         setTimeout(() => {
             const targetElement = document.getElementById(sectionId);
             if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (sectionId === 'home-hero' || sectionId === 'contact') { // For top hero or bottom contact
+                    const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 60;
+                    let topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                    if (sectionId === 'home-hero') topPos = 0; // scroll to very top for hero
+                    window.scrollTo({ top: topPos , behavior: 'smooth'});
+
+                } else { // For mid-page sections like 'courses'
+                     const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 60;
+                     const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                     const offsetPosition = elementPosition - navbarHeight - 20; // 20px extra padding
+                     window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+
             } else {
                  window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-        }, 50); 
+        }, 50);
     }
-    
+
     function showAboutPage() {
         showPage('about-page', 'about-link');
     }
 
     function startCourse(courseName) {
-        showPage('learning-interface', null); 
+        showPage('learning-interface', null);
         const lessonContentEl = document.getElementById('lesson-content');
         lessonContentEl.innerHTML = `<h2>Welcome to ${courseName.charAt(0).toUpperCase() + courseName.slice(1)}</h2><p>Loading lesson...</p>
         <h3>Lesson 1: Intro to ${courseName}</h3>
@@ -876,7 +969,7 @@
     }
 
     function goHomeFromLearning() {
-        showHomePageAndScroll('courses', 'courses-link'); 
+        showHomePageAndScroll('courses', 'courses-link');
     }
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -887,12 +980,12 @@
             if (linkId === 'home-link') showHomePageAndScroll('home-hero', 'home-link');
             else if (linkId === 'courses-link') showHomePageAndScroll('courses', 'courses-link');
             else if (linkId === 'about-link') showAboutPage();
-            else if (linkId === 'contact-link') showHomePageAndScroll('contact', 'contact-link'); // Scrolls to #contact on home page
+            else if (linkId === 'contact-link') showHomePageAndScroll('contact', 'contact-link');
         });
       });
-      
-      showHomePageAndScroll('home-hero', 'home-link'); // Initial page load
-      filterCoursesByCategory('all'); 
+
+      showHomePageAndScroll('home-hero', 'home-link'); 
+      filterCoursesByCategory('all');
     });
   </script>
 </body>
