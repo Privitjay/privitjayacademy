@@ -104,7 +104,7 @@
         }
 
         #home-page.active-page,
-        #about-page.active-page,
+        /* #about-page.active-page, REMOVED */
         #learning-interface.active-page {
             flex-grow: 1; 
         }
@@ -304,13 +304,12 @@
         }
         .btn:hover { transform: scale(1.04); box-shadow: 0 8px 25px rgba(0, 212, 255, 0.25); }
 
-        #home-page, #about-page, #learning-interface { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
-        #home-page.active-page, #about-page.active-page, #learning-interface.active-page { display: block; opacity: 1; }
+        #home-page, /* #about-page, */ #learning-interface { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
+        #home-page.active-page, /* #about-page.active-page, */ #learning-interface.active-page { display: block; opacity: 1; }
         
         #learning-interface.active-page { display: grid; } 
         
-        #home-page.active-page, 
-        #about-page.active-page {
+        #home-page.active-page /* , #about-page.active-page REMOVED */ {
             display: flex; 
             flex-direction: column; 
         }
@@ -333,143 +332,10 @@
         .exercise-box h4 { font-size: 1rem; } .exercise-box p { font-size: 0.9rem;}
 
         .back-btn { position: fixed; top: 80px; left: 1rem; z-index: 1001; } 
-        .back-to-academy-btn { 
-            position: fixed; top: 80px; left: 1rem; z-index: 1001;
-            background: rgba(0, 212, 255, 0.2); border: 1px solid #00d4ff;
-            color: #00d4ff; padding: 8px 12px; font-size: 0.9rem; border-radius: 20px;
-        }
-        .back-to-academy-btn:hover { background: rgba(0, 212, 255, 0.3); box-shadow: 0 0 15px rgba(0, 212, 255, 0.3); }
-
-        /* === About Page Top Spacing Fix === */
-        #about-page {
-            padding-top: 0; /* CRITICAL: No top padding on the page container itself */
-            padding-right: 1rem;
-            padding-bottom: 1.5rem; 
-            padding-left: 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            color: #e0e0e0;
-        }
-        /* Default styling for all sections within the About page */
-        .about-page-section { 
-            margin-bottom: 2rem; 
-            padding: 1.5rem;    
-            background: rgba(255, 255, 255, 0.02); 
-            border-radius: 12px; 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
-        }
+        /* .back-to-academy-btn REMOVED */
         
-        /* Specifically target the VERY FIRST .about-page-section within #about-page */
-        #about-page > .about-page-section:first-child {
-            padding-top: 0.5rem;  /* Minimal top padding, just enough for H1 to breathe slightly */
-            margin-top: 0;
-            background: none; 
-            border: none;     
-            padding-left: 0;  
-            padding-right: 0;
-            margin-bottom: 2rem; /* Space before the next distinct section */
-        }
-         /* The H1 inside that very first section */
-        #about-page > .about-page-section:first-child h1 {
-            margin-top: 0; /* H1 starts flush with the top of its container */
-            font-size: 2.4rem;
-            font-family: 'Courier New', monospace;
-            text-align: center;
-            margin-bottom: 1rem; /* Space after H1 */
-        }
-        #about-page > .about-page-section:first-child h1 .privit { color: #00d4ff; }
-        #about-page > .about-page-section:first-child h1 .academy { color: #7c3aed; }
+        /* === About Page CSS REMOVED === */
 
-        #about-page > .about-page-section:first-child .about-intro-main {
-            font-size: 1.05rem;
-            line-height: 1.65;
-            text-align: center;
-            margin-bottom: 0; /* No margin if it's the last element in this first section */
-            max-width: 850px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #e8e8e8;
-        }
-
-        /* "The PrivitJay Difference" Section */
-        .difference-section h2 {
-            font-size: 1.8rem;
-            color: #00d4ff;
-            margin-bottom: 0.5rem; /* Tighter space to intro paragraph */
-            text-align: center;
-            font-family: 'Courier New', monospace;
-        }
-        .difference-section .difference-intro {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #d8d8d8;
-            text-align: center;
-            max-width: 750px;
-            margin: 0 auto 1.5rem auto; /* Space before the list */
-        }
-        .difference-section ul {
-            list-style: none;
-            padding-left: 0;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .difference-section li {
-            margin-bottom: 1rem;
-            padding-left: 1.8rem;
-            position: relative;
-            font-size: 0.95rem;
-            line-height: 1.55;
-            color: #ccc;
-        }
-        .difference-section li::before {
-            content: '✓'; /* Checkmark or other suitable icon */
-            color: #00ff88;
-            position: absolute;
-            left: 0;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-        .difference-section li strong {
-            color: #00d4ff;
-            font-weight: 600;
-        }
-
-        .team-section h2 { font-size: 1.8rem; color: #00d4ff; text-align: center; margin-bottom: 1.5rem; }
-        .founder-card {
-            background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px; padding: 1.2rem; max-width: 360px; margin: 0 auto;
-            text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-        }
-        .founder-image { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 0.8rem; border: 2.5px solid #7c3aed; }
-        .founder-card h3 { font-size: 1.25rem; color: #fff; margin-bottom: 0.25rem; }
-        .founder-card .founder-position { /* More specific selector */
-            font-size: 0.85rem; color: #00ff88; font-family: 'Courier New', monospace; 
-            margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.8px; 
-        }
-        .founder-card .founder-bio { font-size: 0.85rem; line-height: 1.55; color: #ccc; }
-
-
-        .ready-to-learn-section {
-            text-align: center;
-            padding: 2rem 1rem;
-            background: rgba(0, 212, 255, 0.05);
-            border-radius: 12px;
-            margin-top: 2.5rem;
-        }
-        .ready-to-learn-section h2 {
-            font-size: 1.8rem;
-            color: #00d4ff;
-            margin-bottom: 0.8rem;
-        }
-        .ready-to-learn-section p {
-            font-size: 1rem;
-            color: #ccc;
-            margin-bottom: 1.5rem;
-        }
-        .ready-to-learn-section .btn {
-            font-size: 1rem; 
-        }
-        
         .why-learn-section {
             margin-top: 3rem; 
             padding: 3rem 0 1.5rem 0; 
@@ -565,25 +431,8 @@
             .discord-title { font-size: 1.6rem; }
             .feature-card { padding: 1.2rem; } .feature-icon { font-size: 2.2rem; }
             .feature-card h3 { font-size: 1.1rem; } .feature-card p { font-size: 0.85rem; }
-
-            /* Mobile About Page Spacing */
-            #about-page {
-                padding-top: 0; 
-            }
-            #about-page > .about-page-section:first-child {
-                padding-top: 0.5rem; 
-            }
-            #about-page > .about-page-section:first-child h1 {
-                margin-top: 0;
-                font-size: 2rem;
-            }
-            .difference-section h2 { font-size: 1.6rem; }
-
-            .mission-column h2, .approach-column h2 { font-size: 1.2rem; }
-            .team-section h2 { font-size: 1.6rem; }
-            .founder-card { max-width: 90%; padding: 1rem; } .founder-card h3 { font-size: 1.15rem; }
-
-            .back-to-academy-btn, .back-btn { top: 70px; font-size: 0.8rem; padding: 6px 10px; }
+            
+            /* .back-to-academy-btn (REMOVED), */ .back-btn { top: 70px; font-size: 0.8rem; padding: 6px 10px; }
             
             .footer-bottom { justify-content: center; }
             .footer-prompt, .footer-copyright { 
@@ -600,16 +449,6 @@
             .course-grid { grid-template-columns: 1fr; } 
             .footer-prompt { font-size: 0.8rem; } 
             .footer-copyright { font-size: 0.75rem; } 
-            #about-page {
-                padding-top: 0; 
-            }
-             #about-page > .about-page-section:first-child {
-                padding-top: 0.5rem;
-            }
-            #about-page > .about-page-section:first-child h1 {
-                margin-top: 0;
-                font-size: 1.8rem;
-            }
         }
     </style>
 </head>
@@ -623,7 +462,7 @@
             <ul class="nav-links">
                 <li><a href="#home" id="home-link">Home</a></li>
                 <li><a href="#courses" id="courses-link">Courses</a></li>
-                <li><a href="#about" id="about-link">About</a></li>
+                <!-- <li><a href="#about" id="about-link">About</a></li> REMOVED -->
                 <li><a href="#contact" id="contact-link">Contact</a></li>
             </ul>
         </div>
@@ -664,8 +503,10 @@
                         </div>
                     </div>
 
+                    <!-- About Us Button REMOVED -->
+                    <!--
                     <div class="terminal-container" onclick="showAboutPage()">
-                        <div class="terminal-header">
+                        <div class="terminal-header"> 
                             <div class="terminal-dot red"></div>
                             <div class="terminal-dot yellow"></div>
                             <div class="terminal-dot green"></div>
@@ -676,6 +517,7 @@
                             <div class="terminal-description">Learn our mission</div>
                         </div>
                     </div>
+                    -->
                 </div>
             </section>
 
@@ -777,62 +619,7 @@
             </section>
         </div>
 
-        <div id="about-page">
-            <button class="btn back-to-academy-btn" onclick="showHomePageAndScroll('home-hero', 'home-link')">← Back to Academy</button>
-
-            <!-- Section 1: Main Header and Intro -->
-            <section class="about-page-section about-header-section" id="about-content-intro">
-                <h1>About <span class="privit">PrivitJay</span><span class="academy">Academy</span></h1>
-                <p class="about-intro-main">
-                    Welcome to PrivitJayAcademy – your direct pipeline to mastering real-world tech. We're not about dry theory; we're about the practical, hands-on skills that power today's digital world. If you're driven to understand the nuts and bolts of Linux, demystify networking, code with confidence, or delve into cybersecurity, you've logged into the right place.
-                </p>
-            </section>
-
-            <!-- Section 2: The PrivitJay Difference -->
-            <section class="about-page-section difference-section">
-                <h2>The PrivitJay Difference: Learn by Doing</h2>
-                <p class="difference-intro">
-                    Our philosophy is built on a single, powerful principle: <strong>Learn by Doing.</strong> We believe that true mastery comes from practical application. Our mission is to provide an immersive, interactive environment where you can roll up your sleeves, experiment, make mistakes, and build real skills that translate directly to the tech industry.
-                </p>
-                <ul>
-                    <li><strong>Live Interactive Terminals:</strong> Forget passive videos. Code, configure, and command real (simulated) systems directly in your browser. Your learning environment is always one click away.</li>
-                    <li><strong>Scenario-Based Learning:</strong> Tackle challenges and projects designed to mirror the tasks and problems you'll face in professional tech roles. Build a portfolio that truly showcases your capabilities.</li>
-                    <li><strong>Focused, Practical Curriculum:</strong> We cut through the fluff. Our courses are laser-focused on the essential knowledge and practical skills demanded by the industry, from foundational concepts to advanced techniques.</li>
-                    <li><strong>Instant Feedback Loop:</strong> Our interactive exercises provide immediate feedback, helping you understand concepts faster and learn from your actions in real-time.</li>
-                     <li><strong>Community Powered:</strong> Connect, collaborate, and get support from fellow learners and instructors in our active community. (See "Join Our Community" below!)</li>
-                </ul>
-            </section>
-
-            <!-- Section 3: Meet the Founder -->
-            <section class="about-page-section team-section">
-                <h2>Meet the Founder</h2>
-                <div class="founder-card">
-                    <img src="https://via.placeholder.com/100/7c3aed/FFFFFF?text=PJ" alt="Founder Photo" class="founder-image">
-                    <h3>Privit Jay</h3>
-                    <p class="founder-position">Founder & Lead Instructor</p>
-                    <p class="founder-bio">
-                        A dedicated technologist with a profound passion for Linux, cybersecurity, and the empowering nature of open-source. Privit Jay established the Academy to create the practical, hands-on learning experience they believe is essential for truly understanding and mastering technology, bridging the often-vast gap between academic theory and real-world application.
-                    </p>
-                </div>
-            </section>
-
-            <!-- Section 4: Discord CTA -->
-            <div class="discord-join-section" id="about-discord"> 
-                <h2 class="discord-title">Join Our Community</h2>
-                <p class="discord-description">Connect with fellow learners, ask questions, and share your progress on our Discord server!</p>
-                <a href="https://discord.gg/YOUR_INVITE_CODE" target="_blank" class="btn discord-btn"> 
-                    <svg aria-hidden="true" role="img" viewBox="0 0 24 24"><path fill="currentColor" d="M20.317 4.36981C18.7915 3.09531 16.9067 2.15581 14.8317 1.63081C14.6825 1.58081 14.5267 1.68248 14.4908 1.83081L14.2075 3.04498C12.9608 2.81665 11.6558 2.81665 10.4092 3.04498L10.1258 1.83081C10.0892 1.68248 9.93416 1.58081 9.78416 1.63081C7.70833 2.15581 5.82416 3.09531 4.29916 4.36981C4.29916 4.36981 -0.200838 9.68398 0.00166183 14.9065C0.00166183 14.9065 1.89583 17.9473 6.06916 18.4515C6.06916 18.4515 6.61416 17.4481 6.9025 16.9698C5.3225 16.2331 4.15833 14.9481 4.15833 14.9481C4.15833 14.9481 4.22166 14.8905 4.3025 14.8098C6.695 16.1023 9.4475 16.3731 12.0017 16.1365C12.0017 16.1365 12.0017 16.1365 12.0017 16.1365C14.5558 16.3731 17.3083 16.1023 19.7008 14.8098C19.7808 14.8905 19.8442 14.9481 19.8442 14.9481C19.8442 14.9481 18.6808 16.2331 17.1008 16.9698C17.3892 17.4481 17.9333 18.4515 17.9333 18.4515C22.1058 17.9473 24.0017 14.9065 24.0017 14.9065C24.2042 9.68398 20.317 4.36981 20.317 4.36981ZM8.02083 12.5998C7.02416 12.5998 6.22416 11.7998 6.22416 10.7998C6.22416 9.80065 7.02416 8.99981 8.02083 8.99981C9.0175 8.99981 9.8175 9.80065 9.8175 10.7998C9.8175 11.7998 9.0175 12.5998 8.02083 12.5998ZM15.9825 12.5998C14.9858 12.5998 14.1858 11.7998 14.1858 10.7998C14.1858 9.80065 14.9858 8.99981 15.9825 8.99981C16.9792 8.99981 17.7792 9.80065 17.7792 10.7998C17.7792 11.7998 16.9792 12.5998 15.9825 12.5998Z"></path></svg>
-                    Join Discord
-                </a>
-            </div>
-
-            <!-- Section 5: Ready to Learn CTA -->
-            <section class="about-page-section ready-to-learn-section">
-                <h2>Ready to Start Learning?</h2>
-                <p>Your journey into the exciting world of technology begins now. Explore our courses and find your path!</p>
-                <button class="btn" onclick="showHomePageAndScroll('courses', 'courses-link')">Browse Courses 🚀</button>
-            </section>
-        </div>
+        <!-- ENTIRE #about-page DIV REMOVED -->
 
         <div id="learning-interface">
             <button class="btn back-btn" onclick="goHomeFromLearning()">← Back to Courses</button>
@@ -963,7 +750,7 @@
     }
 
     function showPage(pageIdToShow, activeNavId) {
-        const pages = ['home-page', 'about-page', 'learning-interface'];
+        const pages = ['home-page', 'learning-interface']; // REMOVED 'about-page'
         pages.forEach(pageId => {
             const pageElement = document.getElementById(pageId);
             if (!pageElement) return;
@@ -972,7 +759,7 @@
                 pageElement.classList.add('active-page');
                 if (pageId === 'learning-interface') {
                      pageElement.style.display = 'grid';
-                } else {
+                } else { // For home-page
                      pageElement.style.display = 'flex'; 
                 }
                 pageElement.offsetHeight; 
@@ -988,8 +775,7 @@
         });
         setActiveNavLink(activeNavId);
 
-        // Scroll to top when a new page (not a section on home) is shown
-        if (pageIdToShow === 'about-page' || (pageIdToShow === 'home-page' && activeNavId === 'home-link')) {
+        if (pageIdToShow === 'home-page' && activeNavId === 'home-link') {
              window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
@@ -1033,9 +819,7 @@
         }, 100); 
     }
 
-    function showAboutPage() {
-        showPage('about-page', 'about-link');
-    }
+    // function showAboutPage() REMOVED
 
     function startCourse(courseName) {
         showPage('learning-interface', null);
@@ -1062,7 +846,7 @@
             const linkId = this.getAttribute('id');
             if (linkId === 'home-link') showHomePageAndScroll('home-hero', 'home-link');
             else if (linkId === 'courses-link') showHomePageAndScroll('courses', 'courses-link');
-            else if (linkId === 'about-link') showAboutPage();
+            // else if (linkId === 'about-link') showAboutPage(); REMOVED
             else if (linkId === 'contact-link') showHomePageAndScroll('contact', 'contact-link');
         });
       });
