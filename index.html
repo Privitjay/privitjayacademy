@@ -342,15 +342,15 @@
 
         /* === About Page Top Spacing Fix === */
         #about-page {
-            padding-top: 4.25rem; /* Approx 68px. (Space for button + breathing room) */
+            padding-top: 0; /* NO top padding on the page container itself */
             padding-right: 1rem;
-            padding-bottom: 1.5rem;
+            padding-bottom: 1.5rem; /* Keep bottom/side padding */
             padding-left: 1rem;
             max-width: 1200px;
             margin: 0 auto;
             color: #e0e0e0;
         }
-        /* Default padding for all about page sections */
+        /* Default padding for all about page sections, except the first one's top */
         .about-page-section { 
             margin-bottom: 2.5rem; 
             padding: 1.2rem; 
@@ -359,7 +359,7 @@
             border: 1px solid rgba(255, 255, 255, 0.08); 
         }
         
-        /* Specifically target the FIRST .about-page-section within #about-page */
+        /* Specifically target the FIRST .about-page-section directly under #about-page */
         #about-page > .about-page-section:first-child {
             padding-top: 0; /* Remove its own top padding */
             margin-top: 0;  /* Remove its own top margin */
@@ -368,1062 +368,85 @@
         #about-page > .about-page-section:first-child h1 {
             margin-top: 0; 
         }
-
+        /* Styling for the new About page structure */
         .about-header-section h1 { 
             font-size: 2.4rem; 
             font-family: 'Courier New', monospace; 
             text-align: center; 
-            margin-bottom: 1.2rem; /* This is space between H1 and intro paragraph */
+            margin-bottom: 1rem; /* Reduced space below H1 */
         }
         .about-header-section h1 .privit { color: #00d4ff; } 
         .about-header-section h1 .academy { color: #7c3aed; }
-        .about-intro { font-size: 1rem; line-height: 1.6; text-align: center; margin-bottom: 1.5rem; max-width: 90%; margin-left: auto; margin-right: auto; }
-        .about-header-section h3 { font-size: 1.4rem; color: #00d4ff; text-align: center; margin-top: 1.5rem; margin-bottom: 0.8rem; }
-        .about-header-section p { font-size: 0.95rem; line-height: 1.55; max-width: 90%; margin-left: auto; margin-right: auto; text-align: center; }
-
-        .mission-approach-section h2 { font-size: 1.6rem; color: #00d4ff; margin-bottom: 1.2rem; text-align: center; }
-        .mission-approach-container { display: flex; gap: 1.5rem; align-items: flex-start; flex-wrap: wrap; }
-        .mission-column, .approach-column { flex: 1; min-width: 280px; padding: 1.2rem; background: rgba(255, 255, 255, 0.03); border-radius: 8px; }
-        .mission-column h2, .approach-column h2 { text-align: left; font-size: 1.3rem; color: #fff; margin-bottom: 0.8rem; }
-        .mission-column p, .approach-column p, .approach-column li { font-size: 0.9rem; line-height: 1.55; }
         
-        .mission-icon-container {
-            text-align: center;
-            margin-bottom: 0.8rem;
-        }
-        .mission-icon {
-            font-size: 4rem; 
-            color: #00d4ff; 
-            line-height: 1;
-            display: inline-block; 
-            padding: 0.5rem;
-            border: 1.5px solid rgba(0, 212, 255, 0.4);
-            border-radius: 8px;
-        }
-
-        .approach-column ul { list-style: none; padding-left: 0; }
-        .approach-column li { margin-bottom: 0.7rem; padding-left: 1.3rem; position: relative; }
-        .approach-column li::before { content: '⚡'; color: #00ff88; position: absolute; left: 0; font-size: 1rem; }
-        .approach-column li strong { color: #00d4ff; }
-
-        .team-section h2 { font-size: 1.8rem; color: #00d4ff; text-align: center; margin-bottom: 1.5rem; }
-        .founder-card {
-            background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px; padding: 1.2rem; max-width: 360px; margin: 0 auto;
-            text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-        }
-        .founder-image { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 0.8rem; border: 2.5px solid #7c3aed; }
-        .founder-card h3 { font-size: 1.25rem; color: #fff; margin-bottom: 0.25rem; }
-        .founder-position { font-size: 0.85rem; color: #00ff88; font-family: 'Courier New', monospace; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.8px; }
-        .founder-bio { font-size: 0.85rem; line-height: 1.55; color: #ccc; }
-
-        .ready-to-learn-section {
-            text-align: center;
-            padding: 2rem 1rem;
-            background: rgba(0, 212, 255, 0.05);
-            border-radius: 12px;
-            margin-top: 2.5rem;
-        }
-        .ready-to-learn-section h2 {
-            font-size: 1.8rem;
-            color: #00d4ff;
-            margin-bottom: 0.8rem;
-        }
-        .ready-to-learn-section p {
-            font-size: 1rem;
-            color: #ccc;
-            margin-bottom: 1.5rem;
-        }
-        .ready-to-learn-section .btn {
-            font-size: 1rem; 
-        }
-        
-        /* === Homepage Space Fix === */
-        .why-learn-section {
-            margin-top: 3rem; /* Standard spacing from courses */
-            padding: 3rem 0 1.5rem 0; /* Top padding for its own content, bottom padding before footer */
-        }
-
-        .footer-title { 
-            text-align: center; font-size: 2.2rem; margin-bottom: 2rem; 
-            background: linear-gradient(45deg, #00d4ff, #7c3aed); 
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
-            font-weight: bold; 
-        }
-        .features-grid { 
-             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-             gap: 1.5rem; margin-bottom: 2rem; 
-        }
-        .feature-card { 
-            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); 
-            border-radius: 12px; padding: 1.5rem; text-align: center; 
-            transition: all 0.3s ease; position: relative; overflow: hidden; 
-        }
-        .feature-card:hover { transform: translateY(-4px); border-color: rgba(0, 212, 255, 0.3); box-shadow: 0 8px 25px rgba(0, 212, 255, 0.1); }
-        .feature-icon { font-size: 2.5rem; margin-bottom: 0.8rem; background: linear-gradient(45deg, #00d4ff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; }
-        .feature-card h3 { color: #00d4ff; margin-bottom: 0.8rem; font-size: 1.2rem; }
-        .feature-card p { color: #ccc; line-height: 1.55; font-size: 0.9rem;}
-
-        .footer { 
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1a1a 100%); 
-            padding: 1.5rem 0 1.5rem 0; 
-            margin-top: auto; 
-            border-top: 1px solid rgba(255, 255, 255, 0.1); 
-            width: 100%; 
-        }
-        .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-        
-        .discord-join-section { 
-            text-align: center; padding: 2.5rem 1rem; 
-            background: rgba(10, 14, 39, 0.85); 
-            border-radius: 12px; 
-            margin: 0 auto 2.5rem auto; 
-            max-width: 90%; width: 700px; 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); 
-        }
-        .discord-title { font-size: 2rem; margin-bottom: 0.8rem; color: #00d4ff; font-family: 'Courier New', monospace; text-transform: uppercase; letter-spacing: 1.5px; }
-        .discord-description { color: #ccc; font-size: 1rem; line-height: 1.55; margin-bottom: 1.5rem; max-width: 90%; margin-left:auto; margin-right:auto; }
-        .discord-btn { padding: 12px 24px; font-size: 0.95rem; }
-        .discord-btn svg { vertical-align: middle; margin-right: 7px; width: 22px; height: 22px; }
-        
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between; 
-            align-items: center;
-            flex-wrap: wrap; 
+        .about-intro-main { /* New class for the main intro */
+            font-size: 1.05rem; /* Slightly larger */
+            line-height: 1.65; 
             text-align: center; 
-            padding-top: 1.5rem; 
-            border-top: 1px solid rgba(255, 255, 255, 0.1); 
-            color: #888; font-size: 0.85rem;
-        }
-        .footer-prompt {
-            font-family: 'Courier New', monospace;
-            color: #00d4ff;
-            white-space: nowrap; 
-        }
-        .footer-copyright {
+            margin-bottom: 2rem; /* More space after main intro */
+            max-width: 850px; /* Control width for readability */
             margin-left: auto; 
             margin-right: auto; 
+            color: #e8e8e8;
+        }
+        .about-header-section h3.vision-title { /* Class for vision title */
+            font-size: 1.6rem; 
+            color: #00d4ff; 
             text-align: center; 
-            flex-grow: 1; 
-             padding-bottom: 5px; 
-        }
-
-
-        @media (max-width: 768px) {
-            .nav-links { gap: 1rem; margin-left: 0; }
-            .nav-links a { font-size: 0.85rem; padding-bottom: 6px; }
-            .logo { font-size: 1.1rem; padding: 0.25rem 0.5rem; }
-            
-            .hero-title { font-size: 2.2rem; } .cyber-subtitle { font-size: 0.9rem; }
-            .hero-section p { font-size: 1rem; }
-            .typing-terminal { padding: 0.8rem; } .typing-content { font-size: 0.9rem; }
-            .hero-actions .terminal-container { min-width: 130px; max-width: 180px; padding: 0.6rem; }
-            .hero-actions .terminal-action { font-size: 0.75rem; } .hero-actions .terminal-description { font-size: 0.55rem; }
-
-            .section-title { font-size: 1.6rem; }
-            .category-item .category-name { font-size: 0.75rem; }
-            .category-item .category-examples { font-size: 0.6rem; margin-left: 16px; }
-            .course-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; padding: 1rem 0.5rem;}
-            .course-card { padding: 1.2rem; } .course-card h3 { font-size: 1.2rem; } .course-card p { font-size: 0.85rem; }
-            .level-indicator { font-size: 0.7rem; padding: 0.2rem 0.6rem; }
-
-            .footer-title { font-size: 1.8rem; }
-            .discord-join-section { width: auto; max-width: 95%; padding: 2rem 0.5rem; }
-            .discord-title { font-size: 1.6rem; }
-            .feature-card { padding: 1.2rem; } .feature-icon { font-size: 2.2rem; }
-            .feature-card h3 { font-size: 1.1rem; } .feature-card p { font-size: 0.85rem; }
-
-            /* Mobile About Page Spacing */
-            #about-page {
-                padding-top: 2.9rem; /* Approx 47px */
-            }
-            #about-page > .about-page-section:first-child {
-                padding-top: 0; 
-                margin-top: 0;
-            }
-            #about-page > .about-page-section:first-child h1 {
-                margin-top: 0;
-            }
-
-            .about-header-section h1 { font-size: 2rem; }
-            .about-intro { font-size: 0.95rem; }
-            .mission-column h2, .approach-column h2 { font-size: 1.2rem; }
-            .team-section h2 { font-size: 1.6rem; }
-            .founder-card { max-width: 90%; padding: 1rem; } .founder-card h3 { font-size: 1.15rem; }
-
-            .back-to-academy-btn, .back-btn { top: 70px; font-size: 0.8rem; padding: 6px 10px; }
-            
-            .footer-bottom { justify-content: center; }
-            .footer-prompt, .footer-copyright { 
-                margin: 0.2rem auto; 
-                width:100%; 
-                text-align: center;
-                flex-grow: 0; 
-            }
-        }
-        @media (max-width: 480px) { 
-            .nav-links { display: none; }
-            .hero-title { font-size: 1.8rem; }
-            .category-grid { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 0.5rem; }
-            .course-grid { grid-template-columns: 1fr; } 
-            .footer-prompt { font-size: 0.8rem; } 
-            .footer-copyright { font-size: 0.75rem; } 
-            #about-page {
-                padding-top: 2.9rem; 
-            }
-            #about-page > .about-page-section:first-child {
-                padding-top: 0; 
-                margin-top: 0;
-            }
-            #about-page > .about-page-section:first-child h1 {
-                margin-top: 0;
-            }
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <span class="logo-prompt">PJ_A:~#</span>
-                <span class="logo-text">./</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home" id="home-link">Home</a></li>
-                <li><a href="#courses" id="courses-link">Courses</a></li>
-                <li><a href="#about" id="about-link">About</a></li>
-                <li><a href="#contact" id="contact-link">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="main-content">
-        <div id="home-page">
-            <section class="hero-section" id="home-hero">
-                <div class="cyber-subtitle">◤◥ CYBER LEARNING PROTOCOL INITIATED ◤◥</div>
-                <h1 class="hero-title glitch-text" data-text="PrivitJayAcademy">
-                    <span class="privit">PrivitJay</span><span class="academy">Academy</span>
-                </h1>
-                <div class="typing-terminal">
-                    <div class="typing-terminal-header">
-                        <div class="typing-dot red"></div>
-                        <div class="typing-dot yellow"></div>
-                        <div class="typing-dot green"></div>
-                    </div>
-                    <div class="typing-content">
-                        <span class="typing-prompt">student@privitjay:~$</span>
-                        <span class="typing-text" id="typing-text"></span>
-                        <span class="cursor"></span>
-                    </div>
-                </div>
-                <p>Learn programming, Linux, networking, and more with hands-on interactive terminals</p>
-
-                <div class="hero-actions">
-                    <div class="terminal-container" onclick="showHomePageAndScroll('courses', 'courses-link')">
-                        <div class="terminal-header">
-                            <div class="terminal-dot red"></div>
-                            <div class="terminal-dot yellow"></div>
-                            <div class="terminal-dot green"></div>
-                        </div>
-                        <div class="terminal-content">
-                            <div><span class="terminal-prompt">root@academy:~#</span> init_learning</div>
-                            <div class="terminal-action">► START LEARNING</div>
-                            <div class="terminal-description">Begin your journey</div>
-                        </div>
-                    </div>
-
-                    <div class="terminal-container" onclick="showAboutPage()">
-                        <div class="terminal-header">
-                            <div class="terminal-dot red"></div>
-                            <div class="terminal-dot yellow"></div>
-                            <div class="terminal-dot green"></div>
-                        </div>
-                        <div class="terminal-content">
-                            <div><span class="terminal-prompt">user@academy:~$</span> cat about.txt</div>
-                            <div class="terminal-action">► ABOUT US</div>
-                            <div class="terminal-description">Learn our mission</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="browse-categories" class="browse-categories-section">
-                <div class="section-title-container">
-                    <h2 class="section-title">Browse Categories</h2>
-                    <button class="btn btn-small btn-outline" onclick="filterCoursesByCategory('all')">Show All Categories</button>
-                </div>
-                <div class="category-grid">
-                    <div class="category-item" onclick="filterCoursesByCategory('linux')">
-                        <span class="category-name">SysAdmin <span class="highlight">(Linux)</span></span>
-                        <span class="category-examples">FS, Users, CLI</span>
-                    </div>
-                    <div class="category-item" onclick="filterCoursesByCategory('linux')">
-                        <span class="category-name">Bash <span class="highlight">(Linux)</span></span>
-                        <span class="category-examples">Scripts, Tasks</span>
-                    </div>
-                    <div class="category-item" onclick="filterCoursesByCategory('networking')">
-                        <span class="category-name">Networking</span>
-                        <span class="category-examples">TCP/IP, Sec</span>
-                    </div>
-                    <div class="category-item" onclick="filterCoursesByCategory('python')">
-                        <span class="category-name">Programming</span>
-                        <span class="category-examples">Python, Algo</span>
-                    </div>
-                </div>
-            </section>
-
-            <div class="course-grid" id="courses">
-                <div class="course-card" data-category="linux" onclick="startCourse('linux')">
-                    <div class="course-header">
-                        <div class="course-title">
-                            <h3>🐧 Linux Fundamentals</h3>
-                        </div>
-                        <div class="level-indicator level-beginner">
-                            <span class="level-icon">⚡</span>
-                            <span>Beginner</span>
-                        </div>
-                    </div>
-                    <p>Master the command line, file system navigation, and essential Linux commands.</p>
-                    <button class="btn">Start Learning</button>
-                </div>
-
-                <div class="course-card" data-category="python" onclick="startCourse('python')">
-                    <div class="course-header">
-                        <div class="course-title">
-                            <h3>🐍 Python Programming</h3>
-                        </div>
-                        <div class="level-indicator level-beginner">
-                            <span class="level-icon">⚡</span>
-                            <span>Beginner</span>
-                        </div>
-                    </div>
-                    <p>Learn Python from basics to advanced concepts with a built-in Python interpreter.</p>
-                    <button class="btn">Start Learning</button>
-                </div>
-
-                <div class="course-card" data-category="networking" onclick="startCourse('networking')">
-                    <div class="course-header">
-                        <div class="course-title">
-                            <h3>🌐 Network Security</h3>
-                        </div>
-                        <div class="level-indicator level-intermediate">
-                            <span class="level-icon">🔥</span>
-                            <span>Intermediate</span>
-                        </div>
-                    </div>
-                    <p>Understand networking concepts and security through simulated network environments.</p>
-                    <button class="btn">Start Learning</button>
-                </div>
-            </div>
-
-            <section class="why-learn-section">
-                <div class="footer-container"> 
-                    <h2 class="footer-title">Why Learn With Us?</h2>
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon">💻</div>
-                            <h3>Hands-On Experience</h3>
-                            <p>Learn by doing with real interactive terminals and simulators. Just practical, hands-on coding and system administration experience.</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">🎯</div>
-                            <h3>Real-World Projects</h3>
-                            <p>Work on actual projects that mirror industry challenges. Build your portfolio while learning essential skills that employers are looking for.</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">🔧</div>
-                            <h3>Interactive Learning</h3>
-                            <p>Our built-in terminals and simulators let you practice immediately. No need to set up environments - start coding and experimenting right away.</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">🌟</div>
-                            <h3>24/7 Access</h3>
-                            <p>Learn at your own pace, anytime, anywhere. Our platform is always available with instant feedback and guidance when you need it most.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div id="about-page">
-            <button class="btn back-to-academy-btn" onclick="showHomePageAndScroll('home-hero', 'home-link')">← Back to Academy</button>
-
-            <section class="about-page-section about-header-section" id="about-content">
-                <h1>About <span class="privit">PrivitJay</span><span class="academy">Academy</span></h1>
-                <p class="about-intro">
-                    PrivitJayAcademy is your gateway to mastering technology through practical, hands-on learning. We believe the best way to learn is by doing.
-                </p>
-                <h3>Our Goal</h3>
-                <p>
-                    To empower individuals with the skills and confidence to excel in tech, making complex topics accessible and engaging for all.
-                </p>
-            </section>
-
-            <section class="about-page-section mission-approach-section">
-                <div class="mission-approach-container">
-                    <div class="mission-column">
-                        <h2>Our Mission</h2>
-                        <div class="mission-icon-container">
-                            <span class="mission-icon">🎯</span>
-                        </div>
-                        <p>To provide an immersive, interactive environment for gaining real-world tech skills, building projects, and fostering lifelong learning.</p>
-                    </div>
-                    <div class="approach-column">
-                        <h2>Learning Approach</h2>
-                        <p>We champion "learn by doing":</p>
-                        <ul>
-                            <li><strong>Interactive Terminals:</strong> Practice in-browser.</li>
-                            <li><strong>Real-World Scenarios:</strong> Tackle industry problems.</li>
-                            <li><strong>Project-Based Learning:</strong> Build to showcase skills.</li>
-                            <li><strong>Step-by-Step Guidance:</strong> Clear, structured lessons.</li>
-                            <li><strong>Instant Feedback:</strong> Learn and correct efficiently.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section class="about-page-section team-section">
-                <h2>Meet the Team</h2>
-                <div class="founder-card">
-                    <img src="https://via.placeholder.com/100/7c3aed/FFFFFF?text=PJ" alt="Founder Photo" class="founder-image">
-                    <h3>Privit Jay</h3>
-                    <p class="founder-position">Founder & Lead Instructor</p>
-                    <p class="founder-bio">
-                        Passionate about cybersecurity, Linux, and open-source. Established the academy to make tech education practical and bridge theory with application.
-                    </p>
-                </div>
-            </section>
-
-            <section class="about-page-section ready-to-learn-section">
-                <h2>Ready to Start Learning?</h2>
-                <p>Join PrivitJayAcademy and begin your journey into the exciting world of technology today!</p>
-                <button class="btn" onclick="showHomePageAndScroll('courses', 'courses-link')">Browse Courses 🚀</button>
-            </section>
-        </div>
-
-        <div id="learning-interface">
-            <button class="btn back-btn" onclick="goHomeFromLearning()">← Back to Courses</button>
-            <div class="lesson-panel">
-                <div id="lesson-content" class="lesson-content"></div>
-            </div>
-            <div class="terminal-panel">
-                 <div class="terminal-header">
-                    <div class="terminal-dot dot-red"></div>
-                    <div class="terminal-dot dot-yellow"></div>
-                    <div class="terminal-dot dot-green"></div>
-                    <div class="terminal-title">Interactive Terminal</div>
-                </div>
-                <div class="terminal-body" id="terminal">
-                    <div class="terminal-line">
-                        <span class="prompt">student@academy:~$</span>
-                        <input type="text" class="terminal-input" id="terminal-input" placeholder="Type your commands here...">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <footer class="footer" id="site-footer">
-            <div class="footer-container">
-                <div class="discord-join-section" id="contact"> 
-                    <h2 class="discord-title">Join Our Community</h2>
-                    <p class="discord-description">Connect with fellow learners, ask questions, and share your progress on our Discord server!</p>
-                    <a href="https://discord.gg/YOUR_INVITE_CODE" target="_blank" class="btn discord-btn">
-                        <svg aria-hidden="true" role="img" viewBox="0 0 24 24"><path fill="currentColor" d="M20.317 4.36981C18.7915 3.09531 16.9067 2.15581 14.8317 1.63081C14.6825 1.58081 14.5267 1.68248 14.4908 1.83081L14.2075 3.04498C12.9608 2.81665 11.6558 2.81665 10.4092 3.04498L10.1258 1.83081C10.0892 1.68248 9.93416 1.58081 9.78416 1.63081C7.70833 2.15581 5.82416 3.09531 4.29916 4.36981C4.29916 4.36981 -0.200838 9.68398 0.00166183 14.9065C0.00166183 14.9065 1.89583 17.9473 6.06916 18.4515C6.06916 18.4515 6.61416 17.4481 6.9025 16.9698C5.3225 16.2331 4.15833 14.9481 4.15833 14.9481C4.15833 14.9481 4.22166 14.8905 4.3025 14.8098C6.695 16.1023 9.4475 16.3731 12.0017 16.1365C12.0017 16.1365 12.0017 16.1365 12.0017 16.1365C14.5558 16.3731 17.3083 16.1023 19.7008 14.8098C19.7808 14.8905 19.8442 14.9481 19.8442 14.9481C19.8442 14.9481 18.6808 16.2331 17.1008 16.9698C17.3892 17.4481 17.9333 18.4515 17.9333 18.4515C22.1058 17.9473 24.0017 14.9065 24.0017 14.9065C24.2042 9.68398 20.317 4.36981 20.317 4.36981ZM8.02083 12.5998C7.02416 12.5998 6.22416 11.7998 6.22416 10.7998C6.22416 9.80065 7.02416 8.99981 8.02083 8.99981C9.0175 8.99981 9.8175 9.80065 9.8175 10.7998C9.8175 11.7998 9.0175 12.5998 8.02083 12.5998ZM15.9825 12.5998C14.9858 12.5998 14.1858 11.7998 14.1858 10.7998C14.1858 9.80065 14.9858 8.99981 15.9825 8.99981C16.9792 8.99981 17.7792 9.80065 17.7792 10.7998C17.7792 11.7998 16.9792 12.5998 15.9825 12.5998Z"></path></svg>
-                        Join Discord
-                    </a>
-                </div>
-                <div class="footer-bottom">
-                    <span class="footer-prompt">> PrivitjayAcademy_</span>
-                    <span class="footer-copyright">© 2025 Privitjay Academy. Empowering the next gen.</span>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <script>
-    const messages = [
-      `echo "Master Technology Through Practice"`,
-      `echo "Your Journey into Linux Starts Here"`,
-      `echo "Hacking Knowledge, One Command at a Time"`
-    ];
-
-    let messageIndex = 0;
-    let charIndex = 0;
-    const typingText = document.getElementById("typing-text");
-    const cursor = document.querySelector(".cursor");
-
-    function typeMessage() {
-      if (!typingText) return;
-      const currentMessage = messages[messageIndex];
-
-      if (charIndex < currentMessage.length) {
-        typingText.textContent += currentMessage.charAt(charIndex);
-        charIndex++;
-        setTimeout(typeMessage, 100 + Math.random() * 50);
-      } else {
-        const output = document.createElement("div");
-        output.style.color = "#fff";
-        output.style.marginTop = "0.5rem";
-        output.textContent = currentMessage.replace('echo ', '').replace(/"/g, '');
-        output.style.animation = "fadeIn 0.5s ease";
-        if(typingText.parentElement) typingText.parentElement.appendChild(output);
-
-        setTimeout(() => {
-          if(typingText) typingText.textContent = "";
-          if (output.parentNode === typingText.parentElement) {
-            typingText.parentElement.removeChild(output);
-          }
-          charIndex = 0;
-          messageIndex = (messageIndex + 1) % messages.length;
-          if(document.getElementById('home-page').classList.contains('active-page')) { 
-             typeMessage();
-          }
-        }, 3000);
-      }
-    }
-
-    function filterCoursesByCategory(targetCategory) {
-        const courseCards = document.querySelectorAll('.course-grid .course-card');
-        let coursesFound = false;
-
-        courseCards.forEach(card => {
-            const cardCategory = card.getAttribute('data-category');
-            const shouldShow = (targetCategory === 'all' || cardCategory === targetCategory);
-
-            if (shouldShow) {
-                if (card.style.display === 'none' || card.style.opacity === '0') {
-                    card.style.opacity = 0;
-                    card.style.display = 'block';
-                    setTimeout(() => card.style.opacity = 1, 10);
-                }
-                coursesFound = true;
-            } else {
-                if (card.style.display !== 'none' && card.style.opacity !== '0') {
-                    card.style.opacity = 0;
-                    setTimeout(() => card.style.display = 'none', 300);
-                } else {
-                    card.style.display = 'none';
-                    card.style.opacity = 0;
-                }
-            }
-        });
-
-        if (coursesFound || targetCategory === 'all') {
-             const coursesSection = document.getElementById('courses');
-             if (coursesSection && document.getElementById('home-page').classList.contains('active-page')) {
-                 const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 60;
-                 const elementPosition = coursesSection.getBoundingClientRect().top + window.pageYOffset;
-                 const offsetPosition = elementPosition - navbarHeight - 20; 
-
-                 window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-             }
-        }
-    }
-
-    function setActiveNavLink(activeLinkId) {
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.classList.remove('nav-active');
-        });
-        if (activeLinkId) {
-            const activeLink = document.getElementById(activeLinkId);
-            if (activeLink) activeLink.classList.add('nav-active');
-        }
-    }
-
-    function showPage(pageIdToShow, activeNavId) {
-        const pages = ['home-page', 'about-page', 'learning-interface'];
-        pages.forEach(pageId => {
-            const pageElement = document.getElementById(pageId);
-            if (!pageElement) return;
-
-            if (pageId === pageIdToShow) {
-                pageElement.classList.add('active-page');
-                if (pageId === 'learning-interface') {
-                     pageElement.style.display = 'grid';
-                } else {
-                     pageElement.style.display = 'flex'; 
-                }
-                pageElement.offsetHeight; 
-                pageElement.style.opacity = 1;
-            } else {
-                pageElement.style.opacity = 0;
-                setTimeout(() => {
-                    if (pageElement.classList.contains('active-page')) return; // Don't hide if it became active
-                    pageElement.style.display = 'none';
-                    pageElement.classList.remove('active-page');
-                }, 400);
-            }
-        });
-        setActiveNavLink(activeNavId);
-
-        // Scroll to top when a new page (not a section on home) is shown
-        if (pageIdToShow === 'about-page' || (pageIdToShow === 'home-page' && activeNavId === 'home-link')) {
-             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        // Specific section scrolling for homepage sections is handled by showHomePageAndScroll
-
-        if (pageIdToShow === 'home-page' && typingText && typingText.textContent === '') {
-            charIndex = 0;
-            setTimeout(typeMessage, 500);
-        }
-    }
-
-    function showHomePageAndScroll(sectionId = 'home-hero', activeLink = 'home-link') {
-        showPage('home-page', activeLink); 
-        
-        setTimeout(() => {
-            // Only scroll to a specific section if it's not the default 'home-hero' when 'home-link' is clicked
-            if (!(sectionId === 'home-hero' && activeLink === 'home-link')) {
-                const targetElement = document.getElementById(sectionId);
-                if (targetElement) {
-                    const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 60;
-                    let topPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                
-                    if (sectionId === 'courses' || sectionId === 'browse-categories') { 
-                        topPos -= 20; 
-                    } else if (sectionId === 'contact') { 
-                        const footer = document.getElementById('site-footer');
-                        if (footer) {
-                             let footerTopPos = footer.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                             const contactDivPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                             topPos = Math.min(footerTopPos, contactDivPos); 
-                        }
-                    } else if (sectionId === 'home-hero') { 
-                        topPos = 0;
-                    }
-                    window.scrollTo({ top: topPos , behavior: 'smooth'});
-                } else if (sectionId !== 'home-hero') { 
-                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            }
-            
-            if(activeLink === 'home-link' || activeLink === 'courses-link' || sectionId === 'courses'){
-                filterCoursesByCategory('all');
-            }
-        }, 100); 
-    }
-
-    function showAboutPage() {
-        showPage('about-page', 'about-link');
-    }
-
-    function startCourse(courseName) {
-        showPage('learning-interface', null);
-        const lessonContentEl = document.getElementById('lesson-content');
-        lessonContentEl.innerHTML = `<h2>Welcome to ${courseName.charAt(0).toUpperCase() + courseName.slice(1)}</h2><p>Loading lesson...</p>
-        <h3>Lesson 1: Intro to ${courseName}</h3>
-        <p>This is where the first lesson content would go. For example, if this is Linux, we'd talk about the terminal.</p>
-        <code>${courseName === 'linux' ? 'ls -la' : (courseName === 'python' ? 'print("Hello, World!")' : 'ping 8.8.8.8')}</code>
-        <div class="exercise-box">
-            <h4>Exercise: Your First Command</h4>
-            <p>Try typing the command above into the interactive terminal!</p>
-        </div>
-        <button class="btn" onclick="alert('Next lesson coming soon!')">Next Lesson</button>`;
-    }
-
-    function goHomeFromLearning() {
-        showHomePageAndScroll('courses', 'courses-link');
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const linkId = this.getAttribute('id');
-            if (linkId === 'home-link') showHomePageAndScroll('home-hero', 'home-link');
-            else if (linkId === 'courses-link') showHomePageAndScroll('courses', 'courses-link');
-            else if (linkId === 'about-link') showAboutPage();
-            else if (linkId === 'contact-link') showHomePageAndScroll('contact', 'contact-link');
-        });
-      });
-
-      showHomePageAndScroll('home-hero', 'home-link');
-    });
-  </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Learning Academy</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a0e27;
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        .navbar {
-            background: rgba(10, 14, 39, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 0.8rem 0; 
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem; 
-            display: flex;
-            justify-content: space-between; 
-            align-items: center;
-            gap: 1rem; 
-        }
-
-        .logo {
-            font-size: 1.2rem; 
-            font-weight: bold;
+            margin-top: 0; /* No top margin if it follows intro closely */
+            margin-bottom: 0.8rem; 
             font-family: 'Courier New', monospace;
-            background: #000;
-            padding: 0.3rem 0.6rem; 
-            border-radius: 6px; 
-            border: 1px solid #333;
-            white-space: nowrap; 
         }
-
-        .logo-prompt { color: #00d4ff; }
-        .logo-text { color: #00ff00; }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem; 
+        .about-header-section p.vision-text { /* Class for vision paragraph */
+            font-size: 0.95rem; 
+            line-height: 1.6; 
+            max-width: 800px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            text-align: center;
+            color: #d0d0d0;
+        }
+        /* Core Philosophy / What Sets Us Apart Section */
+        .philosophy-section h2, .what-sets-us-apart-section h2 {
+            font-size: 1.8rem; 
+            color: #00d4ff; 
+            margin-bottom: 1.2rem; 
+            text-align: center; 
+            font-family: 'Courier New', monospace;
+        }
+        .philosophy-section p, .what-sets-us-apart-section p.intro-p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #d8d8d8;
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 1.5rem auto;
+        }
+        .what-sets-us-apart-section ul {
             list-style: none;
-            margin-left: auto; 
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s, transform 0.3s;
-            padding-bottom: 8px;
-            font-size: 0.95rem; 
-        }
-
-        .nav-links a:hover {
-            color: #00d4ff;
-            transform: translateY(-2px);
-        }
-
-        .nav-links a.nav-active {
-            color: #00d4ff;
-            font-weight: bold;
-            position: relative;
-        }
-        .nav-links a.nav-active::after {
-            content: '';
-            position: absolute;
-            width: 60%;
-            height: 2px;
-            background-color: #00d4ff;
-            bottom: 0px;
-            left: 20%;
-            animation: navLinkActiveAnim 0.3s ease-out;
-        }
-
-        @keyframes navLinkActiveAnim {
-            from { width: 0; opacity: 0; }
-            to { width: 60%; opacity: 1; }
-        }
-
-
-        .main-content {
-            margin-top: 60px; 
-            display: flex; 
-            flex-direction: column; 
-            min-height: calc(100vh - 60px); 
-            position: relative;
-        }
-
-        #home-page.active-page,
-        #about-page.active-page,
-        #learning-interface.active-page {
-            flex-grow: 1; 
-        }
-
-
-        .hero-section {
-            text-align: center;
-            padding: 3rem 1rem; 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                radial-gradient(circle at 20% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
-                linear-gradient(45deg, transparent 49%, rgba(0, 255, 136, 0.03) 50%, transparent 51%);
-            animation: cyberGrid 20s linear infinite;
-        }
-
-        @keyframes cyberGrid {
-            0% { transform: translateX(0) translateY(0); }
-            100% { transform: translateX(-20px) translateY(-20px); }
-        }
-
-        .hero-title {
-            font-size: 2.8rem; 
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 2;
-            font-family: 'Courier New', monospace;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px; 
-        }
-
-        .hero-title .privit { color: #00d4ff; text-shadow: 0 0 15px rgba(0, 212, 255, 0.5); }
-        .hero-title .academy { color: #7c3aed; text-shadow: 0 0 15px rgba(124, 58, 237, 0.5); }
-
-        .cyber-subtitle {
-            font-size: 1rem; 
-            color: #00ff88;
-            font-family: 'Courier New', monospace;
-            text-transform: uppercase;
-            letter-spacing: 1.5px; 
-            margin-bottom: 1rem;
-            opacity: 0.8;
-            animation: flicker 2s infinite alternate;
-        }
-
-        @keyframes flicker { 0%, 100% { opacity: 0.8; } 50% { opacity: 1; } }
-
-        .glitch-text { position: relative; display: inline-block; }
-        .glitch-text::before, .glitch-text::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .glitch-text::before { animation: glitch-1 0.5s infinite; color: #ff0080; z-index: -1; }
-        .glitch-text::after { animation: glitch-2 0.5s infinite; color: #00d4ff; z-index: -2; }
-        @keyframes glitch-1 { 0%, 14%, 15%, 49%, 50%, 99%, 100% { transform: translate(0); } 15%, 49% { transform: translate(-2px, 2px); } }
-        @keyframes glitch-2 { 0%, 20%, 21%, 62%, 63%, 99%, 100% { transform: translate(0); } 21%, 62% { transform: translate(2px, -2px); } }
-
-        .typing-terminal {
-            background: #000; border-radius: 8px; padding: 1rem; margin: 1.5rem auto; max-width: 90%; 
-            font-family: 'Courier New', monospace; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); border: 1px solid #333;
-            position: relative; z-index: 2;
-        }
-        .typing-terminal-header { display: flex; align-items: center; margin-bottom: 0.8rem; padding-bottom: 0.4rem; border-bottom: 1px solid #333; }
-        .typing-dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; } 
-        .typing-dot.red { background: #ff5f56; } .typing-dot.yellow { background: #ffbd2e; } .typing-dot.green { background: #27ca3f; }
-        .typing-content { color: #00ff00; font-size: 1rem; line-height: 1.5; } 
-        .typing-prompt { color: #00d4ff; } .typing-text { display: inline-block; }
-        .cursor { display: inline-block; background: #00ff00; animation: blink 1s infinite; width: 2px; height: 1.1em; margin-left: 2px; } 
-        @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
-        @keyframes typing { from { width: 0; } to { width: 100%; } }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .hero-section p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; position: relative; z-index: 2; } 
-
-        .hero-actions { display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; position: relative; z-index: 2; flex-wrap: wrap; } 
-
-        .terminal-container {
-            background: #000; border-radius: 8px; font-family: 'Courier New', monospace;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); cursor: pointer; transition: all 0.3s ease;
-            position: relative; overflow: hidden;
-        }
-        .terminal-container:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0, 255, 136, 0.2); }
-
-        .hero-actions .terminal-container {
-            padding: 0.7rem; border: none; min-width: 150px; max-width: 220px;
-        }
-
-        .hero-actions .terminal-header {
-            display: flex; align-items: center; margin-bottom: 0.5rem; padding-bottom: 0.25rem; border-bottom: 1px solid #333;
-        }
-        .hero-actions .terminal-dot { width: 5px; height: 5px; border-radius: 50%; margin-right: 3px; } 
-        .hero-actions .terminal-content { color: #00ff00; font-size: 0.7rem; line-height: 1.25; } 
-        .hero-actions .terminal-prompt { color: #00d4ff; }
-        .hero-actions .terminal-action { color: #fff; margin-top: 0.25rem; font-weight: bold; font-size: 0.8rem; } 
-        .hero-actions .terminal-description { color: #888; font-size: 0.6rem; margin-top: 0.15rem; } 
-
-        .browse-categories-section { max-width: 1200px; margin: 2.5rem auto; padding: 0 1rem; text-align: center; } 
-        .section-title-container { margin-bottom: 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; } 
-
-        .section-title {
-            font-size: 2rem; font-family: 'Courier New', monospace; color: #00d4ff;
-            text-transform: uppercase; letter-spacing: 1.5px; position: relative; padding-bottom: 0.4rem;
-            margin-bottom: 0.4rem; display: inline-block;
-        }
-        .section-title::after {
-            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-            width: 50%; height: 2.5px; background: linear-gradient(90deg, #00d4ff, #7c3aed); border-radius: 2px;
-        }
-
-        .btn-small { padding: 7px 14px; font-size: 0.85rem; border-radius: 18px; } 
-        .btn-outline { background: transparent; border: 1.5px solid #00d4ff; color: #00d4ff; } 
-        .btn-outline:hover { background: rgba(0, 212, 255, 0.1); box-shadow: 0 4px 12px rgba(0, 212, 255, 0.2); }
-
-        .category-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); 
-            gap: 0.8rem; 
-        }
-
-        .category-item {
-            background: rgba(25, 25, 40, 0.6); border: 1px solid rgba(80, 80, 100, 0.25);
-            border-radius: 5px; padding: 0.6rem; text-align: left;
-            font-family: 'Courier New', monospace; cursor: pointer; transition: all 0.2s ease;
-            color: #00d4ff; position: relative; overflow: hidden;
-        }
-
-        .category-item::after {
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.04), transparent);
-            transition: left 0.4s ease-out;
-        }
-        .category-item:hover::after { left: 100%; }
-        .category-item:hover {
-            background: rgba(0, 212, 255, 0.06); border-color: #00aacc; 
-            transform: translateY(-2px); box-shadow: 0 3px 8px rgba(0, 212, 255, 0.1);
-        }
-
-        .category-item .category-name {
-            font-size: 0.8rem; font-weight: bold; display: block;
-            margin-bottom: 0.2rem; color: #d8d8d8; line-height: 1.25;
-        }
-        .category-item .category-name::before {
-            content: '~ $ '; color: #00c0f0; font-size: 0.9em;
-            margin-right: 3px; opacity: 0.75;
-        }
-
-         .category-item .category-name .highlight { color: #00ee77; font-size: 0.85em; }
-         .category-item .category-examples {
-            font-size: 0.65rem; color: #888; line-height: 1.25;
-            display: block; margin-left: 18px; 
-        }
-
-        .course-grid { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1rem; 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 1.5rem; 
-        }
-
-        .course-card {
-            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px; padding: 1.5rem; 
-            transition: all 0.3s ease, opacity 0.3s ease;
-            cursor: pointer; position: relative; overflow: hidden;
-        }
-        .course-card:hover {
-            transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0, 212, 255, 0.18);
-            border-color: #00d4ff;
-        }
-        .course-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; }
-        .course-title { display: flex; align-items: center; gap: 0.4rem; }
-        .course-card h3 { font-size: 1.3rem; margin: 0; color: #00d4ff; } 
-        .level-indicator {
-            display: flex; align-items: center; gap: 0.25rem; padding: 0.25rem 0.7rem; 
-            border-radius: 18px; font-size: 0.75rem; font-weight: bold;
-            text-transform: uppercase; letter-spacing: 0.8px; 
-        }
-        .level-beginner { background: linear-gradient(45deg, #51cf66, #40c057); color: #fff; box-shadow: 0 1px 8px rgba(81, 207, 102, 0.25); }
-        .level-intermediate { background: linear-gradient(45deg, #ffd43b, #fab005); color: #000; box-shadow: 0 1px 8px rgba(255, 212, 59, 0.25); }
-        .level-advanced { background: linear-gradient(45deg, #ff6b6b, #e03131); color: #fff; box-shadow: 0 1px 8px rgba(255, 107, 107, 0.25); }
-        .level-expert { background: linear-gradient(45deg, #7c3aed, #5b21b6); color: #fff; box-shadow: 0 1px 8px rgba(124, 58, 237, 0.25); }
-        .level-icon { font-size: 0.9rem; } 
-        .course-card p { opacity: 0.8; line-height: 1.5; font-size: 0.9rem; position: relative; z-index: 1; } 
-
-        .btn {
-            background: linear-gradient(45deg, #00d4ff, #7c3aed); color: white; border: none;
-            padding: 10px 20px; border-radius: 22px; cursor: pointer; 
-            transition: all 0.3s ease; font-weight: bold; margin-top: 0.8rem; 
-            position: relative; z-index: 1; text-decoration: none; display: inline-block;
-            font-size: 0.95rem; 
-        }
-        .btn:hover { transform: scale(1.04); box-shadow: 0 8px 25px rgba(0, 212, 255, 0.25); }
-
-        #home-page, #about-page, #learning-interface { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
-        #home-page.active-page, #about-page.active-page, #learning-interface.active-page { display: block; opacity: 1; }
-        
-        #learning-interface.active-page { display: grid; } 
-        
-        #home-page.active-page, 
-        #about-page.active-page {
-            display: flex; 
-            flex-direction: column; 
-        }
-
-
-        .lesson-panel { background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .terminal-panel { background: #1a1a1a; border-radius: 12px; border: 1px solid #333; overflow: hidden; }
-        .terminal-panel .terminal-header { background: #2d2d2d; padding: 0.4rem 0.8rem; display: flex; align-items: center; gap: 0.4rem; border-bottom: 1px solid #333; }
-        .terminal-panel .terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
-        .dot-red { background: #ff5f56; } .dot-yellow { background: #ffbd2e; } .dot-green { background: #27ca3f; }
-        .terminal-title { margin-left: 0.8rem; color: #ccc; font-size: 0.85rem; }
-        .terminal-body { padding: 0.8rem; height: 450px; overflow-y: auto; font-family: 'Courier New', monospace; background: #000; }
-        .terminal-line { color: #00ff00; margin-bottom: 0.4rem; display: flex; align-items: center; }
-        .prompt { color: #00d4ff; margin-right: 0.4rem; }
-        .terminal-input { background: transparent; border: none; color: #00ff00; font-family: 'Courier New', monospace; font-size: 13px; outline: none; flex: 1; }
-        .lesson-content h2 { font-size: 1.6rem; color: #00d4ff; margin-bottom: 0.8rem; }
-        .lesson-content h3 { font-size: 1.3rem; color: #7c3aed; margin: 1.2rem 0 0.4rem 0; }
-        .lesson-content code { background: rgba(0, 212, 255, 0.1); padding: 2px 5px; border-radius: 3px; color: #00d4ff; font-size: 0.9em; }
-        .exercise-box { background: rgba(124, 58, 237, 0.1); border-left: 3px solid #7c3aed; padding: 0.8rem; margin: 0.8rem 0; border-radius: 0 6px 6px 0; }
-        .exercise-box h4 { font-size: 1rem; } .exercise-box p { font-size: 0.9rem;}
-
-        .back-btn { position: fixed; top: 80px; left: 1rem; z-index: 1001; } 
-        .back-to-academy-btn { 
-            position: fixed; top: 80px; left: 1rem; z-index: 1001;
-            background: rgba(0, 212, 255, 0.2); border: 1px solid #00d4ff;
-            color: #00d4ff; padding: 8px 12px; font-size: 0.9rem; border-radius: 20px;
-        }
-        .back-to-academy-btn:hover { background: rgba(0, 212, 255, 0.3); box-shadow: 0 0 15px rgba(0, 212, 255, 0.3); }
-
-        /* === About Page Top Spacing Fix === */
-        #about-page {
-            padding-top: 4.25rem; /* Approx 68px. (Space for button + breathing room) */
-            padding-right: 1rem;
-            padding-bottom: 1.5rem;
-            padding-left: 1rem;
-            max-width: 1200px;
+            padding-left: 0;
+            max-width: 700px;
             margin: 0 auto;
-            color: #e0e0e0;
         }
-        /* Default padding for all about page sections */
-        .about-page-section { 
-            margin-bottom: 2.5rem; 
-            padding: 1.2rem; 
-            background: rgba(255, 255, 255, 0.02); 
-            border-radius: 12px; 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
+        .what-sets-us-apart-section li {
+            margin-bottom: 1rem;
+            padding-left: 1.8rem;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.55;
+            color: #ccc;
         }
-        
-        /* Specifically target the FIRST .about-page-section within #about-page */
-        #about-page > .about-page-section:first-child {
-            padding-top: 0; /* Remove its own top padding */
-            margin-top: 0;  /* Remove its own top margin */
+        .what-sets-us-apart-section li::before {
+            content: '🚀'; /* Default, can be changed per item or removed if icons are used in text */
+            color: #00ff88;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
         }
-         /* Ensure the H1 inside that first section also has no top margin */
-        #about-page > .about-page-section:first-child h1 {
-            margin-top: 0; 
+        .what-sets-us-apart-section li strong {
+            color: #00d4ff;
+            font-weight: 600;
         }
 
-        .about-header-section h1 { 
-            font-size: 2.4rem; 
-            font-family: 'Courier New', monospace; 
-            text-align: center; 
-            margin-bottom: 1.2rem; /* This is space between H1 and intro paragraph */
-        }
-        .about-header-section h1 .privit { color: #00d4ff; } 
-        .about-header-section h1 .academy { color: #7c3aed; }
-        .about-intro { font-size: 1rem; line-height: 1.6; text-align: center; margin-bottom: 1.5rem; max-width: 90%; margin-left: auto; margin-right: auto; }
-        .about-header-section h3 { font-size: 1.4rem; color: #00d4ff; text-align: center; margin-top: 1.5rem; margin-bottom: 0.8rem; }
-        .about-header-section p { font-size: 0.95rem; line-height: 1.55; max-width: 90%; margin-left: auto; margin-right: auto; text-align: center; }
 
         .mission-approach-section h2 { font-size: 1.6rem; color: #00d4ff; margin-bottom: 1.2rem; text-align: center; }
         .mission-approach-container { display: flex; gap: 1.5rem; align-items: flex-start; flex-wrap: wrap; }
@@ -1445,6 +468,7 @@
             border-radius: 8px;
         }
 
+        /* Keep existing approach column if used, or integrate into .what-sets-us-apart-section */
         .approach-column ul { list-style: none; padding-left: 0; }
         .approach-column li { margin-bottom: 0.7rem; padding-left: 1.3rem; position: relative; }
         .approach-column li::before { content: '⚡'; color: #00ff88; position: absolute; left: 0; font-size: 1rem; }
@@ -1482,10 +506,9 @@
             font-size: 1rem; 
         }
         
-        /* === Homepage Space Fix === */
         .why-learn-section {
-            margin-top: 3rem; /* Standard spacing from courses */
-            padding: 3rem 0 1.5rem 0; /* Top padding for its own content, bottom padding before footer */
+            margin-top: 3rem; 
+            padding: 3rem 0 1.5rem 0; 
         }
 
         .footer-title { 
@@ -1581,7 +604,7 @@
 
             /* Mobile About Page Spacing */
             #about-page {
-                padding-top: 2.9rem; /* Approx 47px */
+                padding-top: 2.9rem; /* Approx 47px for mobile */
             }
             #about-page > .about-page-section:first-child {
                 padding-top: 0; 
@@ -1592,7 +615,11 @@
             }
 
             .about-header-section h1 { font-size: 2rem; }
-            .about-intro { font-size: 0.95rem; }
+            .about-intro-main { font-size: 1rem; margin-bottom: 1.5rem; }
+            .about-header-section h3.vision-title { font-size: 1.4rem; }
+            .philosophy-section h2, .what-sets-us-apart-section h2 { font-size: 1.6rem; }
+
+
             .mission-column h2, .approach-column h2 { font-size: 1.2rem; }
             .team-section h2 { font-size: 1.6rem; }
             .founder-card { max-width: 90%; padding: 1rem; } .founder-card h3 { font-size: 1.15rem; }
@@ -1615,7 +642,7 @@
             .footer-prompt { font-size: 0.8rem; } 
             .footer-copyright { font-size: 0.75rem; } 
             #about-page {
-                padding-top: 2.9rem; 
+                padding-top: 2.9rem; /* Keep consistent with 768px or fine-tune */
             }
             #about-page > .about-page-section:first-child {
                 padding-top: 0; 
@@ -1796,49 +823,54 @@
 
             <section class="about-page-section about-header-section" id="about-content">
                 <h1>About <span class="privit">PrivitJay</span><span class="academy">Academy</span></h1>
-                <p class="about-intro">
-                    PrivitJayAcademy is your gateway to mastering technology through practical, hands-on learning. We believe the best way to learn is by doing.
+                <p class="about-intro-main">
+                    Welcome to PrivitJayAcademy – your direct pipeline to mastering real-world tech. We're not about dry theory; we're about the practical, hands-on skills that power today's digital world. If you're driven to understand the nuts and bolts of Linux, demystify networking, code with confidence, or delve into cybersecurity, you've logged into the right place.
                 </p>
-                <h3>Our Goal</h3>
-                <p>
-                    To empower individuals with the skills and confidence to excel in tech, making complex topics accessible and engaging for all.
+                <h3 class="vision-title">Our Vision</h3>
+                <p class="vision-text">
+                    To forge a new generation of tech-savvy innovators and problem-solvers, equipped with the hands-on expertise and critical thinking to thrive in a constantly evolving digital landscape. We envision a world where complex technology is demystified and accessible to all who are driven to learn.
                 </p>
             </section>
 
-            <section class="about-page-section mission-approach-section">
-                <div class="mission-approach-container">
-                    <div class="mission-column">
-                        <h2>Our Mission</h2>
-                        <div class="mission-icon-container">
-                            <span class="mission-icon">🎯</span>
-                        </div>
-                        <p>To provide an immersive, interactive environment for gaining real-world tech skills, building projects, and fostering lifelong learning.</p>
-                    </div>
-                    <div class="approach-column">
-                        <h2>Learning Approach</h2>
-                        <p>We champion "learn by doing":</p>
-                        <ul>
-                            <li><strong>Interactive Terminals:</strong> Practice in-browser.</li>
-                            <li><strong>Real-World Scenarios:</strong> Tackle industry problems.</li>
-                            <li><strong>Project-Based Learning:</strong> Build to showcase skills.</li>
-                            <li><strong>Step-by-Step Guidance:</strong> Clear, structured lessons.</li>
-                            <li><strong>Instant Feedback:</strong> Learn and correct efficiently.</li>
-                        </ul>
-                    </div>
-                </div>
+            <section class="about-page-section philosophy-section">
+                <h2>The PrivitJay Method: Learn by Doing</h2>
+                <p>
+                    Our philosophy is built on a single, powerful principle: <strong>Learn by Doing.</strong> We believe that true mastery comes from practical application. Our mission is to provide an immersive, interactive environment where you can roll up your sleeves, experiment, make mistakes, and build real skills that translate directly to the tech industry.
+                </p>
             </section>
+            
+            <section class="about-page-section what-sets-us-apart-section">
+                <h2>What Sets Us Apart?</h2>
+                <ul>
+                    <li><strong>Live Interactive Terminals:</strong> Forget passive videos. Code, configure, and command real (simulated) systems directly in your browser. Your learning environment is always one click away.</li>
+                    <li><strong>Scenario-Based Learning:</strong> Tackle challenges and projects designed to mirror the tasks and problems you'll face in professional tech roles. Build a portfolio that truly showcases your capabilities.</li>
+                    <li><strong>Focused, Practical Curriculum:</strong> We cut through the fluff. Our courses are laser-focused on the essential knowledge and practical skills demanded by the industry, from foundational concepts to advanced techniques.</li>
+                    <li><strong>Instant Feedback Loop:</strong> Our interactive exercises provide immediate feedback, helping you understand concepts faster and learn from your actions in real-time.</li>
+                     <li><strong>Community Powered:</strong> Connect, collaborate, and get support from fellow learners and instructors in our active community. (See "Join Our Community" below!)</li>
+                </ul>
+            </section>
+
 
             <section class="about-page-section team-section">
-                <h2>Meet the Team</h2>
+                <h2>Meet the Founder</h2>
                 <div class="founder-card">
                     <img src="https://via.placeholder.com/100/7c3aed/FFFFFF?text=PJ" alt="Founder Photo" class="founder-image">
                     <h3>Privit Jay</h3>
                     <p class="founder-position">Founder & Lead Instructor</p>
                     <p class="founder-bio">
-                        Passionate about cybersecurity, Linux, and open-source. Established the academy to make tech education practical and bridge theory with application.
+                        A dedicated technologist with a profound passion for Linux, cybersecurity, and the empowering nature of open-source. Privit Jay established the Academy to create the practical, hands-on learning experience they believe is essential for truly understanding and mastering technology, bridging the often-vast gap between academic theory and real-world application.
                     </p>
                 </div>
             </section>
+
+            <div class="discord-join-section" id="about-discord"> 
+                <h2 class="discord-title">Join Our Community</h2>
+                <p class="discord-description">Connect with fellow learners, ask questions, and share your progress on our Discord server!</p>
+                <a href="https://discord.gg/YOUR_INVITE_CODE" target="_blank" class="btn discord-btn"> 
+                    <svg aria-hidden="true" role="img" viewBox="0 0 24 24"><path fill="currentColor" d="M20.317 4.36981C18.7915 3.09531 16.9067 2.15581 14.8317 1.63081C14.6825 1.58081 14.5267 1.68248 14.4908 1.83081L14.2075 3.04498C12.9608 2.81665 11.6558 2.81665 10.4092 3.04498L10.1258 1.83081C10.0892 1.68248 9.93416 1.58081 9.78416 1.63081C7.70833 2.15581 5.82416 3.09531 4.29916 4.36981C4.29916 4.36981 -0.200838 9.68398 0.00166183 14.9065C0.00166183 14.9065 1.89583 17.9473 6.06916 18.4515C6.06916 18.4515 6.61416 17.4481 6.9025 16.9698C5.3225 16.2331 4.15833 14.9481 4.15833 14.9481C4.15833 14.9481 4.22166 14.8905 4.3025 14.8098C6.695 16.1023 9.4475 16.3731 12.0017 16.1365C12.0017 16.1365 12.0017 16.1365 12.0017 16.1365C14.5558 16.3731 17.3083 16.1023 19.7008 14.8098C19.7808 14.8905 19.8442 14.9481 19.8442 14.9481C19.8442 14.9481 18.6808 16.2331 17.1008 16.9698C17.3892 17.4481 17.9333 18.4515 17.9333 18.4515C22.1058 17.9473 24.0017 14.9065 24.0017 14.9065C24.2042 9.68398 20.317 4.36981 20.317 4.36981ZM8.02083 12.5998C7.02416 12.5998 6.22416 11.7998 6.22416 10.7998C6.22416 9.80065 7.02416 8.99981 8.02083 8.99981C9.0175 8.99981 9.8175 9.80065 9.8175 10.7998C9.8175 11.7998 9.0175 12.5998 8.02083 12.5998ZM15.9825 12.5998C14.9858 12.5998 14.1858 11.7998 14.1858 10.7998C14.1858 9.80065 14.9858 8.99981 15.9825 8.99981C16.9792 8.99981 17.7792 9.80065 17.7792 10.7998C17.7792 11.7998 16.9792 12.5998 15.9825 12.5998Z"></path></svg>
+                    Join Discord
+                </a>
+            </div>
 
             <section class="about-page-section ready-to-learn-section">
                 <h2>Ready to Start Learning?</h2>
@@ -1993,7 +1025,7 @@
             } else {
                 pageElement.style.opacity = 0;
                 setTimeout(() => {
-                    if (pageElement.classList.contains('active-page')) return; // Don't hide if it became active
+                    if (pageElement.classList.contains('active-page')) return; 
                     pageElement.style.display = 'none';
                     pageElement.classList.remove('active-page');
                 }, 400);
@@ -2005,8 +1037,7 @@
         if (pageIdToShow === 'about-page' || (pageIdToShow === 'home-page' && activeNavId === 'home-link')) {
              window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-        // Specific section scrolling for homepage sections is handled by showHomePageAndScroll
-
+        
         if (pageIdToShow === 'home-page' && typingText && typingText.textContent === '') {
             charIndex = 0;
             setTimeout(typeMessage, 500);
@@ -2017,7 +1048,6 @@
         showPage('home-page', activeLink); 
         
         setTimeout(() => {
-            // Only scroll to a specific section if it's not the default 'home-hero' when 'home-link' is clicked
             if (!(sectionId === 'home-hero' && activeLink === 'home-link')) {
                 const targetElement = document.getElementById(sectionId);
                 if (targetElement) {
