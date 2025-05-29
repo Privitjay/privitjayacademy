@@ -21,7 +21,7 @@
         .navbar {
             background: rgba(10, 14, 39, 0.95);
             backdrop-filter: blur(10px);
-            padding: 1rem 0;
+            padding: 0.8rem 0; /* Reduced padding */
             position: fixed;
             width: 100%;
             top: 0;
@@ -32,41 +32,40 @@
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem; /* Adjusted padding for mobile */
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; /* Reverted for better link spacing on desktop */
             align-items: center;
+            gap: 1rem; /* Spacing between logo and links */
         }
 
         .logo {
-            font-size: 1.4rem; 
+            font-size: 1.2rem; /* Further reduced */
             font-weight: bold;
             font-family: 'Courier New', monospace;
             background: #000;
-            padding: 0.4rem 0.8rem; 
-            border-radius: 8px;
+            padding: 0.3rem 0.6rem; /* Further reduced */
+            border-radius: 6px; /* Slightly smaller radius */
             border: 1px solid #333;
+            white-space: nowrap; /* Prevent wrapping */
         }
 
-        .logo-prompt {
-            color: #00d4ff;
-        }
-
-        .logo-text {
-            color: #00ff00;
-        }
+        .logo-prompt { color: #00d4ff; }
+        .logo-text { color: #00ff00; }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem; /* Adjusted gap for links */
             list-style: none;
+            margin-left: auto; /* Push links to the right */
         }
 
         .nav-links a {
             color: #fff;
             text-decoration: none;
-            transition: color 0.3s, transform 0.3s; /* Added transform for subtle effects */
-            padding-bottom: 8px; /* Space for underline */
+            transition: color 0.3s, transform 0.3s;
+            padding-bottom: 8px; 
+            font-size: 0.95rem; /* Slightly smaller nav links */
         }
 
         .nav-links a:hover {
@@ -74,7 +73,6 @@
             transform: translateY(-2px);
         }
 
-        /* Active Nav Link Style */
         .nav-links a.nav-active {
             color: #00d4ff;
             font-weight: bold;
@@ -83,29 +81,29 @@
         .nav-links a.nav-active::after {
             content: '';
             position: absolute;
-            width: 70%; /* Adjust width of underline */
+            width: 60%; 
             height: 2px;
             background-color: #00d4ff;
-            bottom: 0px; /* Position underline closer */
-            left: 15%; /* Center underline */
+            bottom: 0px; 
+            left: 20%; 
             animation: navLinkActiveAnim 0.3s ease-out;
         }
 
         @keyframes navLinkActiveAnim {
             from { width: 0; opacity: 0; }
-            to { width: 70%; opacity: 1; }
+            to { width: 60%; opacity: 1; }
         }
 
 
         .main-content {
-            margin-top: 70px; /* Adjusted for navbar padding */
-            min-height: calc(100vh - 70px);
-            position: relative; /* For positioning child elements like back buttons */
+            margin-top: 60px; /* Adjusted for navbar new height */
+            min-height: calc(100vh - 60px);
+            position: relative; 
         }
 
         .hero-section {
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 3rem 1rem; /* Adjusted padding */
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             position: relative;
             overflow: hidden;
@@ -131,696 +129,330 @@
         }
 
         .hero-title {
-            font-size: 3.5rem;
-            margin-bottom: 2rem;
+            font-size: 2.8rem; /* Adjusted for mobile */
+            margin-bottom: 1.5rem;
             position: relative;
             z-index: 2;
             font-family: 'Courier New', monospace;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px; /* Slightly reduced */
         }
 
-        .hero-title .privit {
-            color: #00d4ff;
-            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
-        }
-
-        .hero-title .academy {
-            color: #7c3aed;
-            text-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
-        }
+        .hero-title .privit { color: #00d4ff; text-shadow: 0 0 15px rgba(0, 212, 255, 0.5); }
+        .hero-title .academy { color: #7c3aed; text-shadow: 0 0 15px rgba(124, 58, 237, 0.5); }
 
         .cyber-subtitle {
-            font-size: 1.2rem;
+            font-size: 1rem; /* Adjusted */
             color: #00ff88;
             font-family: 'Courier New', monospace;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px; /* Adjusted */
             margin-bottom: 1rem;
             opacity: 0.8;
             animation: flicker 2s infinite alternate;
         }
 
-        @keyframes flicker {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1; }
-        }
+        @keyframes flicker { 0%, 100% { opacity: 0.8; } 50% { opacity: 1; } }
 
-        .glitch-text {
-            position: relative;
-            display: inline-block;
-        }
-
-        .glitch-text::before,
-        .glitch-text::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .glitch-text::before {
-            animation: glitch-1 0.5s infinite;
-            color: #ff0080;
-            z-index: -1;
-        }
-
-        .glitch-text::after {
-            animation: glitch-2 0.5s infinite;
-            color: #00d4ff;
-            z-index: -2;
-        }
-
-        @keyframes glitch-1 {
-            0%, 14%, 15%, 49%, 50%, 99%, 100% {
-                transform: translate(0);
-            }
-            15%, 49% {
-                transform: translate(-2px, 2px);
-            }
-        }
-
-        @keyframes glitch-2 {
-            0%, 20%, 21%, 62%, 63%, 99%, 100% {
-                transform: translate(0);
-            }
-            21%, 62% {
-                transform: translate(2px, -2px);
-            }
-        }
+        .glitch-text { position: relative; display: inline-block; }
+        .glitch-text::before, .glitch-text::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .glitch-text::before { animation: glitch-1 0.5s infinite; color: #ff0080; z-index: -1; }
+        .glitch-text::after { animation: glitch-2 0.5s infinite; color: #00d4ff; z-index: -2; }
+        @keyframes glitch-1 { 0%, 14%, 15%, 49%, 50%, 99%, 100% { transform: translate(0); } 15%, 49% { transform: translate(-2px, 2px); } }
+        @keyframes glitch-2 { 0%, 20%, 21%, 62%, 63%, 99%, 100% { transform: translate(0); } 21%, 62% { transform: translate(2px, -2px); } }
 
         .typing-terminal {
-            background: #000;
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin: 2rem auto;
-            max-width: 600px;
-            font-family: 'Courier New', monospace;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid #333;
-            position: relative;
-            z-index: 2;
+            background: #000; border-radius: 8px; padding: 1rem; margin: 1.5rem auto; max-width: 90%; /* More responsive */
+            font-family: 'Courier New', monospace; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); border: 1px solid #333;
+            position: relative; z-index: 2;
         }
+        .typing-terminal-header { display: flex; align-items: center; margin-bottom: 0.8rem; padding-bottom: 0.4rem; border-bottom: 1px solid #333; }
+        .typing-dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; } /* Smaller dots */
+        .typing-dot.red { background: #ff5f56; } .typing-dot.yellow { background: #ffbd2e; } .typing-dot.green { background: #27ca3f; }
+        .typing-content { color: #00ff00; font-size: 1rem; line-height: 1.5; } /* Adjusted */
+        .typing-prompt { color: #00d4ff; } .typing-text { display: inline-block; }
+        .cursor { display: inline-block; background: #00ff00; animation: blink 1s infinite; width: 2px; height: 1.1em; margin-left: 2px; } /* Adjusted height */
+        @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+        @keyframes typing { from { width: 0; } to { width: 100%; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .typing-terminal-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #333;
-        }
+        .hero-section p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; position: relative; z-index: 2; } /* Adjusted */
 
-        .typing-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin-right: 8px;
-        }
-
-        .typing-dot.red { background: #ff5f56; }
-        .typing-dot.yellow { background: #ffbd2e; }
-        .typing-dot.green { background: #27ca3f; }
-
-        .typing-content {
-            color: #00ff00;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        .typing-prompt {
-            color: #00d4ff;
-        }
-
-        .typing-text {
-            display: inline-block;
-        }
-
-        .cursor {
-            display: inline-block;
-            background: #00ff00;
-            animation: blink 1s infinite;
-            width: 2px;
-            height: 1.2em;
-            margin-left: 2px;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-section p {
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-top: 2rem;
-            position: relative;
-            z-index: 2;
-        }
+        .hero-actions { display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; position: relative; z-index: 2; flex-wrap: wrap; } /* Added flex-wrap */
         
         .terminal-container {
-            background: #000;
-            border-radius: 10px;
-            font-family: 'Courier New', monospace;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            background: #000; border-radius: 8px; font-family: 'Courier New', monospace;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); cursor: pointer; transition: all 0.3s ease;
+            position: relative; overflow: hidden;
         }
-        .terminal-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.2);
-        }
+        .terminal-container:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0, 255, 136, 0.2); }
 
         .hero-actions .terminal-container {
-            padding: 0.8rem; 
-            border: none; 
-            min-width: 160px; 
-            max-width: 240px; 
+            padding: 0.7rem; border: none; min-width: 150px; max-width: 220px; 
         }
         
         .hero-actions .terminal-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.6rem; 
-            padding-bottom: 0.3rem; 
-            border-bottom: 1px solid #333; 
+            display: flex; align-items: center; margin-bottom: 0.5rem; padding-bottom: 0.25rem; border-bottom: 1px solid #333; 
         }
+        .hero-actions .terminal-dot { width: 5px; height: 5px; border-radius: 50%; margin-right: 3px; } /* Further reduced */
+        .hero-actions .terminal-content { color: #00ff00; font-size: 0.7rem; line-height: 1.25; } /* Further reduced */
+        .hero-actions .terminal-prompt { color: #00d4ff; } 
+        .hero-actions .terminal-action { color: #fff; margin-top: 0.25rem; font-weight: bold; font-size: 0.8rem; } /* Further reduced */
+        .hero-actions .terminal-description { color: #888; font-size: 0.6rem; margin-top: 0.15rem; } /* Further reduced */
 
-        .hero-actions .terminal-dot { 
-            width: 6px; 
-            height: 6px; 
-            border-radius: 50%;
-            margin-right: 4px; 
-        }
-        .terminal-dot.red { background: #ff5f56; }
-        .terminal-dot.yellow { background: #ffbd2e; }
-        .terminal-dot.green { background: #27ca3f; }
-
-
-        .hero-actions .terminal-content {
-            color: #00ff00; 
-            font-size: 0.75rem; 
-            line-height: 1.3; 
-        }
-
-        .hero-actions .terminal-prompt {
-            color: #00d4ff; 
-        }
-
-        .hero-actions .terminal-action {
-            color: #fff;
-            margin-top: 0.3rem; 
-            font-weight: bold;
-            font-size: 0.85rem; 
-        }
-
-        .hero-actions .terminal-description {
-            color: #888;
-            font-size: 0.65rem; 
-            margin-top: 0.2rem;
-        }
-
-        .browse-categories-section {
-            max-width: 1200px;
-            margin: 3rem auto; 
-            padding: 0 2rem;
-            text-align: center; 
-        }
-
-        .section-title-container {
-            margin-bottom: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
+        .browse-categories-section { max-width: 1200px; margin: 2.5rem auto; padding: 0 1rem; text-align: center; } /* Adjusted */
+        .section-title-container { margin-bottom: 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; } /* Adjusted */
         
         .section-title {
-            font-size: 2.2rem; 
-            font-family: 'Courier New', monospace;
-            color: #00d4ff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
-            padding-bottom: 0.5rem;
-            margin-bottom: 0.5rem; 
-            display: inline-block; 
+            font-size: 2rem; font-family: 'Courier New', monospace; color: #00d4ff;
+            text-transform: uppercase; letter-spacing: 1.5px; position: relative; padding-bottom: 0.4rem;
+            margin-bottom: 0.4rem; display: inline-block; 
         }
-
         .section-title::after { 
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 3px;
-            background: linear-gradient(90deg, #00d4ff, #7c3aed);
-            border-radius: 2px;
+            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 50%; height: 2.5px; background: linear-gradient(90deg, #00d4ff, #7c3aed); border-radius: 2px;
         }
         
-        .btn-small {
-            padding: 8px 16px;
-            font-size: 0.9rem;
-            border-radius: 20px;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid #00d4ff;
-            color: #00d4ff;
-        }
-        .btn-outline:hover {
-            background: rgba(0, 212, 255, 0.1);
-            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
-        }
+        .btn-small { padding: 7px 14px; font-size: 0.85rem; border-radius: 18px; } /* Adjusted */
+        .btn-outline { background: transparent; border: 1.5px solid #00d4ff; color: #00d4ff; } /* Adjusted border */
+        .btn-outline:hover { background: rgba(0, 212, 255, 0.1); box-shadow: 0 4px 12px rgba(0, 212, 255, 0.2); }
 
         .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
-            gap: 1rem; 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); /* Further reduced minmax */
+            gap: 0.8rem; /* Further reduced gap */
         }
 
         .category-item {
-            background: rgba(30, 30, 45, 0.5); 
-            border: 1px solid rgba(100, 100, 120, 0.3); 
-            border-radius: 6px; 
-            padding: 0.8rem; 
-            text-align: left; 
-            font-family: 'Courier New', monospace;
-            cursor: pointer;
-            transition: all 0.2s ease; 
-            color: #00d4ff; 
-            position: relative;
-            overflow: hidden; 
+            background: rgba(25, 25, 40, 0.6); border: 1px solid rgba(80, 80, 100, 0.25);
+            border-radius: 5px; padding: 0.6rem; text-align: left; 
+            font-family: 'Courier New', monospace; cursor: pointer; transition: all 0.2s ease; 
+            color: #00d4ff; position: relative; overflow: hidden; 
         }
         
         .category-item::after { 
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.05), transparent); 
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.04), transparent); 
             transition: left 0.4s ease-out;
         }
-
-        .category-item:hover::after {
-            left: 100%;
-        }
-
+        .category-item:hover::after { left: 100%; }
         .category-item:hover {
-            background: rgba(0, 212, 255, 0.07); 
-            border-color: #00d4ff;
-            transform: translateY(-3px); 
-            box-shadow: 0 5px 10px rgba(0, 212, 255, 0.1); 
+            background: rgba(0, 212, 255, 0.06); border-color: #00aacc; /* Subtler hover border */
+            transform: translateY(-2px); box-shadow: 0 3px 8px rgba(0, 212, 255, 0.1); 
         }
 
         .category-item .category-name {
-            font-size: 0.9rem; 
-            font-weight: bold;
-            display: block; 
-            margin-bottom: 0.3rem; 
-            color: #e0e0e0; 
-            line-height: 1.3; 
+            font-size: 0.8rem; font-weight: bold; display: block; 
+            margin-bottom: 0.2rem; color: #d8d8d8; line-height: 1.25; 
         }
         .category-item .category-name::before { 
-            content: '~ $ '; 
-            color: #00d4ff;
-            font-size: 0.9em; 
-            margin-right: 4px;
-            opacity: 0.8;
+            content: '~ $ '; color: #00c0f0; font-size: 0.9em; 
+            margin-right: 3px; opacity: 0.75;
         }
 
-         .category-item .category-name .highlight { 
-            color: #00ff88; 
-            font-size: 0.85em; 
+         .category-item .category-name .highlight { color: #00ee77; font-size: 0.85em; }
+         .category-item .category-examples {
+            font-size: 0.65rem; color: #888; line-height: 1.25;
+            display: block; margin-left: 18px; /* Adjusted for smaller prompt */
         }
 
-        .category-item .category-examples {
-            font-size: 0.7rem; 
-            color: #999; 
-            line-height: 1.3;
-            display: block; 
-            margin-left: 22px; 
-        }
-
-        .course-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem; 
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        .course-grid { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1rem; /* Adjusted */
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted */
+            gap: 1.5rem; /* Adjusted */
         }
 
         .course-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px; padding: 1.5rem; /* Adjusted */
             transition: all 0.3s ease, opacity 0.3s ease; 
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
+            cursor: pointer; position: relative; overflow: hidden;
         }
         .course-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+            transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0, 212, 255, 0.18);
             border-color: #00d4ff;
         }
-
-        .course-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-        }
-
-        .course-title {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .course-card h3 {
-            font-size: 1.5rem;
-            margin: 0;
-            color: #00d4ff;
-        }
-
+        .course-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; }
+        .course-title { display: flex; align-items: center; gap: 0.4rem; }
+        .course-card h3 { font-size: 1.3rem; margin: 0; color: #00d4ff; } /* Adjusted */
         .level-indicator {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            display: flex; align-items: center; gap: 0.25rem; padding: 0.25rem 0.7rem; /* Adjusted */
+            border-radius: 18px; font-size: 0.75rem; font-weight: bold;
+            text-transform: uppercase; letter-spacing: 0.8px; /* Adjusted */
         }
-
-        .level-beginner {
-            background: linear-gradient(45deg, #51cf66, #40c057);
-            color: #fff;
-            box-shadow: 0 2px 10px rgba(81, 207, 102, 0.3);
-        }
-        .level-intermediate {
-            background: linear-gradient(45deg, #ffd43b, #fab005);
-            color: #000;
-            box-shadow: 0 2px 10px rgba(255, 212, 59, 0.3);
-        }
-        .level-advanced {
-            background: linear-gradient(45deg, #ff6b6b, #e03131);
-            color: #fff;
-            box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
-        }
-        .level-expert {
-            background: linear-gradient(45deg, #7c3aed, #5b21b6);
-            color: #fff;
-            box-shadow: 0 2px 10px rgba(124, 58, 237, 0.3);
-        }
-
-        .level-icon { font-size: 1rem; }
-        .course-card p { opacity: 0.8; line-height: 1.6; position: relative; z-index: 1; }
+        .level-beginner { background: linear-gradient(45deg, #51cf66, #40c057); color: #fff; box-shadow: 0 1px 8px rgba(81, 207, 102, 0.25); }
+        .level-intermediate { background: linear-gradient(45deg, #ffd43b, #fab005); color: #000; box-shadow: 0 1px 8px rgba(255, 212, 59, 0.25); }
+        .level-advanced { background: linear-gradient(45deg, #ff6b6b, #e03131); color: #fff; box-shadow: 0 1px 8px rgba(255, 107, 107, 0.25); }
+        .level-expert { background: linear-gradient(45deg, #7c3aed, #5b21b6); color: #fff; box-shadow: 0 1px 8px rgba(124, 58, 237, 0.25); }
+        .level-icon { font-size: 0.9rem; } /* Adjusted */
+        .course-card p { opacity: 0.8; line-height: 1.5; font-size: 0.9rem; position: relative; z-index: 1; } /* Adjusted */
 
         .btn {
-            background: linear-gradient(45deg, #00d4ff, #7c3aed);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: bold;
-            margin-top: 1rem;
-            position: relative;
-            z-index: 1;
-            text-decoration: none; 
-            display: inline-block; 
+            background: linear-gradient(45deg, #00d4ff, #7c3aed); color: white; border: none;
+            padding: 10px 20px; border-radius: 22px; cursor: pointer; /* Adjusted */
+            transition: all 0.3s ease; font-weight: bold; margin-top: 0.8rem; /* Adjusted */
+            position: relative; z-index: 1; text-decoration: none; display: inline-block; 
+            font-size: 0.95rem; /* Adjusted */
         }
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
-        }
+        .btn:hover { transform: scale(1.04); box-shadow: 0 8px 25px rgba(0, 212, 255, 0.25); }
 
-        /* Page containers for SPA-like behavior */
-        #home-page, #about-page, #learning-interface {
-            display: none; /* Initially hidden, JS will manage visibility */
-            opacity: 0;
-            transition: opacity 0.4s ease-in-out;
-        }
-        #home-page.active-page, 
-        #about-page.active-page,
-        #learning-interface.active-page {
-            display: block; /* Or grid for learning-interface */
-            opacity: 1;
-        }
+        #home-page, #about-page, #learning-interface { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
+        #home-page.active-page, #about-page.active-page, #learning-interface.active-page { display: block; opacity: 1; }
         #learning-interface.active-page { display: grid; }
 
-
-        .lesson-panel { background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .terminal-panel { background: #1a1a1a; border-radius: 15px; border: 1px solid #333; overflow: hidden; }
-        .terminal-panel .terminal-header { background: #2d2d2d; padding: 0.5rem 1rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid #333; }
-        .terminal-panel .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .lesson-panel { background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .terminal-panel { background: #1a1a1a; border-radius: 12px; border: 1px solid #333; overflow: hidden; }
+        .terminal-panel .terminal-header { background: #2d2d2d; padding: 0.4rem 0.8rem; display: flex; align-items: center; gap: 0.4rem; border-bottom: 1px solid #333; }
+        .terminal-panel .terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
         .dot-red { background: #ff5f56; } .dot-yellow { background: #ffbd2e; } .dot-green { background: #27ca3f; }
-        .terminal-title { margin-left: 1rem; color: #ccc; font-size: 0.9rem; }
-        .terminal-body { padding: 1rem; height: 500px; overflow-y: auto; font-family: 'Courier New', monospace; background: #000; }
-        .terminal-line { color: #00ff00; margin-bottom: 0.5rem; display: flex; align-items: center; }
-        .prompt { color: #00d4ff; margin-right: 0.5rem; }
-        .terminal-input { background: transparent; border: none; color: #00ff00; font-family: 'Courier New', monospace; font-size: 14px; outline: none; flex: 1; }
-        .output { color: #fff; margin: 0.5rem 0; white-space: pre-wrap; }
-        .error { color: #ff6b6b; } .success { color: #51cf66; }
-        .lesson-content h2 { color: #00d4ff; margin-bottom: 1rem; }
-        .lesson-content h3 { color: #7c3aed; margin: 1.5rem 0 0.5rem 0; }
-        .lesson-content code { background: rgba(0, 212, 255, 0.1); padding: 2px 6px; border-radius: 4px; color: #00d4ff; }
-        .exercise-box { background: rgba(124, 58, 237, 0.1); border-left: 4px solid #7c3aed; padding: 1rem; margin: 1rem 0; border-radius: 0 8px 8px 0; }
+        .terminal-title { margin-left: 0.8rem; color: #ccc; font-size: 0.85rem; }
+        .terminal-body { padding: 0.8rem; height: 450px; overflow-y: auto; font-family: 'Courier New', monospace; background: #000; }
+        .terminal-line { color: #00ff00; margin-bottom: 0.4rem; display: flex; align-items: center; }
+        .prompt { color: #00d4ff; margin-right: 0.4rem; }
+        .terminal-input { background: transparent; border: none; color: #00ff00; font-family: 'Courier New', monospace; font-size: 13px; outline: none; flex: 1; }
+        .lesson-content h2 { font-size: 1.6rem; color: #00d4ff; margin-bottom: 0.8rem; }
+        .lesson-content h3 { font-size: 1.3rem; color: #7c3aed; margin: 1.2rem 0 0.4rem 0; }
+        .lesson-content code { background: rgba(0, 212, 255, 0.1); padding: 2px 5px; border-radius: 3px; color: #00d4ff; font-size: 0.9em; }
+        .exercise-box { background: rgba(124, 58, 237, 0.1); border-left: 3px solid #7c3aed; padding: 0.8rem; margin: 0.8rem 0; border-radius: 0 6px 6px 0; }
+        .exercise-box h4 { font-size: 1rem; } .exercise-box p { font-size: 0.9rem;}
 
-        .back-btn { /* For Learning Interface */
-            position: fixed;
-            top: 100px; 
-            left: 2rem;
-            z-index: 1001;
+        .back-btn { position: fixed; top: 80px; left: 1rem; z-index: 1001; } /* For Learning Interface */
+        .back-to-academy-btn { /* For About Page - MOVED TO LEFT */
+            position: fixed; top: 80px; left: 1rem; z-index: 1001; 
+            background: rgba(0, 212, 255, 0.2); border: 1px solid #00d4ff;
+            color: #00d4ff; padding: 8px 12px; font-size: 0.9rem; border-radius: 20px;
         }
+        .back-to-academy-btn:hover { background: rgba(0, 212, 255, 0.3); box-shadow: 0 0 15px rgba(0, 212, 255, 0.3); }
 
+        #about-page { padding: 1.5rem 1rem; max-width: 1200px; margin: 0 auto; color: #e0e0e0; }
+        .about-page-section { margin-bottom: 2.5rem; padding: 1.2rem; background: rgba(255, 255, 255, 0.02); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); }
+        .about-header-section h1 { font-size: 2.4rem; font-family: 'Courier New', monospace; text-align: center; margin-bottom: 1.2rem; }
+        .about-header-section h1 .privit { color: #00d4ff; } .about-header-section h1 .academy { color: #7c3aed; }
+        .about-intro { font-size: 1rem; line-height: 1.6; text-align: center; margin-bottom: 1.5rem; max-width: 90%; margin-left: auto; margin-right: auto; }
+        .about-header-section h3 { font-size: 1.4rem; color: #00d4ff; text-align: center; margin-top: 1.5rem; margin-bottom: 0.8rem; }
+        .about-header-section p { font-size: 0.95rem; line-height: 1.55; max-width: 90%; margin-left: auto; margin-right: auto; text-align: center; }
 
-        /* About Page Specific Styles */
-        .back-to-academy-btn { /* For About Page */
-            position: fixed;
-            top: 100px; 
-            right: 2rem;
-            z-index: 1001; 
-            background: rgba(0, 212, 255, 0.2);
-            border: 1px solid #00d4ff;
-            color: #00d4ff;
-        }
-        .back-to-academy-btn:hover {
-            background: rgba(0, 212, 255, 0.3);
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
-        }
-
-        #about-page {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto; /* Will be overridden for active-page */
-            color: #e0e0e0;
-            /* opacity & transition handled by .active-page */
-        }
-
-        .about-page-section {
-            margin-bottom: 3rem; /* Consistent spacing */
-            padding: 1.5rem; /* Slightly reduced padding for sections */
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .about-header-section h1 {
-            font-size: 2.8rem;
-            font-family: 'Courier New', monospace;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-        .about-header-section h1 .privit { color: #00d4ff; }
-        .about-header-section h1 .academy { color: #7c3aed; }
-
-        .about-intro {
-            font-size: 1.1rem; /* Slightly reduced */
-            line-height: 1.7;
-            text-align: center;
-            margin-bottom: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .about-header-section h3 { /* For "Our Goal" */
-            font-size: 1.6rem; /* Reduced */
-            color: #00d4ff;
-            text-align: center;
-            margin-top: 2rem; /* Reduced */
-            margin-bottom: 1rem;
-        }
-        .about-header-section p { /* Paragraphs under "Our Goal" */
-            font-size: 1rem; /* Reduced */
-            line-height: 1.6;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-        }
-
-
-        .mission-approach-section h2 { /* Shared "Our Mission", "Learning Approach" */
-            font-size: 1.8rem; /* Reduced */
-            color: #00d4ff;
-            margin-bottom: 1.5rem;
-            text-align: center; /* Center section titles */
-        }
-
-        .mission-approach-container {
-            display: flex;
-            gap: 2rem;
-            align-items: flex-start; 
-        }
-
-        .mission-column, .approach-column {
-            flex: 1;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px;
-        }
-        .mission-column h2, .approach-column h2 { /* Specific H2s inside columns */
-            text-align: left;
-            font-size: 1.4rem; /* Further reduced for column titles */
-            color: #fff; /* Differentiate from main section titles */
-        }
-        .mission-column p, .approach-column p, .approach-column li {
-             font-size: 0.95rem; line-height: 1.6;
-        }
-
-        .mission-image {
-            width: 100%;
-            max-width: 300px; 
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            border: 2px solid rgba(0, 212, 255, 0.5);
-        }
-
+        .mission-approach-section h2 { font-size: 1.6rem; color: #00d4ff; margin-bottom: 1.2rem; text-align: center; }
+        .mission-approach-container { display: flex; gap: 1.5rem; align-items: flex-start; flex-wrap: wrap; /* Allow wrapping on small screens */ }
+        .mission-column, .approach-column { flex: 1; min-width: 280px; /* Ensure readability when wrapped */ padding: 1.2rem; background: rgba(255, 255, 255, 0.03); border-radius: 8px; }
+        .mission-column h2, .approach-column h2 { text-align: left; font-size: 1.3rem; color: #fff; margin-bottom: 0.8rem; }
+        .mission-column p, .approach-column p, .approach-column li { font-size: 0.9rem; line-height: 1.55; }
+        .mission-image { width: 100%; max-width: 250px; height: auto; border-radius: 6px; margin-bottom: 0.8rem; display: block; margin-left: auto; margin-right: auto; border: 1.5px solid rgba(0, 212, 255, 0.4); }
         .approach-column ul { list-style: none; padding-left: 0; }
-        .approach-column li { margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; }
-        .approach-column li::before { content: '⚡'; color: #00ff88; position: absolute; left: 0; font-size: 1.1rem; }
+        .approach-column li { margin-bottom: 0.7rem; padding-left: 1.3rem; position: relative; }
+        .approach-column li::before { content: '⚡'; color: #00ff88; position: absolute; left: 0; font-size: 1rem; }
         .approach-column li strong { color: #00d4ff; }
 
-
-        .team-section h2 {
-            font-size: 2rem; /* Reduced */
-            color: #00d4ff;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
+        .team-section h2 { font-size: 1.8rem; color: #00d4ff; text-align: center; margin-bottom: 1.5rem; }
         .founder-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 1.5rem; /* Reduced */
-            max-width: 400px; /* Reduced */
-            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px; padding: 1.2rem; max-width: 360px; margin: 0 auto;
+            text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+        .founder-image { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 0.8rem; border: 2.5px solid #7c3aed; }
+        .founder-card h3 { font-size: 1.25rem; color: #fff; margin-bottom: 0.25rem; }
+        .founder-position { font-size: 0.85rem; color: #00ff88; font-family: 'Courier New', monospace; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.8px; }
+        .founder-bio { font-size: 0.85rem; line-height: 1.55; color: #ccc; }
+
+        /* Ready to learn section on About page */
+        .ready-to-learn-section {
             text-align: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.25); /* Slightly softer shadow */
+            padding: 2rem 1rem;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 12px;
+            margin-top: 2.5rem;
         }
-
-        .founder-image {
-            width: 120px; /* Reduced */
-            height: 120px; /* Reduced */
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1rem;
-            border: 3px solid #7c3aed;
+        .ready-to-learn-section h2 {
+            font-size: 1.8rem;
+            color: #00d4ff;
+            margin-bottom: 0.8rem;
         }
-
-        .founder-card h3 {
-            font-size: 1.4rem; /* Reduced */
-            color: #fff;
-            margin-bottom: 0.3rem;
+        .ready-to-learn-section p {
+            font-size: 1rem;
+            color: #ccc;
+            margin-bottom: 1.5rem;
         }
+        .ready-to-learn-section .btn {
+            font-size: 1rem; /* Ensure button text is readable */
+        }
+        
+        /* Shared Footer Styling */
+        .footer { background: linear-gradient(135deg, #0a0e27 0%, #1a1a1a 100%); padding: 3rem 0 1.5rem 0; /* Adjusted padding */ margin-top: 3rem; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        .footer-title { text-align: center; font-size: 2.2rem; margin-bottom: 2rem; background: linear-gradient(45deg, #00d4ff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .feature-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .feature-card:hover { transform: translateY(-4px); border-color: rgba(0, 212, 255, 0.3); box-shadow: 0 8px 25px rgba(0, 212, 255, 0.1); }
+        .feature-icon { font-size: 2.5rem; margin-bottom: 0.8rem; background: linear-gradient(45deg, #00d4ff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; }
+        .feature-card h3 { color: #00d4ff; margin-bottom: 0.8rem; font-size: 1.2rem; }
+        .feature-card p { color: #ccc; line-height: 1.55; font-size: 0.9rem;}
 
-        .founder-position {
-            font-size: 0.9rem; /* Reduced */
-            color: #00ff88; 
+        /* Moved Discord Section (shared styles for when it appears) */
+        .discord-join-section { text-align: center; padding: 2.5rem 1rem; background: rgba(10, 14, 39, 0.85); border-radius: 12px; margin: 2.5rem auto; max-width: 90%; width: 700px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
+        .discord-title { font-size: 2rem; margin-bottom: 0.8rem; color: #00d4ff; font-family: 'Courier New', monospace; text-transform: uppercase; letter-spacing: 1.5px; }
+        .discord-description { color: #ccc; font-size: 1rem; line-height: 1.55; margin-bottom: 1.5rem; max-width: 90%; margin-left:auto; margin-right:auto; }
+        .discord-btn { padding: 12px 24px; font-size: 0.95rem; }
+        .discord-btn svg { vertical-align: middle; margin-right: 7px; width: 22px; height: 22px; }
+        
+        .footer-bottom {
+            display: flex; /* Use flexbox for alignment */
+            justify-content: space-between; /* Space between prompt and copyright */
+            align-items: center;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+            text-align: center; 
+            padding-top: 1.5rem; 
+            border-top: 1px solid rgba(255, 255, 255, 0.1); 
+            color: #888; font-size: 0.85rem;
+        }
+        .footer-prompt {
             font-family: 'Courier New', monospace;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: #00d4ff;
+            margin-right: auto; /* Pushes copyright to the right */
+            padding-bottom: 5px; /* Align with copyright if it wraps */
         }
-        .founder-bio { font-size: 0.9rem; line-height: 1.6; color: #ccc; }
+        .footer-copyright {
+            margin-left: auto; /* Pushes itself to the right if no prompt, or centers if prompt takes full width */
+             padding-bottom: 5px;
+        }
 
-
-        .footer { background: linear-gradient(135deg, #0a0e27 0%, #1a1a1a 100%); padding: 4rem 0 2rem 0; margin-top: 4rem; border-top: 1px solid rgba(255, 255, 255, 0.1); }
-        .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        .footer-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; background: linear-gradient(45deg, #00d4ff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
-        .feature-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 15px; padding: 2rem; text-align: center; transition: all 0.3s ease; position: relative; overflow: hidden; }
-        .feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, transparent 49%, rgba(0, 212, 255, 0.02) 50%, transparent 51%); opacity: 0; transition: opacity 0.3s ease; }
-        .feature-card:hover::before { opacity: 1; }
-        .feature-card:hover { transform: translateY(-5px); border-color: rgba(0, 212, 255, 0.3); box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1); }
-        .feature-icon { font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(45deg, #00d4ff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; }
-        .feature-card h3 { color: #00d4ff; margin-bottom: 1rem; font-size: 1.3rem; }
-        .feature-card p { color: #ccc; line-height: 1.6; position: relative; z-index: 1; }
-        .discord-join-section { text-align: center; padding: 3rem 2rem; background: rgba(10, 14, 39, 0.85); border-radius: 15px; margin: 4rem auto; max-width: 800px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
-        .discord-title { font-size: 2.2rem; margin-bottom: 1rem; color: #00d4ff; font-family: 'Courier New', monospace; text-transform: uppercase; letter-spacing: 2px; }
-        .discord-description { color: #ccc; font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-        .discord-btn { padding: 14px 28px; font-size: 1rem; }
-        .discord-btn svg { vertical-align: middle; margin-right: 8px; width: 24px; height: 24px; }
-        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); color: #888; }
 
         @media (max-width: 768px) {
-            .hero-actions { flex-direction: column; align-items: center; }
-            .footer-title { font-size: 2rem; }
-            .discord-title { font-size: 1.8rem; }
-            .section-title { font-size: 1.8rem; }
-            .category-item .category-name { font-size: 0.85rem; }
-            .category-item .category-examples { font-size: 0.65rem; margin-left: 18px; }
-            .course-grid { padding: 1rem; }
-            .category-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; }
+            .nav-links { gap: 1rem; margin-left: 0; /* Allow default flow for smaller screens */ }
+            .nav-links a { font-size: 0.85rem; padding-bottom: 6px; }
+            .logo { font-size: 1.1rem; padding: 0.25rem 0.5rem; }
+            
+            .hero-title { font-size: 2.2rem; } .cyber-subtitle { font-size: 0.9rem; }
+            .hero-section p { font-size: 1rem; }
+            .typing-terminal { padding: 0.8rem; } .typing-content { font-size: 0.9rem; }
+            .hero-actions .terminal-container { min-width: 130px; max-width: 180px; padding: 0.6rem; }
+            .hero-actions .terminal-action { font-size: 0.75rem; } .hero-actions .terminal-description { font-size: 0.55rem; }
 
-            /* About Page Responsive */
-            .mission-approach-container { flex-direction: column; }
-            .about-header-section h1 { font-size: 2.2rem; }
-            .about-intro { font-size: 1rem; }
-            .mission-column h2, .approach-column h2 { font-size: 1.4rem; }
-            .founder-card { max-width: 90%; }
-            .back-to-academy-btn { top: 80px; padding: 8px 12px; font-size: 0.9rem; }
+            .section-title { font-size: 1.6rem; }
+            .category-item .category-name { font-size: 0.75rem; }
+            .category-item .category-examples { font-size: 0.6rem; margin-left: 16px; }
+            .course-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; padding: 1rem 0.5rem;}
+            .course-card { padding: 1.2rem; } .course-card h3 { font-size: 1.2rem; } .course-card p { font-size: 0.85rem; }
+            .level-indicator { font-size: 0.7rem; padding: 0.2rem 0.6rem; }
+
+            .footer-title { font-size: 1.8rem; }
+            .discord-title { font-size: 1.6rem; }
+            .feature-card { padding: 1.2rem; } .feature-icon { font-size: 2.2rem; }
+            .feature-card h3 { font-size: 1.1rem; } .feature-card p { font-size: 0.85rem; }
+
+            .about-header-section h1 { font-size: 2rem; }
+            .about-intro { font-size: 0.95rem; }
+            .mission-column h2, .approach-column h2 { font-size: 1.2rem; }
+            .team-section h2 { font-size: 1.6rem; }
+            .founder-card { max-width: 90%; padding: 1rem; } .founder-card h3 { font-size: 1.15rem; }
+
+            .back-to-academy-btn, .back-btn { top: 70px; font-size: 0.8rem; padding: 6px 10px; }
+            .footer-bottom { justify-content: center; /* Center items on small screens */ }
+            .footer-prompt, .footer-copyright { margin: 0.2rem auto; width:100%; text-align: center;}
+        }
+        @media (max-width: 480px) { /* Extra small screens */
+            .nav-links { display: none; /* Ideally implement hamburger menu here */ }
+            .hero-title { font-size: 1.8rem; }
+            .category-grid { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 0.5rem; }
+            .course-grid { grid-template-columns: 1fr; } /* Single column for very small */
         }
     </style>
 </head>
@@ -828,8 +460,8 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <span class="logo-prompt">PrivitJay@academy:~#</span>
-                <span class="logo-text"> ./</span>
+                <span class="logo-prompt">PJ_A:~#</span> <!-- Shorter prompt -->
+                <span class="logo-text">./</span>
             </div>
             <ul class="nav-links">
                 <li><a href="#home" id="home-link">Home</a></li>
@@ -842,7 +474,7 @@
 
     <div class="main-content">
         <div id="home-page">
-            <section class="hero-section" id="home">
+            <section class="hero-section" id="home-hero"> <!-- Changed ID slightly to avoid conflict if #home is reused -->
                 <div class="cyber-subtitle">◤◥ CYBER LEARNING PROTOCOL INITIATED ◤◥</div>
                 <h1 class="hero-title glitch-text" data-text="PrivitJayAcademy">
                     <span class="privit">PrivitJay</span><span class="academy">Academy</span>
@@ -897,20 +529,20 @@
                 </div>
                 <div class="category-grid">
                     <div class="category-item" onclick="filterCoursesByCategory('linux')">
-                        <span class="category-name">System Admin <span class="highlight">(Linux)</span></span>
-                        <span class="category-examples">FS, Users, Shell</span>
+                        <span class="category-name">SysAdmin <span class="highlight">(Linux)</span></span>
+                        <span class="category-examples">FS, Users, CLI</span>
                     </div>
                     <div class="category-item" onclick="filterCoursesByCategory('linux')">
-                        <span class="category-name">Bash Scripting <span class="highlight">(Linux)</span></span>
-                        <span class="category-examples">Scripts, Automate</span>
+                        <span class="category-name">Bash <span class="highlight">(Linux)</span></span>
+                        <span class="category-examples">Scripts, Tasks</span>
                     </div>
                     <div class="category-item" onclick="filterCoursesByCategory('networking')">
                         <span class="category-name">Networking</span>
-                        <span class="category-examples">TCP/IP, Security</span>
+                        <span class="category-examples">TCP/IP, Sec</span>
                     </div>
                     <div class="category-item" onclick="filterCoursesByCategory('python')">
                         <span class="category-name">Programming</span>
-                        <span class="category-examples">Python, Logic</span>
+                        <span class="category-examples">Python, Algo</span>
                     </div>
                 </div>
             </section>
@@ -926,7 +558,7 @@
                             <span>Beginner</span>
                         </div>
                     </div>
-                    <p>Master the command line, file system navigation, and essential Linux commands through interactive exercises.</p>
+                    <p>Master the command line, file system navigation, and essential Linux commands.</p>
                     <button class="btn">Start Learning</button>
                 </div>
 
@@ -958,14 +590,14 @@
                     <button class="btn">Start Learning</button>
                 </div>
             </div>
-             <footer class="footer" id="footer-home"> <!-- Unique ID for home page footer if needed, or just use general -->
+             <footer class="footer" id="home-footer-content">
                 <div class="footer-container">
                     <h2 class="footer-title">Why Learn With Us?</h2>
                     <div class="features-grid">
                         <div class="feature-card">
                             <div class="feature-icon">💻</div>
                             <h3>Hands-On Experience</h3>
-                            <p>Learn by doing with real interactive terminals and simulators. No theoretical fluff - just practical, hands-on coding and system administration experience.</p>
+                            <p>Learn by doing with real interactive terminals and simulators. Just practical, hands-on coding and system administration experience.</p>
                         </div>
                         <div class="feature-card">
                             <div class="feature-icon">🎯</div>
@@ -983,7 +615,7 @@
                             <p>Learn at your own pace, anytime, anywhere. Our platform is always available with instant feedback and guidance when you need it most.</p>
                         </div>
                     </div>
-
+                    <!-- Discord section for homepage footer -->
                     <div class="discord-join-section" id="contact"> 
                         <h2 class="discord-title">Join Our Community</h2>
                         <p class="discord-description">Connect with fellow learners, ask questions, and share your progress on our Discord server!</p>
@@ -992,25 +624,25 @@
                             Join Discord
                         </a>
                     </div>
-
                     <div class="footer-bottom">
-                        <p>© 2024 Privitjay Academy. Empowering the next generation of tech professionals.</p>
+                        <span class="footer-prompt">> PrivitjayAcademy_</span>
+                        <span class="footer-copyright">© 2024 Privitjay Academy. Empowering the next gen.</span>
                     </div>
                 </div>
             </footer>
         </div>
 
         <div id="about-page">
-            <button class="btn back-to-academy-btn" onclick="showHomePageAndScroll('home', 'home-link')">← Back to Academy</button>
+            <button class="btn back-to-academy-btn" onclick="showHomePageAndScroll('home-hero', 'home-link')">← Back to Academy</button>
 
-            <section class="about-page-section about-header-section" id="about"> <!-- ID for direct linking if needed -->
+            <section class="about-page-section about-header-section" id="about-content">
                 <h1>About <span class="privit">PrivitJay</span><span class="academy">Academy</span></h1>
                 <p class="about-intro">
-                    PrivitJayAcademy is your gateway to mastering the world of technology through practical, hands-on learning. We believe that the best way to learn is by doing, and our platform is built around this core philosophy.
+                    PrivitJayAcademy is your gateway to mastering technology through practical, hands-on learning. We believe the best way to learn is by doing.
                 </p>
                 <h3>Our Goal</h3>
                 <p>
-                    Our primary goal is to empower individuals with the skills and confidence needed to excel in the tech industry. We aim to demystify complex topics like Linux administration, programming, and network security, making them accessible and engaging for everyone, from absolute beginners to aspiring experts.
+                    To empower individuals with the skills and confidence to excel in tech, making complex topics accessible and engaging for all.
                 </p>
             </section>
 
@@ -1018,18 +650,18 @@
                 <div class="mission-approach-container">
                     <div class="mission-column">
                         <h2>Our Mission</h2>
-                        <img src="https://via.placeholder.com/300x180/00d4ff/0a0e27?text=Interactive+Learning" alt="Our Mission Graphic" class="mission-image">
-                        <p>To provide an immersive and interactive learning environment where students can gain real-world technical skills, build impressive projects, and cultivate a passion for lifelong learning in technology.</p>
+                        <img src="https://via.placeholder.com/250x150/00d4ff/0a0e27?text=Learn.Practice.Build" alt="Our Mission Graphic" class="mission-image">
+                        <p>To provide an immersive, interactive environment for gaining real-world tech skills, building projects, and fostering lifelong learning.</p>
                     </div>
                     <div class="approach-column">
                         <h2>Learning Approach</h2>
-                        <p>We champion a "learn by doing" methodology. Our courses are packed with:</p>
+                        <p>We champion "learn by doing":</p>
                         <ul>
-                            <li><strong>Interactive Terminals:</strong> Practice commands and concepts in a simulated environment directly within your browser.</li>
-                            <li><strong>Real-World Scenarios:</strong> Tackle challenges that mirror problems faced by professionals in the field.</li>
-                            <li><strong>Project-Based Learning:</strong> Apply your knowledge by building tangible projects to showcase your skills.</li>
-                            <li><strong>Step-by-Step Guidance:</strong> Clear explanations and structured lessons to guide you through complex topics.</li>
-                            <li><strong>Instant Feedback:</strong> Our system provides immediate feedback on your exercises, helping you learn and correct mistakes efficiently.</li>
+                            <li><strong>Interactive Terminals:</strong> Practice in-browser.</li>
+                            <li><strong>Real-World Scenarios:</strong> Tackle industry problems.</li>
+                            <li><strong>Project-Based Learning:</strong> Build to showcase skills.</li>
+                            <li><strong>Step-by-Step Guidance:</strong> Clear, structured lessons.</li>
+                            <li><strong>Instant Feedback:</strong> Learn and correct efficiently.</li>
                         </ul>
                     </div>
                 </div>
@@ -1038,18 +670,36 @@
             <section class="about-page-section team-section">
                 <h2>Meet the Team</h2>
                 <div class="founder-card">
-                    <img src="https://via.placeholder.com/120/7c3aed/FFFFFF?text=Founder" alt="Founder Photo" class="founder-image">
+                    <img src="https://via.placeholder.com/100/7c3aed/FFFFFF?text=PJ" alt="Founder Photo" class="founder-image">
                     <h3>Privit Jay</h3>
                     <p class="founder-position">Founder & Lead Instructor</p>
                     <p class="founder-bio">
-                        With a deep passion for cybersecurity, Linux, and open-source technologies, Privit Jay established the academy to share knowledge and make tech education more practical and accessible. Believing that hands-on experience is key, they designed the platform to bridge the gap between theoretical knowledge and practical application.
+                        Passionate about cybersecurity, Linux, and open-source. Established the academy to make tech education practical and bridge theory with application.
                     </p>
                 </div>
             </section>
-            <footer class="footer"> <!-- Footer can be shared or specific -->
+
+            <!-- Discord Section on About Page -->
+            <div class="discord-join-section" id="about-discord"> 
+                <h2 class="discord-title">Join Our Community</h2>
+                <p class="discord-description">Connect with fellow learners, ask questions, and share your progress on our Discord server!</p>
+                <a href="https://discord.gg/YOUR_INVITE_CODE" target="_blank" class="btn discord-btn"> 
+                    <svg aria-hidden="true" role="img" viewBox="0 0 24 24"><path fill="currentColor" d="M20.317 4.36981C18.7915 3.09531 16.9067 2.15581 14.8317 1.63081C14.6825 1.58081 14.5267 1.68248 14.4908 1.83081L14.2075 3.04498C12.9608 2.81665 11.6558 2.81665 10.4092 3.04498L10.1258 1.83081C10.0892 1.68248 9.93416 1.58081 9.78416 1.63081C7.70833 2.15581 5.82416 3.09531 4.29916 4.36981C4.29916 4.36981 -0.200838 9.68398 0.00166183 14.9065C0.00166183 14.9065 1.89583 17.9473 6.06916 18.4515C6.06916 18.4515 6.61416 17.4481 6.9025 16.9698C5.3225 16.2331 4.15833 14.9481 4.15833 14.9481C4.15833 14.9481 4.22166 14.8905 4.3025 14.8098C6.695 16.1023 9.4475 16.3731 12.0017 16.1365C12.0017 16.1365 12.0017 16.1365 12.0017 16.1365C14.5558 16.3731 17.3083 16.1023 19.7008 14.8098C19.7808 14.8905 19.8442 14.9481 19.8442 14.9481C19.8442 14.9481 18.6808 16.2331 17.1008 16.9698C17.3892 17.4481 17.9333 18.4515 17.9333 18.4515C22.1058 17.9473 24.0017 14.9065 24.0017 14.9065C24.2042 9.68398 20.317 4.36981 20.317 4.36981ZM8.02083 12.5998C7.02416 12.5998 6.22416 11.7998 6.22416 10.7998C6.22416 9.80065 7.02416 8.99981 8.02083 8.99981C9.0175 8.99981 9.8175 9.80065 9.8175 10.7998C9.8175 11.7998 9.0175 12.5998 8.02083 12.5998ZM15.9825 12.5998C14.9858 12.5998 14.1858 11.7998 14.1858 10.7998C14.1858 9.80065 14.9858 8.99981 15.9825 8.99981C16.9792 8.99981 17.7792 9.80065 17.7792 10.7998C17.7792 11.7998 16.9792 12.5998 15.9825 12.5998Z"></path></svg>
+                    Join Discord
+                </a>
+            </div>
+
+            <section class="about-page-section ready-to-learn-section">
+                <h2>Ready to Start Learning?</h2>
+                <p>Join PrivitJayAcademy and begin your journey into the exciting world of technology today!</p>
+                <button class="btn" onclick="showHomePageAndScroll('courses', 'courses-link')">Browse Courses 🚀</button>
+            </section>
+
+            <footer class="footer">
                  <div class="footer-container">
-                    <div class="footer-bottom" style="border-top:none; padding-top:0;"> <!-- Simpler footer for about page -->
-                        <p>© 2024 Privitjay Academy. All Rights Reserved.</p>
+                    <div class="footer-bottom" style="border-top:none; padding-top:0;">
+                        <span class="footer-prompt">> PrivitjayAcademy_</span>
+                        <span class="footer-copyright">© 2024 Privitjay Academy. All Rights Reserved.</span>
                     </div>
                 </div>
             </footer>
@@ -1058,9 +708,7 @@
         <div id="learning-interface">
             <button class="btn back-btn" onclick="goHomeFromLearning()">← Back to Courses</button>
             <div class="lesson-panel">
-                <div id="lesson-content" class="lesson-content">
-                    <!-- Lesson content will be loaded here -->
-                </div>
+                <div id="lesson-content" class="lesson-content"></div>
             </div>
             <div class="terminal-panel">
                  <div class="terminal-header"> 
@@ -1104,22 +752,23 @@
         output.style.marginTop = "0.5rem";
         output.textContent = currentMessage.replace('echo ', '').replace(/"/g, '');
         output.style.animation = "fadeIn 0.5s ease";
-        typingText.parentElement.appendChild(output);
+        if(typingText.parentElement) typingText.parentElement.appendChild(output);
 
         setTimeout(() => {
-          typingText.textContent = "";
+          if(typingText) typingText.textContent = "";
           if (output.parentNode === typingText.parentElement) { 
             typingText.parentElement.removeChild(output);
           }
           charIndex = 0;
           messageIndex = (messageIndex + 1) % messages.length;
-          typeMessage();
+          if(document.getElementById('home-page').classList.contains('active-page')) { // Only continue if home page is active
+             typeMessage();
+          }
         }, 3000);
       }
     }
     
     function filterCoursesByCategory(targetCategory) {
-        console.log("Filtering courses by category:", targetCategory);
         const courseCards = document.querySelectorAll('.course-grid .course-card');
         let coursesFound = false;
         
@@ -1147,11 +796,9 @@
 
         if (coursesFound || targetCategory === 'all') {
              const coursesSection = document.getElementById('courses');
-             if (coursesSection && document.getElementById('home-page').classList.contains('active-page')) { // Only scroll if on home page
+             if (coursesSection && document.getElementById('home-page').classList.contains('active-page')) {
                  coursesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
              }
-        } else {
-            console.log("No courses found for category:", targetCategory);
         }
     }
 
@@ -1161,9 +808,7 @@
         });
         if (activeLinkId) {
             const activeLink = document.getElementById(activeLinkId);
-            if (activeLink) {
-                activeLink.classList.add('nav-active');
-            }
+            if (activeLink) activeLink.classList.add('nav-active');
         }
     }
 
@@ -1171,99 +816,82 @@
         const pages = ['home-page', 'about-page', 'learning-interface'];
         pages.forEach(pageId => {
             const pageElement = document.getElementById(pageId);
+            if (!pageElement) return;
+
             if (pageId === pageIdToShow) {
                 pageElement.classList.add('active-page');
-                // If it's the learning interface, ensure its display is grid
-                if (pageId === 'learning-interface') {
-                    pageElement.style.display = 'grid';
-                } else {
-                     pageElement.style.display = 'block';
-                }
-                // Force reflow for opacity transition
+                pageElement.style.display = (pageId === 'learning-interface') ? 'grid' : 'block';
                 pageElement.offsetHeight; 
                 pageElement.style.opacity = 1;
             } else {
-                pageElement.classList.remove('active-page');
                 pageElement.style.opacity = 0;
-                // After transition, set display to none
                 setTimeout(() => {
-                    if (!pageElement.classList.contains('active-page')) {
-                         pageElement.style.display = 'none';
-                    }
-                }, 400); // Match CSS transition time
+                    if (pageElement.classList.contains('active-page')) return; // Don't hide if it became active in meantime
+                    pageElement.style.display = 'none';
+                    pageElement.classList.remove('active-page');
+                }, 400); 
             }
         });
         setActiveNavLink(activeNavId);
-        if (pageIdToShow !== 'learning-interface') { // Don't scroll for learning interface
+        if (pageIdToShow !== 'learning-interface') {
              window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+         // Restart typing animation if home page is shown
+        if (pageIdToShow === 'home-page' && typingText && typingText.textContent === '') {
+            charIndex = 0; // Reset typing
+            // messageIndex can stay or be reset, depends on desired behavior
+            setTimeout(typeMessage, 500); // Delay a bit for page transition
         }
     }
 
-
-    function showHomePageAndScroll(sectionId = 'home', activeLink = 'home-link') {
+    function showHomePageAndScroll(sectionId = 'home-hero', activeLink = 'home-link') {
         showPage('home-page', activeLink);
-        filterCoursesByCategory('all'); // Show all courses when navigating to home sections
-
-        // Delay scroll until after page transition might have started
+        filterCoursesByCategory('all'); 
         setTimeout(() => {
             const targetElement = document.getElementById(sectionId);
             if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
             } else {
                  window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-        }, 50); // Small delay for page to become visible
+        }, 50); 
     }
     
     function showAboutPage() {
         showPage('about-page', 'about-link');
     }
 
-
     function startCourse(courseName) {
-        console.log("Starting course:", courseName);
-        showPage('learning-interface', null); // No nav link active
-
+        showPage('learning-interface', null); 
         const lessonContentEl = document.getElementById('lesson-content');
         lessonContentEl.innerHTML = `<h2>Welcome to ${courseName.charAt(0).toUpperCase() + courseName.slice(1)}</h2><p>Loading lesson...</p>
-        <h3>Lesson 1: Introduction to ${courseName}</h3>
-        <p>This is where the first lesson content would go. You will learn about the basics and how to get started. For example, if this is Linux, we'd talk about the terminal.</p>
+        <h3>Lesson 1: Intro to ${courseName}</h3>
+        <p>This is where the first lesson content would go. For example, if this is Linux, we'd talk about the terminal.</p>
         <code>${courseName === 'linux' ? 'ls -la' : (courseName === 'python' ? 'print("Hello, World!")' : 'ping 8.8.8.8')}</code>
         <div class="exercise-box">
             <h4>Exercise: Your First Command</h4>
-            <p>Try typing the command above into the interactive terminal on the right and see what happens!</p>
+            <p>Try typing the command above into the interactive terminal!</p>
         </div>
         <button class="btn" onclick="alert('Next lesson coming soon!')">Next Lesson</button>`;
     }
 
     function goHomeFromLearning() {
-        console.log("Going back to home/courses from learning interface");
         showHomePageAndScroll('courses', 'courses-link'); 
     }
 
-
     document.addEventListener("DOMContentLoaded", () => {
-      if (typingText) setTimeout(typeMessage, 1000); // Check if typingText exists
-
       document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
             const linkId = this.getAttribute('id');
-
-            if (linkId === 'home-link') {
-                showHomePageAndScroll('home', 'home-link');
-            } else if (linkId === 'courses-link') {
-                showHomePageAndScroll('courses', 'courses-link');
-            } else if (linkId === 'about-link') {
-                showAboutPage();
-            } else if (linkId === 'contact-link') {
-                showHomePageAndScroll('contact', 'contact-link');
-            }
+            if (linkId === 'home-link') showHomePageAndScroll('home-hero', 'home-link');
+            else if (linkId === 'courses-link') showHomePageAndScroll('courses', 'courses-link');
+            else if (linkId === 'about-link') showAboutPage();
+            else if (linkId === 'contact-link') showHomePageAndScroll('contact', 'contact-link'); // Scrolls to #contact on home page
         });
       });
       
-      // Initially show home page and all courses
-      showHomePageAndScroll('home', 'home-link');
+      showHomePageAndScroll('home-hero', 'home-link'); // Initial page load
       filterCoursesByCategory('all'); 
     });
   </script>
