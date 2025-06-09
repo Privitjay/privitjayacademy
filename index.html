@@ -358,7 +358,9 @@
             border: 1px solid rgba(255, 255, 255, 0.1); 
         }
         
-        #about-page > .about-page-section:first-child { /* This is .about-header-section */
+        /* CORRECTED RULE START */
+        /* This rule now correctly targets the header section using its class, not its position. */
+        #about-page .about-header-section {
             padding-top: 0;  /* NO top padding here */
             margin-top: 0;   /* NO top margin here */
             background: none; 
@@ -367,7 +369,9 @@
             padding-right: 0;
             margin-bottom: 2.5rem; 
         }
-        #about-page > .about-page-section:first-child h1 {
+        /* CORRECTED RULE END */
+        
+        #about-page .about-header-section h1 {
             margin-top: 0; /* H1 starts flush */
             font-size: 2.8rem; 
             font-family: 'Courier New', monospace; 
@@ -377,15 +381,15 @@
             letter-spacing: 2px;
             position: relative;
         }
-        #about-page > .about-page-section:first-child h1 .privit { 
+        #about-page .about-header-section h1 .privit { 
             color: #00d4ff;
             text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
         }
-        #about-page > .about-page-section:first-child h1 .academy { 
+        #about-page .about-header-section h1 .academy { 
             color: #7c3aed;
             text-shadow: 0 0 10px rgba(124, 58, 237, 0.3);
         }
-        #about-page > .about-page-section:first-child h1::after {
+        #about-page .about-header-section h1::after {
             content: '';
             display: block;
             width: 70%; 
@@ -395,7 +399,7 @@
             border-radius: 2px;
         }
 
-        #about-page > .about-page-section:first-child .about-intro-main {
+        #about-page .about-header-section .about-intro-main {
             font-size: 1.1rem; 
             line-height: 1.7;
             text-align: center;
@@ -625,10 +629,10 @@
             #about-page {
                 padding-top: 0; 
             }
-            #about-page > .about-page-section:first-child {
+            #about-page .about-header-section {
                 padding-top: 0.5rem; 
             }
-            #about-page > .about-page-section:first-child h1 {
+            #about-page .about-header-section h1 {
                 font-size: 2.2rem; 
             }
             .mission-approach-container-new {
@@ -659,7 +663,7 @@
             .course-grid { grid-template-columns: 1fr; } 
             .footer-prompt { font-size: 0.8rem; } 
             .footer-copyright { font-size: 0.75rem; } 
-            #about-page > .about-page-section:first-child h1 {
+            #about-page .about-header-section h1 {
                 font-size: 2rem;
             }
         }
